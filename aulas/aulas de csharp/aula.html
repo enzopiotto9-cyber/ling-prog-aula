@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Aulas de C#: variáveis, condições, laços, métodos, classes, coleções e LINQ">
+    <meta name="author" content="Pioto">
+    <meta name="theme-color" content="#68217a">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2368217a'/%3E%3Ctext x='32' y='43' font-family='Arial' font-size='30' font-weight='bold' fill='white' text-anchor='middle'%3EC%23%3C/text%3E%3C/svg%3E">
+    <script>document.documentElement.classList.add('js');</script>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css">
+    <title>Aulas | Aprenda C#</title>
+</head>
+
+<body>
+    <a class="pular-conteudo" href="#conteudo">Pular para o conteúdo</a>
+
+    <header class="banner-logo-inicial">
+        <h1>Aulas de C#</h1>
+    </header>
+
+    <nav class="menu-navegacao-inicio" aria-label="Navegação principal">
+        <ul class="bottons-navegacao-inicio">
+            <li class="voltar-principal"><a href="../home-principal.html"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Página principal</a></li>
+            <li><a href="./home.html"><i class="fa-solid fa-house" aria-hidden="true"></i> Home</a></li>
+            <li><a href="./aula.html" class="ativo" aria-current="page"><i class="fa-solid fa-book" aria-hidden="true"></i> Aulas</a></li>
+            <li><a href="./servicos.html"><i class="fa-solid fa-truck" aria-hidden="true"></i> Serviços</a></li>
+            <li><a href="./comentarios.html"><i class="fa-solid fa-comment" aria-hidden="true"></i> Comentários</a></li>
+            <li><a href="./suporte.html"><i class="fa-solid fa-phone" aria-hidden="true"></i> Suporte</a></li>
+            <li><a href="./horarios.html"><i class="fa-solid fa-calendar-days" aria-hidden="true"></i> Horários</a></li>
+        </ul>
+    </nav>
+
+    <main id="conteudo">
+        <div class="barra-ferramentas">
+            <form class="busca" role="search" onsubmit="return false">
+                <label for="campo-busca" class="so-leitor-de-tela">Pesquisar nas aulas</label>
+                <input id="campo-busca" type="search" placeholder="Pesquisar aula..." />
+                <button type="submit">Buscar</button>
+            </form>
+            <div class="acessibilidade">
+                <button type="button" id="btn-acessibilidade" aria-label="Acessibilidade" title="Acessibilidade"><i class="fa-solid fa-eye" aria-hidden="true"></i></button>
+                <button type="button" id="btn-config" aria-label="Configurações do site" title="Configurações do site"><i class="fa-solid fa-gear" aria-hidden="true"></i></button>
+            </div>
+        </div>
+
+        <section class="indice" aria-labelledby="titulo-indice">
+            <h2 id="titulo-indice">Escolha uma aula</h2>
+            <ol class="lista-aulas">
+                <li><a href="#aula1"><strong>O que é C#</strong><span>Moderna, versátil e feita para o .NET</span></a></li>
+                <li><a href="#aula2"><strong>Estrutura básica</strong><span>using, namespace, class e Main</span></a></li>
+                <li><a href="#aula3"><strong>Variáveis e tipos</strong><span>int, double, decimal, bool, string</span></a></li>
+                <li><a href="#aula4"><strong>Operadores e condições</strong><span>if, else e switch</span></a></li>
+                <li><a href="#aula5"><strong>Laços de repetição</strong><span>for, while e foreach</span></a></li>
+                <li><a href="#aula6"><strong>Métodos, ref e out</strong><span>Reaproveitando código</span></a></li>
+                <li><a href="#aula7"><strong>Classes e objetos</strong><span>Orientação a objetos e propriedades</span></a></li>
+                <li><a href="#aula8"><strong>Coleções e LINQ</strong><span>List, Sort, Where e Select</span></a></li>
+            </ol>
+            <p id="sem-resultado" hidden>Nenhuma aula encontrada para essa busca.</p>
+        </section>
+
+        <article class="aula" id="aula1">
+            <h2>Aula 1: O que é C#</h2>
+            <p>C# (lê-se "C sharp") é uma linguagem <strong>moderna, fortemente tipada e orientada a objetos</strong>, criada pela Microsoft sob a liderança de Anders Hejlsberg. Ela roda sobre a plataforma <strong>.NET</strong> e é usada em sites e APIs (ASP.NET), aplicativos desktop, jogos (Unity), aplicativos móveis e serviços em nuvem.</p><p>Você escreve o código em um arquivo <code>.cs</code>, o SDK do .NET o compila e executa. Tudo pode ser feito pela linha de comando com a ferramenta <code>dotnet</code>:</p>
+            <pre><code>dotnet new console -n MeuApp
+cd MeuApp
+dotnet run</code></pre>
+            <p>O projeto nasce com um programa pronto. Nas versões recentes, basta uma linha:</p>
+            <pre><code>Console.WriteLine("Olá, mundo!");</code></pre>
+            <details class="exercicio">
+                <summary>Exercício: qual comando cria e qual comando roda um projeto de console?</summary>
+                <p>Crie com <code>dotnet new console -n MeuApp</code> e rode, dentro da pasta do projeto, com <code>dotnet run</code>.</p>
+            </details>
+        </article>
+
+        <article class="aula" id="aula2">
+            <h2>Aula 2: Estrutura básica</h2>
+            <p>Todo programa C# começa a executar pelo método <code>Main</code>. A forma completa, que aparece em muitos livros e projetos, é esta:</p>
+            <pre><code>using System;
+
+namespace MeuApp;
+
+class Program
+{
+    static void Main()
+    {
+        Console.WriteLine("Olá!");
+    }
+}</code></pre>
+            <ul><li><code>using</code> importa um namespace (<code>System</code> tem o <code>Console</code>).</li><li><code>namespace</code> agrupa e organiza as suas classes.</li><li><code>class Program</code> guarda o código; em C# tudo vive dentro de tipos.</li><li><code>Main</code> é o ponto de entrada do programa.</li><li>Toda instrução termina com <code>;</code>.</li></ul>
+            <p>Desde o C# 9, as <em>instruções de nível superior</em> permitem escrever só <code>Console.WriteLine("Olá!");</code>, e o compilador cria o <code>Main</code> para você. Neste curso usamos essa forma curta nos exemplos.</p>
+            <details class="exercicio">
+                <summary>Exercício: o que faz o <code>using System;</code>?</summary>
+                <p>Ele traz para o seu arquivo os tipos do namespace <code>System</code>, como o <code>Console</code>, sem precisar escrever <code>System.Console</code> toda vez.</p>
+            </details>
+        </article>
+
+        <article class="aula" id="aula3">
+            <h2>Aula 3: Variáveis e tipos</h2>
+            <p>Toda variável tem um tipo: <code>int</code> (inteiro), <code>double</code> (número com vírgula), <code>decimal</code> (dinheiro, com precisão), <code>char</code> (um caractere), <code>bool</code> (verdadeiro ou falso) e <code>string</code> (texto). Com <code>var</code> o compilador descobre o tipo, e <code>const</code> impede que o valor mude.</p>
+            <pre><code>int idade = 25;
+double altura = 1.75;
+decimal preco = 19.90m;
+string nome = "Ana";
+bool ativo = true;
+const double Pi = 3.14159;
+var x = 10;
+Console.WriteLine($"{nome} tem {idade} anos");</code></pre>
+            <p>O <code>$"..."</code> é a interpolação de texto: o que está entre chaves é substituído pelo valor da variável.</p>
+            <details class="exercicio">
+                <summary>Exercício: por que usar <code>decimal</code> em vez de <code>double</code> para preços?</summary>
+                <p>O <code>decimal</code> guarda números decimais com exatidão, sem os pequenos erros de arredondamento que o <code>double</code> pode ter.</p>
+            </details>
+        </article>
+
+        <article class="aula" id="aula4">
+            <h2>Aula 4: Operadores e condições</h2>
+            <p>Operadores aritméticos: <code>+ - * / %</code>. Comparação: <code>== != &lt; &gt; &lt;= &gt;=</code>. Lógicos: <code>&amp;&amp;</code> (e), <code>||</code> (ou) e <code>!</code> (não).</p>
+            <pre><code>int nota = 7;
+
+if (nota &gt;= 7)
+{
+    Console.WriteLine("Aprovado");
+}
+else if (nota &gt;= 5)
+{
+    Console.WriteLine("Recuperação");
+}
+else
+{
+    Console.WriteLine("Reprovado");
+}
+
+string situacao = nota switch
+{
+    &gt;= 7 =&gt; "Aprovado",
+    &gt;= 5 =&gt; "Recuperação",
+    _ =&gt; "Reprovado"
+};</code></pre>
+            <p>O <code>switch</code> como expressão devolve um valor, e o <code>_</code> cobre todos os demais casos.</p>
+            <details class="exercicio">
+                <summary>Exercício: qual a diferença entre <code>=</code> e <code>==</code>?</summary>
+                <p><code>=</code> atribui um valor; <code>==</code> compara dois valores.</p>
+            </details>
+        </article>
+
+        <article class="aula" id="aula5">
+            <h2>Aula 5: Laços de repetição</h2>
+            <p>Use <code>for</code> quando sabe quantas vezes repetir, <code>while</code> quando depende de uma condição e <code>foreach</code> para percorrer todos os itens de uma coleção.</p>
+            <pre><code>for (int i = 1; i &lt;= 3; i++)
+{
+    Console.WriteLine(i);
+}
+
+int n = 3;
+while (n &gt; 0)
+{
+    n--;
+}
+
+string s = "C#";
+foreach (char c in s)
+{
+    Console.WriteLine(c);
+}</code></pre>
+            <details class="exercicio">
+                <summary>Exercício: qual laço percorre todos os itens de uma coleção?</summary>
+                <p>O <code>foreach</code>: <code>foreach (var x in colecao)</code>.</p>
+            </details>
+        </article>
+
+        <article class="aula" id="aula6">
+            <h2>Aula 6: Métodos, ref e out</h2>
+            <p>Um método tem tipo de retorno, nome e parâmetros; <code>void</code> não devolve nada. Por padrão, os valores são copiados para o método. Com <code>ref</code>, o método altera a variável original. Com <code>out</code>, ele devolve um valor extra por um parâmetro.</p>
+            <pre><code>static int Somar(int a, int b)
+{
+    return a + b;
+}
+
+static void Dobrar(ref int x)
+{
+    x *= 2;
+}
+
+static bool TentarDividir(int a, int b, out int resultado)
+{
+    resultado = 0;
+    if (b == 0) return false;
+    resultado = a / b;
+    return true;
+}
+
+int valor = Somar(2, 3);   // 5
+Dobrar(ref valor);         // 10
+
+if (TentarDividir(10, 2, out int r))
+{
+    Console.WriteLine(r);  // 5
+}</code></pre>
+            <p>Em C# você raramente precisa de ponteiros: as classes já são passadas por referência, e o coletor de lixo cuida da memória.</p>
+            <details class="exercicio">
+                <summary>Exercício: o que o <code>ref</code> em <code>ref int x</code> faz?</summary>
+                <p>Passa o parâmetro por referência: o método altera a variável original, não uma cópia.</p>
+            </details>
+        </article>
+
+        <article class="aula" id="aula7">
+            <h2>Aula 7: Classes e objetos</h2>
+            <p>A classe é o molde; o objeto é criado a partir dele com <code>new</code>. O <strong>construtor</strong> tem o nome da classe e roda na criação. Em <code>public</code> ficam os membros acessíveis de fora e em <code>private</code> os protegidos. Uma <strong>propriedade</strong> (<code>{ get; set; }</code>) controla o acesso a um dado.</p>
+            <pre><code>Pessoa p = new Pessoa("Ana");
+p.Falar();
+
+class Pessoa
+{
+    public string Nome { get; }
+
+    public Pessoa(string nome)
+    {
+        Nome = nome;
+    }
+
+    public void Falar()
+    {
+        Console.WriteLine($"Oi, sou {Nome}");
+    }
+}</code></pre>
+            <p>Com instruções de nível superior, o código do programa vem primeiro e as classes vêm depois, no mesmo arquivo.</p>
+            <details class="exercicio">
+                <summary>Exercício: para que serve o construtor?</summary>
+                <p>Para preparar o objeto no momento em que ele é criado.</p>
+            </details>
+        </article>
+
+        <article class="aula" id="aula8">
+            <h2>Aula 8: Coleções e LINQ</h2>
+            <p>As coleções do .NET trazem estruturas prontas. A <code>List&lt;T&gt;</code> é uma lista que cresce sozinha, e o <strong>LINQ</strong> (<code>System.Linq</code>) consulta e transforma coleções com métodos como <code>Where</code> e <code>Select</code>.</p>
+            <pre><code>var nums = new List&lt;int&gt; { 5, 2, 8, 1 };
+nums.Add(10);
+nums.Sort();
+
+foreach (int x in nums)
+{
+    Console.Write(x + " ");
+}
+
+var pares = nums.Where(n =&gt; n % 2 == 0).ToList();
+var dobros = nums.Select(n =&gt; n * 2).ToList();</code></pre>
+            <p>Nos projetos novos, <code>System</code>, <code>System.Collections.Generic</code> e <code>System.Linq</code> já vêm importados automaticamente (<em>implicit usings</em>).</p>
+            <details class="exercicio">
+                <summary>Exercício: qual a vantagem da <code>List&lt;T&gt;</code> sobre um array comum?</summary>
+                <p>Ela muda de tamanho (<code>Add</code>, <code>Remove</code>) e sabe o próprio tamanho (<code>Count</code>).</p>
+            </details>
+        </article>
+
+    </main>
+
+    <footer class="rodape">
+        <p>Continue praticando: crie um projeto de console por aula, rode com dotnet run e teste cada exemplo.</p>
+    </footer>
+
+    <script>
+        const campo = document.getElementById('campo-busca');
+        const itens = document.querySelectorAll('.lista-aulas li');
+        const aviso = document.getElementById('sem-resultado');
+        campo.addEventListener('input', () => {
+            const termo = campo.value.trim().toLowerCase();
+            let achou = 0;
+            itens.forEach(li => {
+                const ok = li.textContent.toLowerCase().includes(termo);
+                li.hidden = !ok;
+                if (ok) achou++;
+            });
+            aviso.hidden = achou > 0;
+        });
+        const q = new URLSearchParams(location.search).get('q');
+        if (q) { campo.value = q; campo.dispatchEvent(new Event('input')); }
+    </script>
+    <script src="./js/site.js" defer></script>
+</body>
+
+</html>

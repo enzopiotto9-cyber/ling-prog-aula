@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Serviços do Aprenda Design: aulas ao vivo, mentoria, crítica de layouts e mais">
+    <meta name="author" content="Pioto">
+    <meta name="theme-color" content="#6d28d9">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%236d28d9'/%3E%3Ctext x='32' y='42' font-family='Arial' font-size='26' font-weight='bold' fill='white' text-anchor='middle'%3EAa%3C/text%3E%3C/svg%3E">
+    <script>document.documentElement.classList.add('js');</script>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css">
+    <title>Serviços | Aprenda Design</title>
+</head>
+
+<body>
+    <a class="pular-conteudo" href="#conteudo">Pular para o conteúdo</a>
+
+    <header class="banner-logo-inicial">
+        <h1>Nossos serviços</h1>
+    </header>
+
+    <nav class="menu-navegacao-inicio" aria-label="Navegação principal">
+        <ul class="bottons-navegacao-inicio">
+            <li class="voltar-principal"><a href="../home-principal.html"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Página principal</a></li>
+            <li><a href="./home.html"><i class="fa-solid fa-house" aria-hidden="true"></i> Home</a></li>
+            <li><a href="./aula.html"><i class="fa-solid fa-book" aria-hidden="true"></i> Aulas</a></li>
+            <li><a href="./servicos.html" class="ativo" aria-current="page"><i class="fa-solid fa-truck" aria-hidden="true"></i> Serviços</a></li>
+            <li><a href="./comentarios.html"><i class="fa-solid fa-comment" aria-hidden="true"></i> Comentários</a></li>
+            <li><a href="./suporte.html"><i class="fa-solid fa-phone" aria-hidden="true"></i> Suporte</a></li>
+            <li><a href="./horarios.html"><i class="fa-solid fa-calendar-days" aria-hidden="true"></i> Horários</a></li>
+        </ul>
+    </nav>
+
+    <main id="conteudo">
+        <div class="barra-ferramentas">
+            <form class="busca" role="search" onsubmit="return false">
+                <label for="campo-busca" class="so-leitor-de-tela">Pesquisar serviços</label>
+                <input id="campo-busca" type="search" placeholder="Pesquisar serviço..." />
+                <button type="submit">Buscar</button>
+            </form>
+            <div class="acessibilidade">
+                <button type="button" id="btn-acessibilidade" aria-label="Acessibilidade" title="Acessibilidade"><i class="fa-solid fa-eye" aria-hidden="true"></i></button>
+                <button type="button" id="btn-config" aria-label="Configurações do site" title="Configurações do site"><i class="fa-solid fa-gear" aria-hidden="true"></i></button>
+            </div>
+        </div>
+
+        <section class="servicos" aria-labelledby="titulo-servicos">
+            <h2 id="titulo-servicos">O que oferecemos</h2>
+            <p class="servicos-intro">Escolha o apoio que combina com o seu ritmo de estudo.</p>
+
+            <ul class="grade-servicos">
+                <li class="servico">
+                    <i class="fa-solid fa-video icone-servico" aria-hidden="true"></i>
+                    <h3>Aulas ao vivo</h3>
+                    <p>Aulas em tempo real com um professor, com espaço para tirar dúvidas e refazer as demonstrações juntos.</p>
+                    <a href="./suporte.html">Solicitar</a>
+                </li>
+                <li class="servico">
+                    <i class="fa-solid fa-user-graduate icone-servico" aria-hidden="true"></i>
+                    <h3>Mentoria individual</h3>
+                    <p>Acompanhamento pessoal para quem quer avançar mais rápido ou está travado em um assunto.</p>
+                    <a href="./suporte.html">Solicitar</a>
+                </li>
+                <li class="servico">
+                    <i class="fa-solid fa-pen-ruler icone-servico" aria-hidden="true"></i>
+                    <h3>Crítica de layouts</h3>
+                    <p>Envie seu layout e receba comentários sobre hierarquia, cor, espaço e alinhamento.</p>
+                    <a href="./suporte.html">Solicitar</a>
+                </li>
+                <li class="servico">
+                    <i class="fa-solid fa-folder-open icone-servico" aria-hidden="true"></i>
+                    <h3>Revisão de portfólio</h3>
+                    <p>Análise dos seus projetos com dicas de organização, apresentação e escolha dos melhores trabalhos.</p>
+                    <a href="./suporte.html">Solicitar</a>
+                </li>
+                <li class="servico">
+                    <i class="fa-solid fa-certificate icone-servico" aria-hidden="true"></i>
+                    <h3>Certificado de conclusão</h3>
+                    <p>Comprove o que você aprendeu ao terminar todas as aulas do curso.</p>
+                    <a href="./suporte.html">Solicitar</a>
+                </li>
+                <li class="servico">
+                    <i class="fa-solid fa-palette icone-servico" aria-hidden="true"></i>
+                    <h3>Identidade visual</h3>
+                    <p>Precisa de logotipo, paleta de cores e tipografia para você ou seu negócio? Criamos uma identidade simples e coerente.</p>
+                    <a href="./suporte.html">Solicitar</a>
+                </li>
+            </ul>
+            <p id="sem-resultado" hidden>Nenhum serviço encontrado para essa busca.</p>
+        </section>
+
+        <section class="como-funciona" aria-labelledby="titulo-passos">
+            <h2 id="titulo-passos">Como funciona</h2>
+            <ol>
+                <li><strong>Escolha o serviço</strong> que você precisa.</li>
+                <li><strong>Fale com o suporte</strong> e conte o que você quer aprender ou criar.</li>
+                <li><strong>Combine o horário</strong> que fica melhor para você.</li>
+                <li><strong>Comece</strong> e acompanhe sua evolução.</li>
+            </ol>
+        </section>
+
+        <section class="duvidas" aria-labelledby="titulo-duvidas">
+            <h2 id="titulo-duvidas">Dúvidas frequentes</h2>
+            <details>
+                <summary>Preciso saber desenhar para começar?</summary>
+                <p>Não. O design básico é feito de escolhas, como cor, espaço e alinhamento, e as aulas começam do zero.</p>
+            </details>
+            <details>
+                <summary>Posso fazer os serviços pelo celular?</summary>
+                <p>Sim. O site funciona no celular, mas para montar layouts é mais confortável usar um computador.</p>
+            </details>
+            <details>
+                <summary>Como peço um serviço?</summary>
+                <p>Clique em "Solicitar" no serviço escolhido ou vá direto para a página de <a href="./suporte.html">Suporte</a>.</p>
+            </details>
+        </section>
+    </main>
+
+    <footer class="rodape">
+        <p>Ficou com dúvida? Fale com a gente na página de suporte.</p>
+    </footer>
+
+    <script>
+        // Busca: filtra os cards de serviço
+        const campo = document.getElementById('campo-busca');
+        const cards = document.querySelectorAll('.servico');
+        const aviso = document.getElementById('sem-resultado');
+        campo.addEventListener('input', () => {
+            const termo = campo.value.trim().toLowerCase();
+            let achou = 0;
+            cards.forEach(c => {
+                const ok = c.textContent.toLowerCase().includes(termo);
+                c.hidden = !ok;
+                if (ok) achou++;
+            });
+            aviso.hidden = achou > 0;
+        });
+
+    </script>
+    <script src="./js/site.js" defer></script>
+</body>
+
+</html>

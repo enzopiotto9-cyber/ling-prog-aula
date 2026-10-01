@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Suporte do Aprenda HTML: fale com a gente e veja as perguntas mais comuns">
+    <meta name="author" content="Pioto">
+    <meta name="theme-color" content="#0008ff">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230008ff'/%3E%3Ctext x='32' y='42' font-family='Arial' font-size='26' font-weight='bold' fill='white' text-anchor='middle'%3E%26lt;/%26gt;%3C/text%3E%3C/svg%3E">
+    <script>document.documentElement.classList.add('js');</script>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css">
+    <title>Suporte | Aprenda HTML</title>
+</head>
+
+<body>
+    <a class="pular-conteudo" href="#conteudo">Pular para o conteúdo</a>
+
+    <header class="banner-logo-inicial">
+        <h1>Suporte</h1>
+    </header>
+
+    <nav class="menu-navegacao-inicio" aria-label="Navegação principal">
+        <ul class="bottons-navegacao-inicio">
+            <li class="voltar-principal"><a href="../../home-principal.html"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Página principal</a></li>
+            <li><a href="./home.html"><i class="fa-solid fa-house" aria-hidden="true"></i> Home</a></li>
+            <li><a href="./aula.html"><i class="fa-solid fa-book" aria-hidden="true"></i> Aulas</a></li>
+            <li><a href="./servicos.html"><i class="fa-solid fa-truck" aria-hidden="true"></i> Serviços</a></li>
+            <li><a href="./comentarios.html"><i class="fa-solid fa-comment" aria-hidden="true"></i> Comentários</a></li>
+            <li><a href="./suporte.html" class="ativo" aria-current="page"><i class="fa-solid fa-phone" aria-hidden="true"></i> Suporte</a></li>
+            <li><a href="./horarios.html"><i class="fa-solid fa-calendar-days" aria-hidden="true"></i> Horários</a></li>
+        </ul>
+    </nav>
+
+    <main id="conteudo">
+        <div class="barra-ferramentas">
+            <form class="busca" role="search" onsubmit="return false">
+                <label for="campo-busca" class="so-leitor-de-tela">Pesquisar nas dúvidas frequentes</label>
+                <input id="campo-busca" type="search" placeholder="Pesquisar dúvida..." />
+                <button type="submit">Buscar</button>
+            </form>
+            <div class="acessibilidade">
+                <button type="button" id="btn-acessibilidade" aria-label="Acessibilidade" title="Acessibilidade"><i class="fa-solid fa-eye" aria-hidden="true"></i></button>
+                <button type="button" id="btn-config" aria-label="Configurações do site" title="Configurações do site"><i class="fa-solid fa-gear" aria-hidden="true"></i></button>
+            </div>
+        </div>
+
+        <section class="canais" aria-labelledby="titulo-canais">
+            <h2 id="titulo-canais">Como falar com a gente</h2>
+            <ul class="grade-servicos">
+                <li class="servico">
+                    <i class="fa-solid fa-envelope icone-servico" aria-hidden="true"></i>
+                    <h3>E-mail</h3>
+                    <p>Ideal para dúvidas maiores ou para enviar seu código para revisão.</p>
+                    <a id="link-email" href="#">Enviar e-mail</a>
+                </li>
+                <li class="servico">
+                    <i class="fa-brands fa-whatsapp icone-servico" aria-hidden="true"></i>
+                    <h3>WhatsApp</h3>
+                    <p>Para perguntas rápidas e para combinar horários de monitoria.</p>
+                    <a id="link-whatsapp" href="#" target="_blank" rel="noopener">Abrir conversa</a>
+                </li>
+                <li class="servico">
+                    <i class="fa-solid fa-calendar-days icone-servico" aria-hidden="true"></i>
+                    <h3>Plantão de dúvidas</h3>
+                    <p>Tire dúvidas ao vivo com o professor nos horários do plantão.</p>
+                    <a href="./horarios.html">Ver horários</a>
+                </li>
+            </ul>
+        </section>
+
+        <div class="suporte-layout">
+            <section class="novo-suporte" aria-labelledby="titulo-form">
+                <h2 id="titulo-form">Envie uma mensagem</h2>
+                <form id="form-suporte">
+                    <label for="nome">Seu nome</label>
+                    <input id="nome" type="text" maxlength="60" required autocomplete="name">
+
+                    <label for="email">Seu e-mail</label>
+                    <input id="email" type="email" required autocomplete="email">
+
+                    <label for="assunto">Assunto</label>
+                    <select id="assunto">
+                        <option>Dúvida sobre uma aula</option>
+                        <option>Solicitar um serviço</option>
+                        <option>Problema no site</option>
+                        <option>Outro assunto</option>
+                    </select>
+
+                    <label for="mensagem-texto">Mensagem</label>
+                    <textarea id="mensagem-texto" rows="6" maxlength="1000" required></textarea>
+
+                    <button type="submit" class="botao-principal">Enviar mensagem</button>
+                    <p id="retorno" class="mensagem" role="status"></p>
+                </form>
+            </section>
+
+            <section class="faq" aria-labelledby="titulo-faq">
+                <h2 id="titulo-faq">Dúvidas frequentes</h2>
+                <div id="lista-faq">
+                    <details>
+                        <summary>Por onde eu começo?</summary>
+                        <p>Comece pela <a href="./aula.html">Aula 1</a> e siga a ordem. Cada aula tem exemplos de código e um exercício no final.</p>
+                    </details>
+                    <details>
+                        <summary>Preciso instalar algum programa?</summary>
+                        <p>Só um editor de texto (como o VS Code ou o Bloco de Notas) e um navegador. Salve o arquivo com final <code>.html</code> e abra no navegador.</p>
+                    </details>
+                    <details>
+                        <summary>Minha página abre, mas sem cores ou estilo. O que fazer?</summary>
+                        <p>Quase sempre é o caminho do CSS. Confira se o arquivo está em <code>css/style.css</code> e se o <code>&lt;link&gt;</code> aponta para <code>./css/style.css</code>. Os nomes precisam ser idênticos, inclusive maiúsculas e minúsculas.</p>
+                    </details>
+                    <details>
+                        <summary>Os ícones não aparecem. E agora?</summary>
+                        <p>Os ícones vêm da biblioteca Font Awesome, que precisa de internet para carregar. Verifique sua conexão e se o link no <code>&lt;head&gt;</code> está completo.</p>
+                    </details>
+                    <details>
+                        <summary>A fonte do título não carrega.</summary>
+                        <p>O caminho da fonte no <code>@font-face</code> é relativo ao arquivo CSS. Se a pasta <code>font</code> fica fora de <code>css</code>, use <code>../font/...</code>.</p>
+                    </details>
+                    <details>
+                        <summary>Como peço um serviço, como monitoria?</summary>
+                        <p>Escolha na página de <a href="./servicos.html">Serviços</a> e envie uma mensagem aqui com o assunto "Solicitar um serviço".</p>
+                    </details>
+                    <details>
+                        <summary>Onde vejo os dias e horários das aulas?</summary>
+                        <p>Na página de <a href="./horarios.html">Horários</a>, que mostra a grade da semana e a próxima aula.</p>
+                    </details>
+                </div>
+                <p id="sem-resultado" hidden>Nenhuma dúvida encontrada. Envie sua pergunta pelo formulário.</p>
+            </section>
+        </div>
+    </main>
+
+    <footer class="rodape">
+        <p>Toda dúvida é bem-vinda. Perguntar faz parte de aprender.</p>
+    </footer>
+
+    <script>
+        // >>> TROQUE PELOS SEUS DADOS REAIS <<<
+        const CONTATO = {
+            email: 'seuemail@exemplo.com',
+            whatsapp: '5500000000000' // país + DDD + número, só dígitos
+        };
+
+        document.getElementById('link-email').href = 'mailto:' + CONTATO.email;
+        document.getElementById('link-whatsapp').href = 'https://wa.me/' + CONTATO.whatsapp;
+
+        // Formulário: abre o app de e-mail do visitante com a mensagem pronta
+        const form = document.getElementById('form-suporte');
+        const retorno = document.getElementById('retorno');
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            const nome = document.getElementById('nome').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const assunto = document.getElementById('assunto').value;
+            const msg = document.getElementById('mensagem-texto').value.trim();
+            if (!nome || !msg) { retorno.textContent = 'Preencha o nome e a mensagem.'; return; }
+            const corpo = msg + '\n\n' + nome + '\n' + email;
+            window.location.href = 'mailto:' + CONTATO.email +
+                '?subject=' + encodeURIComponent('[Suporte] ' + assunto) +
+                '&body=' + encodeURIComponent(corpo);
+            retorno.textContent = 'Abrindo seu aplicativo de e-mail. É só apertar em enviar.';
+        });
+
+        // Busca: filtra as dúvidas frequentes
+        const campo = document.getElementById('campo-busca');
+        const itens = document.querySelectorAll('#lista-faq details');
+        const aviso = document.getElementById('sem-resultado');
+        campo.addEventListener('input', () => {
+            const termo = campo.value.trim().toLowerCase();
+            let achou = 0;
+            itens.forEach(d => {
+                const ok = d.textContent.toLowerCase().includes(termo);
+                d.hidden = !ok;
+                if (ok) achou++;
+            });
+            aviso.hidden = achou > 0;
+        });
+
+    </script>
+    <script src="./js/site.js" defer></script>
+</body>
+
+</html>

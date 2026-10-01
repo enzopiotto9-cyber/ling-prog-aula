@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Aulas de Python: variáveis, condições, laços, funções, listas e classes">
+    <meta name="author" content="Pioto">
+    <meta name="theme-color" content="#306998">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23306998'/%3E%3Ctext x='32' y='42' font-family='Arial' font-size='28' font-weight='bold' fill='white' text-anchor='middle'%3EPy%3C/text%3E%3C/svg%3E">
+    <script>document.documentElement.classList.add('js');</script>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css">
+    <title>Aulas | Aprenda Python</title>
+</head>
+
+<body>
+    <a class="pular-conteudo" href="#conteudo">Pular para o conteúdo</a>
+
+    <header class="banner-logo-inicial">
+        <h1>Aulas de Python</h1>
+    </header>
+
+    <nav class="menu-navegacao-inicio" aria-label="Navegação principal">
+        <ul class="bottons-navegacao-inicio">
+            <li class="voltar-principal"><a href="../home-principal.html"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Página principal</a></li>
+            <li><a href="./home.html"><i class="fa-solid fa-house" aria-hidden="true"></i> Home</a></li>
+            <li><a href="./aula.html" class="ativo" aria-current="page"><i class="fa-solid fa-book" aria-hidden="true"></i> Aulas</a></li>
+            <li><a href="./servicos.html"><i class="fa-solid fa-truck" aria-hidden="true"></i> Serviços</a></li>
+            <li><a href="./comentarios.html"><i class="fa-solid fa-comment" aria-hidden="true"></i> Comentários</a></li>
+            <li><a href="./suporte.html"><i class="fa-solid fa-phone" aria-hidden="true"></i> Suporte</a></li>
+            <li><a href="./horarios.html"><i class="fa-solid fa-calendar-days" aria-hidden="true"></i> Horários</a></li>
+        </ul>
+    </nav>
+
+    <main id="conteudo">
+        <div class="barra-ferramentas">
+            <form class="busca" role="search" onsubmit="return false">
+            <label for="campo-busca" class="so-leitor-de-tela">Pesquisar nas aulas</label>
+            <input id="campo-busca" type="search" placeholder="Pesquisar aula..." />
+            <button type="submit">Buscar</button>
+        </form>
+            <div class="acessibilidade">
+                <button type="button" id="btn-acessibilidade" aria-label="Acessibilidade" title="Acessibilidade"><i class="fa-solid fa-eye" aria-hidden="true"></i></button>
+                <button type="button" id="btn-config" aria-label="Configurações do site" title="Configurações do site"><i class="fa-solid fa-gear" aria-hidden="true"></i></button>
+            </div>
+        </div>
+
+        <section class="indice" aria-labelledby="titulo-indice">
+            <h2 id="titulo-indice">Escolha uma aula</h2>
+            <ol class="lista-aulas">
+                <li><a href="#aula1"><strong>O que é Python</strong><span>Simples, legível e poderosa</span></a></li>
+                <li><a href="#aula2"><strong>Estrutura básica</strong><span>Indentação, comentários e input</span></a></li>
+                <li><a href="#aula3"><strong>Variáveis e tipos</strong><span>int, float, str e bool</span></a></li>
+                <li><a href="#aula4"><strong>Operadores e condições</strong><span>if, elif e else</span></a></li>
+                <li><a href="#aula5"><strong>Laços de repetição</strong><span>for, range e while</span></a></li>
+                <li><a href="#aula6"><strong>Funções</strong><span>def e return</span></a></li>
+                <li><a href="#aula7"><strong>Listas e dicionários</strong><span>Guardando vários valores</span></a></li>
+                <li><a href="#aula8"><strong>Classes e objetos</strong><span>Orientação a objetos</span></a></li>
+            </ol>
+            <p id="sem-resultado" hidden>Nenhuma aula encontrada para essa busca.</p>
+        </section>
+
+        <article class="aula" id="aula1">
+            <h2>Aula 1: O que é Python</h2>
+            <p>Python é uma linguagem de programação conhecida pela <strong>sintaxe simples e legível</strong>. É usada em automação, análise de dados, inteligência artificial, sites e muito mais, e é ótima para quem está começando.</p><p>Instale o Python, crie um arquivo <code>ola.py</code> e execute no terminal com <code>python ola.py</code>:</p>
+            <pre><code>print(&quot;Olá, mundo!&quot;)</code></pre>
+            <details class="exercicio">
+                <summary>Exercício: como executar o arquivo <code>ola.py</code>?</summary>
+                <p>No terminal, com <code>python ola.py</code> (em alguns sistemas, <code>python3 ola.py</code>).</p>
+            </details>
+        </article>
+
+        <article class="aula" id="aula2">
+            <h2>Aula 2: Estrutura básica</h2>
+            <p>Em Python não há chaves nem ponto e vírgula: a <strong>indentação</strong> (4 espaços) define os blocos de código. Comentários começam com <code>#</code>, <code>print</code> escreve na tela e <code>input</code> lê o que a pessoa digita.</p>
+            <pre><code># isto é um comentário
+nome = input(&quot;Seu nome: &quot;)
+print(&quot;Olá,&quot;, nome)
+
+if nome:
+    print(&quot;Nome recebido&quot;)</code></pre>
+            <details class="exercicio">
+                <summary>Exercício: como o Python marca onde começa e termina um bloco?</summary>
+                <p>Pela indentação, normalmente com 4 espaços, e não por chaves.</p>
+            </details>
+        </article>
+
+        <article class="aula" id="aula3">
+            <h2>Aula 3: Variáveis e tipos</h2>
+            <p>Não é preciso declarar o tipo: a variável assume o tipo do valor. Os tipos comuns são <code>int</code>, <code>float</code>, <code>str</code>, <code>bool</code> (<code>True</code> ou <code>False</code>) e <code>None</code>. As <strong>f-strings</strong> inserem variáveis no texto.</p>
+            <pre><code>nome = &quot;Ana&quot;
+idade = 25
+preco = 19.90
+ativo = True
+
+print(f&quot;{nome} tem {idade} anos&quot;)
+print(type(idade))</code></pre>
+            <details class="exercicio">
+                <summary>Exercício: o que faz uma f-string?</summary>
+                <p>Insere valores de variáveis dentro do texto, entre chaves: <code>f"Olá, {nome}"</code>.</p>
+            </details>
+        </article>
+
+        <article class="aula" id="aula4">
+            <h2>Aula 4: Operadores e condições</h2>
+            <p>Operadores aritméticos: <code>+ - * / // % **</code>. Comparação: <code>== != &lt; &gt; &lt;= &gt;=</code>. Lógicos: <code>and</code>, <code>or</code> e <code>not</code>.</p>
+            <pre><code>nota = 7
+
+if nota &gt;= 7:
+    print(&quot;Aprovado&quot;)
+elif nota &gt;= 5:
+    print(&quot;Recuperação&quot;)
+else:
+    print(&quot;Reprovado&quot;)</code></pre>
+            <details class="exercicio">
+                <summary>Exercício: qual palavra representa "senão se" em Python?</summary>
+                <p><code>elif</code>.</p>
+            </details>
+        </article>
+
+        <article class="aula" id="aula5">
+            <h2>Aula 5: Laços de repetição</h2>
+            <p>O <code>for</code> percorre sequências, e o <code>range</code> gera números. O <code>while</code> repete enquanto uma condição for verdadeira.</p>
+            <pre><code>for i in range(1, 4):
+    print(i)
+
+n = 3
+while n &gt; 0:
+    n -= 1
+
+for fruta in [&quot;maçã&quot;, &quot;uva&quot;]:
+    print(fruta)</code></pre>
+            <details class="exercicio">
+                <summary>Exercício: o que gera <code>range(1, 4)</code>?</summary>
+                <p>Os números 1, 2 e 3: o final (4) não é incluído.</p>
+            </details>
+        </article>
+
+        <article class="aula" id="aula6">
+            <h2>Aula 6: Funções</h2>
+            <p>Uma função é criada com <code>def</code>. Ela pode ter parâmetros, inclusive com valores padrão, e <code>return</code> devolve o resultado.</p>
+            <pre><code>def somar(a, b=0):
+    return a + b
+
+print(somar(2, 3))
+print(somar(5))</code></pre>
+            <details class="exercicio">
+                <summary>Exercício: o que acontece em <code>somar(5)</code> se <code>b=0</code> for o padrão?</summary>
+                <p>Usa o valor padrão: <code>b</code> vale 0 e o resultado é 5.</p>
+            </details>
+        </article>
+
+        <article class="aula" id="aula7">
+            <h2>Aula 7: Listas e dicionários</h2>
+            <p>A <strong>lista</strong> guarda itens em ordem e cresce com <code>append</code>. O <strong>dicionário</strong> guarda pares chave-valor. A <em>list comprehension</em> cria listas de forma curta.</p>
+            <pre><code>frutas = [&quot;maçã&quot;, &quot;uva&quot;]
+frutas.append(&quot;pera&quot;)
+
+pares = [n for n in range(10) if n % 2 == 0]
+
+pessoa = {&quot;nome&quot;: &quot;Ana&quot;, &quot;idade&quot;: 25}
+
+print(pessoa[&quot;nome&quot;])
+print(len(frutas))</code></pre>
+            <details class="exercicio">
+                <summary>Exercício: como ver quantos itens tem uma lista?</summary>
+                <p>Com <code>len(lista)</code>.</p>
+            </details>
+        </article>
+
+        <article class="aula" id="aula8">
+            <h2>Aula 8: Classes e objetos</h2>
+            <p>A classe é o molde e o objeto é criado a partir dela. O método <code>__init__</code> roda na criação e <code>self</code> representa o próprio objeto.</p>
+            <pre><code>class Pessoa:
+    def __init__(self, nome):
+        self.nome = nome
+
+    def falar(self):
+        print(f&quot;Oi, sou {self.nome}&quot;)
+
+p = Pessoa(&quot;Ana&quot;)
+p.falar()</code></pre>
+            <details class="exercicio">
+                <summary>Exercício: o que é o <code>self</code>?</summary>
+                <p>Uma referência ao próprio objeto, usada para acessar seus atributos e métodos.</p>
+            </details>
+        </article>
+
+    </main>
+
+    <footer class="rodape">
+        <p>Continue praticando: crie um arquivo .py por aula e teste cada exemplo com python arquivo.py.</p>
+    </footer>
+
+    <script>
+        const campo = document.getElementById('campo-busca');
+        const itens = document.querySelectorAll('.lista-aulas li');
+        const aviso = document.getElementById('sem-resultado');
+        campo.addEventListener('input', () => {
+            const termo = campo.value.trim().toLowerCase();
+            let achou = 0;
+            itens.forEach(li => {
+                const ok = li.textContent.toLowerCase().includes(termo);
+                li.hidden = !ok;
+                if (ok) achou++;
+            });
+            aviso.hidden = achou > 0;
+        });
+        const q = new URLSearchParams(location.search).get('q');
+        if (q) { campo.value = q; campo.dispatchEvent(new Event('input')); }
+    </script>
+    <script src="./js/site.js" defer></script>
+</body>
+
+</html>

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Aulas de PHP: variáveis, condições, laços, funções, arrays e formulários">
+    <meta name="author" content="Pioto">
+    <meta name="theme-color" content="#4f5b93">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234f5b93'/%3E%3Ctext x='32' y='42' font-family='Arial' font-size='24' font-weight='bold' fill='white' text-anchor='middle'%3EPHP%3C/text%3E%3C/svg%3E">
+    <script>document.documentElement.classList.add('js');</script>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css">
+    <title>Aulas | Aprenda PHP</title>
+</head>
+
+<body>
+    <a class="pular-conteudo" href="#conteudo">Pular para o conteúdo</a>
+
+    <header class="banner-logo-inicial">
+        <h1>Aulas de PHP</h1>
+    </header>
+
+    <nav class="menu-navegacao-inicio" aria-label="Navegação principal">
+        <ul class="bottons-navegacao-inicio">
+            <li class="voltar-principal"><a href="../home-principal.html"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Página principal</a></li>
+            <li><a href="./home.html"><i class="fa-solid fa-house" aria-hidden="true"></i> Home</a></li>
+            <li><a href="./aula.html" class="ativo" aria-current="page"><i class="fa-solid fa-book" aria-hidden="true"></i> Aulas</a></li>
+            <li><a href="./servicos.html"><i class="fa-solid fa-truck" aria-hidden="true"></i> Serviços</a></li>
+            <li><a href="./comentarios.html"><i class="fa-solid fa-comment" aria-hidden="true"></i> Comentários</a></li>
+            <li><a href="./suporte.html"><i class="fa-solid fa-phone" aria-hidden="true"></i> Suporte</a></li>
+            <li><a href="./horarios.html"><i class="fa-solid fa-calendar-days" aria-hidden="true"></i> Horários</a></li>
+        </ul>
+    </nav>
+
+    <main id="conteudo">
+        <div class="barra-ferramentas">
+            <form class="busca" role="search" onsubmit="return false">
+            <label for="campo-busca" class="so-leitor-de-tela">Pesquisar nas aulas</label>
+            <input id="campo-busca" type="search" placeholder="Pesquisar aula..." />
+            <button type="submit">Buscar</button>
+        </form>
+            <div class="acessibilidade">
+                <button type="button" id="btn-acessibilidade" aria-label="Acessibilidade" title="Acessibilidade"><i class="fa-solid fa-eye" aria-hidden="true"></i></button>
+                <button type="button" id="btn-config" aria-label="Configurações do site" title="Configurações do site"><i class="fa-solid fa-gear" aria-hidden="true"></i></button>
+            </div>
+        </div>
+
+        <section class="indice" aria-labelledby="titulo-indice">
+            <h2 id="titulo-indice">Escolha uma aula</h2>
+            <ol class="lista-aulas">
+                <li><a href="#aula1"><strong>O que é PHP</strong><span>A linguagem que roda no servidor</span></a></li>
+                <li><a href="#aula2"><strong>Estrutura básica</strong><span>Tags, echo e HTML misturado</span></a></li>
+                <li><a href="#aula3"><strong>Variáveis e tipos</strong><span>$variavel, string, int e float</span></a></li>
+                <li><a href="#aula4"><strong>Operadores e condições</strong><span>if, else e ===</span></a></li>
+                <li><a href="#aula5"><strong>Laços de repetição</strong><span>for, while e foreach</span></a></li>
+                <li><a href="#aula6"><strong>Funções</strong><span>Reaproveitando código</span></a></li>
+                <li><a href="#aula7"><strong>Arrays</strong><span>Listas e arrays associativos</span></a></li>
+                <li><a href="#aula8"><strong>Formulários</strong><span>$_POST, $_GET e segurança</span></a></li>
+            </ol>
+            <p id="sem-resultado" hidden>Nenhuma aula encontrada para essa busca.</p>
+        </section>
+
+        <article class="aula" id="aula1">
+            <h2>Aula 1: O que é PHP</h2>
+            <p>PHP é uma linguagem de <strong>servidor</strong>: o código roda no servidor e o visitante recebe só o HTML pronto. É a base de sites dinâmicos, de sistemas como o WordPress e de frameworks como o Laravel.</p><p>O código fica em arquivos <code>.php</code>, dentro das tags <code>&lt;?php ... ?&gt;</code>. Para testar, instale o PHP e rode no terminal <code>php -S localhost:8000</code>:</p>
+            <pre><code>&lt;?php
+echo &quot;Olá, mundo!&quot;;</code></pre>
+            <details class="exercicio">
+                <summary>Exercício: onde o código PHP é executado?</summary>
+                <p>No servidor. O navegador recebe apenas o resultado, em HTML.</p>
+            </details>
+        </article>
+
+        <article class="aula" id="aula2">
+            <h2>Aula 2: Estrutura básica</h2>
+            <p>O PHP pode ser misturado ao HTML. Tudo fora das tags <code>&lt;?php ?&gt;</code> é enviado como está, e cada instrução termina com <code>;</code>. O <code>echo</code> escreve na página, e <code>&lt;?= ... ?&gt;</code> é um atalho para ele.</p>
+            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;body&gt;
+    &lt;h1&gt;&lt;?php echo &quot;Olá!&quot;; ?&gt;&lt;/h1&gt;
+    &lt;p&gt;Hoje é &lt;?= date(&quot;d/m/Y&quot;) ?&gt;&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+            <details class="exercicio">
+                <summary>Exercício: o que faz <code>&lt;?= $nome ?&gt;</code>?</summary>
+                <p>É um atalho para <code>&lt;?php echo $nome; ?&gt;</code>: escreve o valor na página.</p>
+            </details>
+        </article>
+
+        <article class="aula" id="aula3">
+            <h2>Aula 3: Variáveis e tipos</h2>
+            <p>Toda variável começa com <code>$</code> e não precisa declarar o tipo. Os tipos comuns são <code>string</code>, <code>int</code>, <code>float</code>, <code>bool</code>, <code>array</code> e <code>null</code>. Aspas duplas inserem variáveis no texto, e o ponto (<code>.</code>) junta textos.</p>
+            <pre><code>$nome = &quot;Ana&quot;;
+$idade = 25;
+$preco = 19.90;
+$ativo = true;
+
+echo &quot;$nome tem $idade anos\n&quot;;
+echo &quot;Preço: &quot; . $preco;</code></pre>
+            <details class="exercicio">
+                <summary>Exercício: com qual símbolo começa o nome de uma variável?</summary>
+                <p>Com <code>$</code>, como em <code>$nome</code>.</p>
+            </details>
+        </article>
+
+        <article class="aula" id="aula4">
+            <h2>Aula 4: Operadores e condições</h2>
+            <p>Operadores aritméticos: <code>+ - * / %</code>. Lógicos: <code>&amp;&amp;</code>, <code>||</code> e <code>!</code>. Prefira <code>===</code> (compara valor e tipo) a <code>==</code>, que converte os tipos sozinho.</p>
+            <pre><code>$nota = 7;
+
+if ($nota &gt;= 7) {
+    echo &quot;Aprovado&quot;;
+} elseif ($nota &gt;= 5) {
+    echo &quot;Recuperação&quot;;
+} else {
+    echo &quot;Reprovado&quot;;
+}</code></pre>
+            <details class="exercicio">
+                <summary>Exercício: por que usar <code>===</code> em vez de <code>==</code>?</summary>
+                <p>Porque ele compara valor e tipo, evitando conversões inesperadas.</p>
+            </details>
+        </article>
+
+        <article class="aula" id="aula5">
+            <h2>Aula 5: Laços de repetição</h2>
+            <p>Use <code>for</code> quando sabe o número de voltas, <code>while</code> quando depende de uma condição e <code>foreach</code> para percorrer arrays.</p>
+            <pre><code>for ($i = 1; $i &lt;= 3; $i++) {
+    echo $i . &quot;\n&quot;;
+}
+
+$n = 3;
+while ($n &gt; 0) {
+    $n--;
+}
+
+foreach ([&quot;maçã&quot;, &quot;uva&quot;] as $fruta) {
+    echo $fruta . &quot;\n&quot;;
+}</code></pre>
+            <details class="exercicio">
+                <summary>Exercício: qual laço percorre todos os itens de um array?</summary>
+                <p>O <code>foreach</code>.</p>
+            </details>
+        </article>
+
+        <article class="aula" id="aula6">
+            <h2>Aula 6: Funções</h2>
+            <p>Funções agrupam código reutilizável. Você pode indicar o tipo dos parâmetros e do retorno, e <code>return</code> devolve o resultado.</p>
+            <pre><code>function somar(int $a, int $b): int {
+    return $a + $b;
+}
+
+echo somar(2, 3);</code></pre>
+            <details class="exercicio">
+                <summary>Exercício: o que faz o <code>return</code>?</summary>
+                <p>Devolve um valor para quem chamou a função e encerra a execução dela.</p>
+            </details>
+        </article>
+
+        <article class="aula" id="aula7">
+            <h2>Aula 7: Arrays</h2>
+            <p>Um array guarda vários valores. Com chaves de texto, vira um array <strong>associativo</strong> (chave =&gt; valor). Funções úteis: <code>count</code>, <code>in_array</code> e <code>array_push</code>.</p>
+            <pre><code>$frutas = [&quot;maçã&quot;, &quot;uva&quot;];
+$frutas[] = &quot;pera&quot;;
+
+$pessoa = [&quot;nome&quot; =&gt; &quot;Ana&quot;, &quot;idade&quot; =&gt; 25];
+
+foreach ($pessoa as $chave =&gt; $valor) {
+    echo &quot;$chave: $valor\n&quot;;
+}
+
+echo count($frutas);</code></pre>
+            <details class="exercicio">
+                <summary>Exercício: como adicionar um item ao fim de um array?</summary>
+                <p>Com <code>$array[] = valor;</code> ou <code>array_push($array, valor)</code>.</p>
+            </details>
+        </article>
+
+        <article class="aula" id="aula8">
+            <h2>Aula 8: Formulários</h2>
+            <p>O PHP recebe os dados de formulários em <code>$_POST</code> (método <code>post</code>) e <code>$_GET</code> (dados na URL). Nunca escreva dados do usuário direto na página: use <code>htmlspecialchars</code> para evitar ataques XSS.</p>
+            <pre><code>&lt;form method=&quot;post&quot;&gt;
+    &lt;input name=&quot;nome&quot;&gt;
+    &lt;button&gt;Enviar&lt;/button&gt;
+&lt;/form&gt;
+
+&lt;?php
+if ($_SERVER[&quot;REQUEST_METHOD&quot;] === &quot;POST&quot;) {
+    $nome = htmlspecialchars($_POST[&quot;nome&quot;]);
+    echo &quot;Olá, $nome!&quot;;
+}</code></pre>
+            <details class="exercicio">
+                <summary>Exercício: para que serve o <code>htmlspecialchars</code>?</summary>
+                <p>Converte caracteres especiais (como <code>&lt;</code>) em texto seguro, evitando que o usuário injete código na página (XSS).</p>
+            </details>
+        </article>
+
+    </main>
+
+    <footer class="rodape">
+        <p>Continue praticando: crie um arquivo .php por aula e teste cada exemplo com php -S localhost:8000.</p>
+    </footer>
+
+    <script>
+        const campo = document.getElementById('campo-busca');
+        const itens = document.querySelectorAll('.lista-aulas li');
+        const aviso = document.getElementById('sem-resultado');
+        campo.addEventListener('input', () => {
+            const termo = campo.value.trim().toLowerCase();
+            let achou = 0;
+            itens.forEach(li => {
+                const ok = li.textContent.toLowerCase().includes(termo);
+                li.hidden = !ok;
+                if (ok) achou++;
+            });
+            aviso.hidden = achou > 0;
+        });
+        const q = new URLSearchParams(location.search).get('q');
+        if (q) { campo.value = q; campo.dispatchEvent(new Event('input')); }
+    </script>
+    <script src="./js/site.js" defer></script>
+</body>
+
+</html>

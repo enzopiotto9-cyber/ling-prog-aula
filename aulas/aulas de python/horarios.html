@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Horários das aulas ao vivo, monitorias e plantões de dúvidas do Aprenda Python">
+    <meta name="author" content="Pioto">
+    <meta name="theme-color" content="#306998">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23306998'/%3E%3Ctext x='32' y='42' font-family='Arial' font-size='28' font-weight='bold' fill='white' text-anchor='middle'%3EPy%3C/text%3E%3C/svg%3E">
+    <script>document.documentElement.classList.add('js');</script>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css">
+    <title>Horários | Aprenda Python</title>
+</head>
+
+<body>
+    <a class="pular-conteudo" href="#conteudo">Pular para o conteúdo</a>
+
+    <header class="banner-logo-inicial">
+        <h1>Horários das aulas</h1>
+    </header>
+
+    <nav class="menu-navegacao-inicio" aria-label="Navegação principal">
+        <ul class="bottons-navegacao-inicio">
+            <li class="voltar-principal"><a href="../home-principal.html"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Página principal</a></li>
+            <li><a href="./home.html"><i class="fa-solid fa-house" aria-hidden="true"></i> Home</a></li>
+            <li><a href="./aula.html"><i class="fa-solid fa-book" aria-hidden="true"></i> Aulas</a></li>
+            <li><a href="./servicos.html"><i class="fa-solid fa-truck" aria-hidden="true"></i> Serviços</a></li>
+            <li><a href="./comentarios.html"><i class="fa-solid fa-comment" aria-hidden="true"></i> Comentários</a></li>
+            <li><a href="./suporte.html"><i class="fa-solid fa-phone" aria-hidden="true"></i> Suporte</a></li>
+            <li><a href="./horarios.html" class="ativo" aria-current="page"><i class="fa-solid fa-calendar-days" aria-hidden="true"></i> Horários</a></li>
+        </ul>
+    </nav>
+
+    <main id="conteudo">
+        <div class="barra-ferramentas">
+            <form class="busca" role="search" onsubmit="return false">
+                <label for="campo-busca" class="so-leitor-de-tela">Pesquisar na grade de horários</label>
+                <input id="campo-busca" type="search" placeholder="Pesquisar aula ou dia..." />
+                <button type="submit">Buscar</button>
+            </form>
+            <div class="acessibilidade">
+                <button type="button" id="btn-acessibilidade" aria-label="Acessibilidade" title="Acessibilidade"><i class="fa-solid fa-eye" aria-hidden="true"></i></button>
+                <button type="button" id="btn-config" aria-label="Configurações do site" title="Configurações do site"><i class="fa-solid fa-gear" aria-hidden="true"></i></button>
+            </div>
+        </div>
+
+        <section class="proxima" aria-labelledby="titulo-proxima">
+            <h2 id="titulo-proxima">Próxima aula</h2>
+            <p id="proxima-info" role="status">Calculando...</p>
+        </section>
+
+        <section class="bloco-horarios" aria-labelledby="titulo-data">
+            <h2 id="titulo-data">Ver por data</h2>
+            <label for="data-escolhida">Escolha um dia</label>
+            <input type="date" id="data-escolhida">
+            <p id="resultado-data-titulo" class="resultado-titulo" role="status"></p>
+            <ul id="resultado-data" class="lista-dia"></ul>
+        </section>
+
+        <section class="bloco-horarios" aria-labelledby="titulo-grade">
+            <h2 id="titulo-grade">Grade semanal</h2>
+            <label for="filtro-tipo">Tipo de atendimento</label>
+            <select id="filtro-tipo">
+                <option value="">Todos</option>
+                <option>Aula ao vivo</option>
+                <option>Monitoria</option>
+                <option>Plantão de dúvidas</option>
+            </select>
+
+            <div class="tabela-rolagem">
+                <table class="tabela-horarios">
+                    <caption class="so-leitor-de-tela">Grade semanal de aulas, monitorias e plantões</caption>
+                    <thead>
+                        <tr><th scope="col">Dia</th><th scope="col">Horário</th><th scope="col">Conteúdo</th><th scope="col">Tipo</th></tr>
+                    </thead>
+                    <tbody id="grade"></tbody>
+                </table>
+            </div>
+            <p id="sem-resultado" hidden>Nenhum horário encontrado para esse filtro.</p>
+            <p class="nota-horario">Horários no fuso de Brasília. Domingo não tem atendimento.</p>
+        </section>
+    </main>
+
+    <footer class="rodape">
+        <p>Não achou um horário bom para você? Fale com o suporte e a gente combina.</p>
+    </footer>
+
+    <script>
+        const DIAS = ['domingo', 'segunda-feira', 'terça-feira', 'quarta-feira', 'quinta-feira', 'sexta-feira', 'sábado'];
+        // dia: 0 = domingo ... 6 = sábado. Edite esta lista para mudar a grade inteira.
+        const AULAS = [
+            { dia: 1, hora: '19:00', fim: '20:30', conteudo: 'Aulas 1 e 2: O que é Python e estrutura básica', tipo: 'Aula ao vivo' },
+            { dia: 2, hora: '19:00', fim: '20:30', conteudo: 'Aula 3: Variáveis e tipos', tipo: 'Aula ao vivo' },
+            { dia: 3, hora: '19:00', fim: '20:30', conteudo: 'Aulas 4 e 5: Condições e laços', tipo: 'Aula ao vivo' },
+            { dia: 4, hora: '19:00', fim: '20:30', conteudo: 'Aula 6: Funções', tipo: 'Aula ao vivo' },
+            { dia: 4, hora: '20:30', fim: '21:30', conteudo: 'Monitoria em grupo', tipo: 'Monitoria' },
+            { dia: 5, hora: '19:00', fim: '20:30', conteudo: 'Aulas 7 e 8: Listas, dicionários e classes', tipo: 'Aula ao vivo' },
+            { dia: 6, hora: '10:00', fim: '11:30', conteudo: 'Plantão de dúvidas da semana', tipo: 'Plantão de dúvidas' }
+        ];
+
+        const hoje = new Date();
+        const campo = document.getElementById('campo-busca');
+        const filtro = document.getElementById('filtro-tipo');
+        const grade = document.getElementById('grade');
+        const aviso = document.getElementById('sem-resultado');
+
+        function celula(texto, tag) {
+            const td = document.createElement(tag || 'td');
+            td.textContent = texto;
+            return td;
+        }
+
+        function faixa(a) { return a.hora + ' às ' + a.fim; }
+
+        function dataBr(d) { return d.toLocaleDateString('pt-BR'); }
+
+        // Grade semanal (com busca e filtro)
+        function renderGrade() {
+            const termo = campo.value.trim().toLowerCase();
+            const tipo = filtro.value;
+            grade.replaceChildren();
+            let n = 0;
+            AULAS.forEach(a => {
+                const linha = (DIAS[a.dia] + ' ' + a.conteudo + ' ' + a.tipo).toLowerCase();
+                if (tipo && a.tipo !== tipo) return;
+                if (!linha.includes(termo)) return;
+                const tr = document.createElement('tr');
+                if (a.dia === hoje.getDay()) tr.className = 'hoje';
+                const dia = celula(DIAS[a.dia] + (a.dia === hoje.getDay() ? ' (hoje)' : ''), 'th');
+                dia.scope = 'row';
+                tr.append(dia, celula(faixa(a)), celula(a.conteudo), celula(a.tipo));
+                grade.append(tr);
+                n++;
+            });
+            aviso.hidden = n > 0;
+        }
+
+        // Ver por data
+        const entrada = document.getElementById('data-escolhida');
+        const lista = document.getElementById('resultado-data');
+        const tituloData = document.getElementById('resultado-data-titulo');
+
+        function renderData() {
+            lista.replaceChildren();
+            if (!entrada.value) { tituloData.textContent = 'Escolha uma data para ver as aulas do dia.'; return; }
+            const d = new Date(entrada.value + 'T12:00:00');
+            const aulas = AULAS.filter(a => a.dia === d.getDay());
+            tituloData.textContent = DIAS[d.getDay()].charAt(0).toUpperCase() + DIAS[d.getDay()].slice(1) + ', ' + dataBr(d);
+            if (!aulas.length) {
+                const li = document.createElement('li');
+                li.textContent = 'Sem aulas neste dia.';
+                lista.append(li);
+                return;
+            }
+            aulas.forEach(a => {
+                const li = document.createElement('li');
+                const h = document.createElement('strong');
+                h.textContent = faixa(a);
+                const t = document.createElement('span');
+                t.textContent = a.conteudo + ' (' + a.tipo + ')';
+                li.append(h, t);
+                lista.append(li);
+            });
+        }
+
+        // Próxima aula: primeira que começa depois de agora, nos próximos 7 dias
+        function renderProxima() {
+            const info = document.getElementById('proxima-info');
+            for (let i = 0; i < 8; i++) {
+                const d = new Date(hoje);
+                d.setDate(hoje.getDate() + i);
+                const doDia = AULAS.filter(a => a.dia === d.getDay()).sort((x, y) => x.hora.localeCompare(y.hora));
+                for (const a of doDia) {
+                    const [h, m] = a.hora.split(':').map(Number);
+                    const inicio = new Date(d);
+                    inicio.setHours(h, m, 0, 0);
+                    if (inicio > hoje) {
+                        const quando = i === 0 ? 'Hoje' : i === 1 ? 'Amanhã' : DIAS[d.getDay()].charAt(0).toUpperCase() + DIAS[d.getDay()].slice(1) + ', ' + dataBr(d);
+                        info.textContent = quando + ', ' + faixa(a) + ': ' + a.conteudo + ' (' + a.tipo + ')';
+                        return;
+                    }
+                }
+            }
+            info.textContent = 'Nenhuma aula agendada.';
+        }
+
+        campo.addEventListener('input', renderGrade);
+        filtro.addEventListener('change', renderGrade);
+        entrada.addEventListener('change', renderData);
+
+        // data de hoje como padrão (no fuso do visitante)
+        const p = n => String(n).padStart(2, '0');
+        entrada.value = hoje.getFullYear() + '-' + p(hoje.getMonth() + 1) + '-' + p(hoje.getDate());
+
+        renderProxima();
+        renderData();
+        renderGrade();
+
+    </script>
+    <script src="./js/site.js" defer></script>
+</body>
+
+</html>

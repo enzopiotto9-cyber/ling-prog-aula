@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Aulas de SQL: SELECT, WHERE, ORDER BY, agregações, INSERT, UPDATE, DELETE e JOIN">
+    <meta name="author" content="Pioto">
+    <meta name="theme-color" content="#0e7490">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230e7490'/%3E%3Ctext x='32' y='42' font-family='Arial' font-size='20' font-weight='bold' fill='white' text-anchor='middle'%3ESQL%3C/text%3E%3C/svg%3E">
+    <script>document.documentElement.classList.add('js');</script>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css">
+    <title>Aulas | Aprenda SQL</title>
+</head>
+
+<body>
+    <a class="pular-conteudo" href="#conteudo">Pular para o conteúdo</a>
+
+    <header class="banner-logo-inicial">
+        <h1>Aulas de SQL</h1>
+    </header>
+
+    <nav class="menu-navegacao-inicio" aria-label="Navegação principal">
+        <ul class="bottons-navegacao-inicio">
+            <li class="voltar-principal"><a href="../home-principal.html"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Página principal</a></li>
+            <li><a href="./home.html"><i class="fa-solid fa-house" aria-hidden="true"></i> Home</a></li>
+            <li><a href="./aula.html" class="ativo" aria-current="page"><i class="fa-solid fa-book" aria-hidden="true"></i> Aulas</a></li>
+            <li><a href="./servicos.html"><i class="fa-solid fa-truck" aria-hidden="true"></i> Serviços</a></li>
+            <li><a href="./comentarios.html"><i class="fa-solid fa-comment" aria-hidden="true"></i> Comentários</a></li>
+            <li><a href="./suporte.html"><i class="fa-solid fa-phone" aria-hidden="true"></i> Suporte</a></li>
+            <li><a href="./horarios.html"><i class="fa-solid fa-calendar-days" aria-hidden="true"></i> Horários</a></li>
+        </ul>
+    </nav>
+
+    <main id="conteudo">
+        <div class="barra-ferramentas">
+            <form class="busca" role="search" onsubmit="return false">
+            <label for="campo-busca" class="so-leitor-de-tela">Pesquisar nas aulas</label>
+            <input id="campo-busca" type="search" placeholder="Pesquisar aula..." />
+            <button type="submit">Buscar</button>
+        </form>
+            <div class="acessibilidade">
+                <button type="button" id="btn-acessibilidade" aria-label="Acessibilidade" title="Acessibilidade"><i class="fa-solid fa-eye" aria-hidden="true"></i></button>
+                <button type="button" id="btn-config" aria-label="Configurações do site" title="Configurações do site"><i class="fa-solid fa-gear" aria-hidden="true"></i></button>
+            </div>
+        </div>
+
+        <section class="indice" aria-labelledby="titulo-indice">
+            <h2 id="titulo-indice">Escolha uma aula</h2>
+            <ol class="lista-aulas">
+                <li><a href="#aula1"><strong>O que é SQL</strong><span>A linguagem dos bancos de dados</span></a></li>
+                <li><a href="#aula2"><strong>SELECT</strong><span>Escolhendo colunas</span></a></li>
+                <li><a href="#aula3"><strong>WHERE</strong><span>Filtrando linhas</span></a></li>
+                <li><a href="#aula4"><strong>ORDER BY e LIMIT</strong><span>Ordenando e limitando</span></a></li>
+                <li><a href="#aula5"><strong>Agregações e GROUP BY</strong><span>Resumindo dados</span></a></li>
+                <li><a href="#aula6"><strong>INSERT, UPDATE e DELETE</strong><span>Alterando os dados</span></a></li>
+                <li><a href="#aula7"><strong>JOIN</strong><span>Ligando tabelas</span></a></li>
+                <li><a href="#aula8"><strong>Criando tabelas</strong><span>CREATE TABLE e restrições</span></a></li>
+            </ol>
+            <p id="sem-resultado" hidden>Nenhuma aula encontrada para essa busca.</p>
+        </section>
+
+        <article class="aula" id="aula1">
+            <h2>Aula 1: O que é SQL</h2>
+            <p>SQL (Structured Query Language) é a linguagem usada para <strong>consultar e manter dados</strong> em bancos relacionais, como MySQL, PostgreSQL, SQLite e SQL Server. Os dados ficam em <strong>tabelas</strong>, com colunas (os campos) e linhas (os registros).</p><p>Nestas aulas usamos uma tabela de exemplo chamada <code>alunos</code>, com as colunas <code>id</code>, <code>nome</code>, <code>cidade</code> e <code>nota</code>. O comando mais importante é o <code>SELECT</code>:</p>
+            <pre><code>-- Mostra todas as colunas e linhas da tabela
+SELECT * FROM alunos;</code></pre>
+            <details class="exercicio">
+                <summary>Exercício: o que o <code>*</code> significa no <code>SELECT</code>?</summary>
+                <p>Todas as colunas da tabela.</p>
+            </details>
+        </article>
+
+        <article class="aula" id="aula2">
+            <h2>Aula 2: SELECT</h2>
+            <p>Liste as colunas que quer ver, separadas por vírgula. <code>DISTINCT</code> remove repetições e <code>AS</code> cria um apelido (alias) para a coluna.</p>
+            <pre><code>SELECT nome, nota FROM alunos;
+
+SELECT DISTINCT cidade FROM alunos;
+
+SELECT nome AS aluno FROM alunos;</code></pre>
+            <details class="exercicio">
+                <summary>Exercício: para que serve o <code>DISTINCT</code>?</summary>
+                <p>Para não repetir valores iguais no resultado, como cidades duplicadas.</p>
+            </details>
+        </article>
+
+        <article class="aula" id="aula3">
+            <h2>Aula 3: WHERE</h2>
+            <p>O <code>WHERE</code> mantém só as linhas que atendem à condição. Use <code>= &lt;&gt; &gt; &lt; &gt;= &lt;=</code>, <code>AND</code>, <code>OR</code>, <code>IN</code>, <code>BETWEEN</code>, <code>IS NULL</code> e <code>LIKE</code> (o <code>%</code> vale por qualquer texto). Textos vão entre aspas simples.</p>
+            <pre><code>SELECT * FROM alunos WHERE nota &gt;= 8;
+
+SELECT * FROM alunos
+WHERE cidade = &#x27;Recife&#x27; AND nota &gt; 7;
+
+SELECT * FROM alunos WHERE nome LIKE &#x27;A%&#x27;;</code></pre>
+            <details class="exercicio">
+                <summary>Exercício: o que encontra <code>LIKE 'A%'</code>?</summary>
+                <p>Textos que começam com a letra A.</p>
+            </details>
+        </article>
+
+        <article class="aula" id="aula4">
+            <h2>Aula 4: ORDER BY e LIMIT</h2>
+            <p><code>ORDER BY</code> ordena o resultado (<code>ASC</code> é crescente, o padrão, e <code>DESC</code> é decrescente). <code>LIMIT</code> restringe a quantidade de linhas, ótimo para rankings.</p>
+            <pre><code>SELECT nome, nota FROM alunos
+ORDER BY nota DESC;
+
+SELECT nome, nota FROM alunos
+ORDER BY nota DESC
+LIMIT 3;</code></pre>
+            <details class="exercicio">
+                <summary>Exercício: como pegar os 3 alunos com as maiores notas?</summary>
+                <p>Com <code>ORDER BY nota DESC LIMIT 3</code>.</p>
+            </details>
+        </article>
+
+        <article class="aula" id="aula5">
+            <h2>Aula 5: Agregações e GROUP BY</h2>
+            <p>Funções de agregação calculam um valor a partir de várias linhas: <code>COUNT</code>, <code>SUM</code>, <code>AVG</code>, <code>MIN</code> e <code>MAX</code>. Com <code>GROUP BY</code> você calcula por grupo, e <code>HAVING</code> filtra os grupos.</p>
+            <pre><code>SELECT COUNT(*) FROM alunos;
+
+SELECT AVG(nota) FROM alunos;
+
+SELECT cidade, AVG(nota) AS media
+FROM alunos
+GROUP BY cidade
+HAVING AVG(nota) &gt;= 8;</code></pre>
+            <details class="exercicio">
+                <summary>Exercício: qual a diferença entre <code>WHERE</code> e <code>HAVING</code>?</summary>
+                <p>O <code>WHERE</code> filtra as linhas antes de agrupar; o <code>HAVING</code> filtra os grupos depois.</p>
+            </details>
+        </article>
+
+        <article class="aula" id="aula6">
+            <h2>Aula 6: INSERT, UPDATE e DELETE</h2>
+            <p><code>INSERT</code> adiciona linhas, <code>UPDATE</code> altera e <code>DELETE</code> remove. Cuidado: sem <code>WHERE</code>, <code>UPDATE</code> e <code>DELETE</code> atingem <strong>todas</strong> as linhas. Teste a condição antes com um <code>SELECT</code>.</p>
+            <pre><code>INSERT INTO alunos (nome, cidade, nota)
+VALUES (&#x27;Lia&#x27;, &#x27;Natal&#x27;, 9);
+
+UPDATE alunos SET nota = 10
+WHERE nome = &#x27;Lia&#x27;;
+
+DELETE FROM alunos WHERE id = 6;</code></pre>
+            <details class="exercicio">
+                <summary>Exercício: o que acontece com um <code>UPDATE</code> sem <code>WHERE</code>?</summary>
+                <p>Ele altera todas as linhas da tabela.</p>
+            </details>
+        </article>
+
+        <article class="aula" id="aula7">
+            <h2>Aula 7: JOIN</h2>
+            <p>Em bancos relacionais, os dados ficam em tabelas separadas, ligadas por chaves (a <strong>chave estrangeira</strong> de uma tabela aponta para a chave primária de outra). O <code>JOIN</code> junta essas tabelas em uma consulta, e o <code>ON</code> diz como elas se ligam.</p>
+            <pre><code>SELECT a.nome, c.titulo
+FROM matriculas m
+JOIN alunos a ON a.id = m.aluno_id
+JOIN cursos c ON c.id = m.curso_id;</code></pre>
+            <details class="exercicio">
+                <summary>Exercício: para que serve o <code>ON</code> no <code>JOIN</code>?</summary>
+                <p>Define a condição que liga as linhas das duas tabelas.</p>
+            </details>
+        </article>
+
+        <article class="aula" id="aula8">
+            <h2>Aula 8: Criando tabelas</h2>
+            <p>Com <code>CREATE TABLE</code> você define as colunas, os tipos e as regras: <code>PRIMARY KEY</code> (identifica cada linha), <code>NOT NULL</code> (obrigatório) e <code>FOREIGN KEY</code> (liga a outra tabela).</p>
+            <pre><code>CREATE TABLE alunos (
+    id INTEGER PRIMARY KEY,
+    nome VARCHAR(60) NOT NULL,
+    cidade VARCHAR(40),
+    nota DECIMAL(3,1)
+);</code></pre>
+            <details class="exercicio">
+                <summary>Exercício: o que identifica cada linha de forma única?</summary>
+                <p>A chave primária (<code>PRIMARY KEY</code>).</p>
+            </details>
+        </article>
+
+    </main>
+
+    <footer class="rodape">
+        <p>Continue praticando: crie um arquivo .sql por aula e teste cada exemplo em um banco como o SQLite.</p>
+    </footer>
+
+    <script>
+        const campo = document.getElementById('campo-busca');
+        const itens = document.querySelectorAll('.lista-aulas li');
+        const aviso = document.getElementById('sem-resultado');
+        campo.addEventListener('input', () => {
+            const termo = campo.value.trim().toLowerCase();
+            let achou = 0;
+            itens.forEach(li => {
+                const ok = li.textContent.toLowerCase().includes(termo);
+                li.hidden = !ok;
+                if (ok) achou++;
+            });
+            aviso.hidden = achou > 0;
+        });
+        const q = new URLSearchParams(location.search).get('q');
+        if (q) { campo.value = q; campo.dispatchEvent(new Event('input')); }
+    </script>
+    <script src="./js/site.js" defer></script>
+</body>
+
+</html>

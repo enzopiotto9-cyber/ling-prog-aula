@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Uma aula de JavaScript para você ficar bom em tudo">
+    <meta name="keywords" content="JavaScript, aula de JavaScript, aprenda JavaScript, DOM">
+    <meta name="author" content="Pioto">
+    <script>
+        /* Roda ANTES de pintar a tela: marca que o JS existe e decide se a abertura roda (1x por sessão) */
+        (function () {
+            var r = document.documentElement, v = false;
+            r.classList.add('js');
+            try { v = sessionStorage.getItem('intro-visto'); sessionStorage.setItem('intro-visto', '1'); } catch (e) {}
+            r.classList.add(v ? 'intro-visto' : 'intro-novo');
+        })();
+    </script>
+    <meta name="theme-color" content="#b45309">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23b45309'/%3E%3Ctext x='32' y='42' font-family='Arial' font-size='28' font-weight='bold' fill='white' text-anchor='middle'%3EJS%3C/text%3E%3C/svg%3E">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css">
+    <title>Aprenda JavaScript</title>
+</head>
+
+<body>
+    <!-- Abertura -->
+    <div class="intro" aria-hidden="true">
+        <div class="intro-painel intro-topo"></div>
+        <div class="intro-painel intro-base"></div>
+        <div class="intro-centro">
+            <div class="intro-letras">
+                <span style="--i:0">&lt;</span><span style="--i:1">JAVA</span><span style="--i:2">-</span><span style="--i:3">SCRIPT</span><span style="--i:3"></span><span style="--i:3"></span><span style="--i:4"></span><span style="--i:5">/&gt;</span>
+            </div>
+            <div class="intro-barra"></div>
+        </div>
+    </div>
+
+    <a class="pular-conteudo" href="#conteudo">Pular para o conteúdo</a>
+
+    <header class="banner-logo-inicial">
+        <h1>Olá, seja bem-vindo à aula de JavaScript</h1>
+    </header>
+
+    <nav class="menu-navegacao-inicio" aria-label="Navegação principal">
+        <ul class="bottons-navegacao-inicio">
+            <li class="voltar-principal"><a href="../home-principal.html"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Página principal</a></li>
+            <li><a href="./home.html" class="ativo" aria-current="page"><i class="fa-solid fa-house" aria-hidden="true"></i> Home</a></li>
+            <li><a href="./aula.html"><i class="fa-solid fa-book" aria-hidden="true"></i> Aulas</a></li>
+            <li><a href="./servicos.html"><i class="fa-solid fa-truck" aria-hidden="true"></i> Serviços</a></li>
+            <li><a href="./comentarios.html"><i class="fa-solid fa-comment" aria-hidden="true"></i> Comentários</a></li>
+            <li><a href="./suporte.html"><i class="fa-solid fa-phone" aria-hidden="true"></i> Suporte</a></li>
+            <li><a href="./horarios.html"><i class="fa-solid fa-calendar-days" aria-hidden="true"></i> Horários</a></li>
+        </ul>
+    </nav>
+
+    <main id="conteudo">
+        <div class="barra-ferramentas">
+            <form class="busca" role="search" action="./aula.html" method="get">
+                <label for="campo-busca" class="so-leitor-de-tela">Pesquisar nas aulas</label>
+                <input id="campo-busca" type="search" name="q" placeholder="Pesquisar..." />
+                <button type="submit">Buscar</button>
+            </form>
+            <div class="acessibilidade">
+                <button type="button" id="btn-acessibilidade" aria-label="Acessibilidade" title="Acessibilidade"><i class="fa-solid fa-eye" aria-hidden="true"></i></button>
+                <button type="button" id="btn-config" aria-label="Configurações do site" title="Configurações do site"><i class="fa-solid fa-gear" aria-hidden="true"></i></button>
+            </div>
+        </div>
+
+        <section class="apresentacao">
+            <h2>Comece do zero, termine sabendo tudo</h2>
+            <p>Aprenda variáveis, funções, arrays, DOM e eventos com exemplos práticos que você pode testar na hora.</p>
+            <a class="botao-principal" href="./aula.html">Começar a primeira aula</a>
+        </section>
+
+        <!-- Números -->
+        <section class="secao-home revelar" aria-labelledby="titulo-numeros">
+            <h2 id="titulo-numeros">O curso em números</h2>
+            <ul class="grade-numeros">
+                <li class="numero">
+                    <i class="fa-solid fa-book-open" aria-hidden="true"></i>
+                    <strong data-contar="12">12</strong>
+                    <span>aulas curtas</span>
+                </li>
+                <li class="numero">
+                    <i class="fa-solid fa-code" aria-hidden="true"></i>
+                    <strong data-contar="40" data-sufixo="+">40+</strong>
+                    <span>exemplos de código</span>
+                </li>
+                <li class="numero">
+                    <i class="fa-solid fa-pen-to-square" aria-hidden="true"></i>
+                    <strong data-contar="25">25</strong>
+                    <span>exercícios práticos</span>
+                </li>
+                <li class="numero">
+                    <i class="fa-solid fa-gift" aria-hidden="true"></i>
+                    <strong data-contar="100" data-sufixo="%">100%</strong>
+                    <span>gratuito</span>
+                </li>
+            </ul>
+        </section>
+
+        <!-- Trilha -->
+        <section class="secao-home revelar" aria-labelledby="titulo-trilha">
+            <h2 id="titulo-trilha">Sua trilha de aprendizado</h2>
+            <p class="subtitulo">Quatro etapas, do primeiro <code>console.log</code> até uma página interativa.</p>
+            <ol class="trilha">
+                <li class="passo">
+                    <span class="passo-numero" aria-hidden="true">1</span>
+                    <h3>Fundamentos</h3>
+                    <p>Variáveis, tipos, condições e laços: a lógica por trás de todo programa.</p>
+                </li>
+                <li class="passo">
+                    <span class="passo-numero" aria-hidden="true">2</span>
+                    <h3>Funções e dados</h3>
+                    <p>Funções, arrays e objetos para organizar e transformar informações.</p>
+                </li>
+                <li class="passo">
+                    <span class="passo-numero" aria-hidden="true">3</span>
+                    <h3>Interação</h3>
+                    <p>DOM e eventos: reaja a cliques, digitação e mude a página ao vivo.</p>
+                </li>
+                <li class="passo">
+                    <span class="passo-numero" aria-hidden="true">4</span>
+                    <h3>Projeto final</h3>
+                    <p>Crie o seu próprio app, como uma lista de tarefas, e publique.</p>
+                </li>
+            </ol>
+        </section>
+
+        <!-- Editor ao vivo -->
+        <section class="secao-home revelar" id="editor" aria-labelledby="titulo-editor">
+            <h2 id="titulo-editor">Teste JavaScript agora, sem instalar nada</h2>
+            <p class="subtitulo">Digite à esquerda e veja o resultado do <code>console.log</code> à direita. O código roda de verdade no navegador.</p>
+            <div class="editor">
+                <div class="editor-coluna">
+                    <label for="editor-codigo">Seu código</label>
+                    <textarea id="editor-codigo" spellcheck="false" rows="10">console.log(&quot;Meu primeiro programa!&quot;);
+console.log(&quot;Eu estou aprendendo JavaScript!&quot;);</textarea>
+                    <button type="button" id="editor-reset" class="botao-secundario">Restaurar exemplo</button>
+                </div>
+                <div class="editor-coluna">
+                    <span class="editor-rotulo" id="rotulo-previa">Console</span>
+                    <iframe id="editor-previa" title="Resultado do seu código" aria-labelledby="rotulo-previa" sandbox="allow-scripts"></iframe>
+                </div>
+            </div>
+        </section>
+
+        <section class="secao-home revelar" aria-labelledby="titulo-tags">
+            <h2 id="titulo-tags">Recursos que você vai usar todo dia</h2>
+            <p class="subtitulo">Clique em um deles para carregar o exemplo no editor acima.</p>
+            <ul class="grade-tags">
+                <li><button type="button" class="tag-card" data-exemplo="console.log(&quot;Olá, JavaScript!&quot;);
+console.log(2 + 3);"><code>console.log</code><span>Saída no Console</span></button></li>
+                <li><button type="button" class="tag-card" data-exemplo="const nome = &quot;Ana&quot;;
+let idade = 25;
+console.log(`${nome} tem ${idade} anos`);"><code>let / const</code><span>Variáveis</span></button></li>
+                <li><button type="button" class="tag-card" data-exemplo="const nota = 8;
+if (nota &gt;= 7) {
+  console.log(&quot;Aprovado&quot;);
+} else {
+  console.log(&quot;Reprovado&quot;);
+}"><code>if / else</code><span>Condições</span></button></li>
+                <li><button type="button" class="tag-card" data-exemplo="for (let i = 1; i &lt;= 3; i++) {
+  console.log(&quot;Volta &quot; + i);
+}"><code>for</code><span>Laços</span></button></li>
+                <li><button type="button" class="tag-card" data-exemplo="function saudar(nome) {
+  return &quot;Oi, &quot; + nome;
+}
+console.log(saudar(&quot;Ana&quot;));"><code>function</code><span>Funções</span></button></li>
+                <li><button type="button" class="tag-card" data-exemplo="const nums = [1, 2, 3];
+console.log(nums.map(n =&gt; n * 2));"><code>map</code><span>Arrays</span></button></li>
+            </ul>
+        </section>
+
+        <!-- Chamada final -->
+        <section class="secao-home cta-final revelar" aria-labelledby="titulo-cta">
+            <h2 id="titulo-cta">Pronto para começar?</h2>
+            <p>A primeira aula leva menos de 10 minutos.</p>
+            <a class="botao-principal" href="./aula.html">Ir para as aulas</a>
+        </section>
+    </main>
+
+    <footer class="rodape">
+        <p>Aprenda JavaScript &middot; feito por Pioto</p>
+        <p><a href="#conteudo">Voltar ao topo <i class="fa-solid fa-arrow-up" aria-hidden="true"></i></a></p>
+    </footer>
+
+    <script src="./js/site.js" defer></script>
+</body>
+
+</html>

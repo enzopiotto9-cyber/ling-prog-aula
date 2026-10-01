@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Aulas de design: cor, tipografia, espaço, contraste, composição, formas e movimento">
+    <meta name="author" content="Pioto">
+    <meta name="theme-color" content="#6d28d9">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%236d28d9'/%3E%3Ctext x='32' y='42' font-family='Arial' font-size='26' font-weight='bold' fill='white' text-anchor='middle'%3EAa%3C/text%3E%3C/svg%3E">
+    <script>document.documentElement.classList.add('js');</script>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css">
+    <title>Aulas | Aprenda Design</title>
+</head>
+
+<body>
+    <a class="pular-conteudo" href="#conteudo">Pular para o conteúdo</a>
+
+    <header class="banner-logo-inicial">
+        <h1>Aulas de Design</h1>
+    </header>
+
+    <nav class="menu-navegacao-inicio" aria-label="Navegação principal">
+        <ul class="bottons-navegacao-inicio">
+            <li class="voltar-principal"><a href="../home-principal.html"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Página principal</a></li>
+            <li><a href="./home.html"><i class="fa-solid fa-house" aria-hidden="true"></i> Home</a></li>
+            <li><a href="./aula.html" class="ativo" aria-current="page"><i class="fa-solid fa-book" aria-hidden="true"></i> Aulas</a></li>
+            <li><a href="./servicos.html"><i class="fa-solid fa-truck" aria-hidden="true"></i> Serviços</a></li>
+            <li><a href="./comentarios.html"><i class="fa-solid fa-comment" aria-hidden="true"></i> Comentários</a></li>
+            <li><a href="./suporte.html"><i class="fa-solid fa-phone" aria-hidden="true"></i> Suporte</a></li>
+            <li><a href="./horarios.html"><i class="fa-solid fa-calendar-days" aria-hidden="true"></i> Horários</a></li>
+        </ul>
+    </nav>
+
+    <main id="conteudo">
+        <div class="barra-ferramentas">
+            <form class="busca" role="search" onsubmit="return false">
+            <label for="campo-busca" class="so-leitor-de-tela">Pesquisar nas aulas</label>
+            <input id="campo-busca" type="search" placeholder="Pesquisar aula..." />
+            <button type="submit">Buscar</button>
+        </form>
+            <div class="acessibilidade">
+                <button type="button" id="btn-acessibilidade" aria-label="Acessibilidade" title="Acessibilidade"><i class="fa-solid fa-eye" aria-hidden="true"></i></button>
+                <button type="button" id="btn-config" aria-label="Configurações do site" title="Configurações do site"><i class="fa-solid fa-gear" aria-hidden="true"></i></button>
+            </div>
+        </div>
+
+        <section class="indice" aria-labelledby="titulo-indice">
+            <h2 id="titulo-indice">Escolha uma aula</h2>
+            <ol class="lista-aulas">
+                <li><a href="#aula1"><strong>O que é design</strong><span>Os quatro princípios básicos</span></a></li>
+                <li><a href="#aula2"><strong>Cor e paleta</strong><span>A regra 60-30-10</span></a></li>
+                <li><a href="#aula3"><strong>Tipografia</strong><span>Fontes, tamanhos e hierarquia</span></a></li>
+                <li><a href="#aula4"><strong>Alinhamento e espaço</strong><span>Guias e múltiplos de 8</span></a></li>
+                <li><a href="#aula5"><strong>Contraste e hierarquia</strong><span>O teste de apertar os olhos</span></a></li>
+                <li><a href="#aula6"><strong>Composição e grade</strong><span>Regra dos terços</span></a></li>
+                <li><a href="#aula7"><strong>Formas e ícones</strong><span>Círculo, quadrado e triângulo</span></a></li>
+                <li><a href="#aula8"><strong>Movimento</strong><span>Curvas de aceleração</span></a></li>
+            </ol>
+            <p id="sem-resultado" hidden>Nenhuma aula encontrada para essa busca.</p>
+        </section>
+
+        <article class="aula" id="aula1">
+            <h2>Aula 1: O que é design</h2>
+            <p>Design é organizar forma, cor e informação para que algo seja <strong>fácil de entender</strong> e agradável de usar. Não é só deixar bonito: um bom design resolve um problema de alguém.</p>
+            <p>Antes de desenhar, responda: para quem é? qual é a mensagem? o que deve ser visto primeiro? Depois aplique os quatro princípios básicos, que você vai ver em todas as aulas:</p>
+            <figure class="demo">
+                <div class="palco p-caos" role="img" aria-label="Seis quadrados coloridos espalhados e girados se organizam em uma grade de três colunas, alinhados e com o mesmo espaço entre eles">
+                    <div class="grade-caos">
+                        <span class="bl" style="--i:0;--x:-150px;--y:-70px;--r:40deg"></span>
+                        <span class="bl" style="--i:1;--x:60px;--y:-90px;--r:-25deg"></span>
+                        <span class="bl" style="--i:2;--x:170px;--y:-30px;--r:70deg"></span>
+                        <span class="bl" style="--i:3;--x:-110px;--y:50px;--r:-60deg"></span>
+                        <span class="bl" style="--i:4;--x:40px;--y:90px;--r:20deg"></span>
+                        <span class="bl" style="--i:5;--x:150px;--y:70px;--r:-45deg"></span>
+                    </div>
+                </div>
+                <figcaption class="demo-barra">
+                    <span class="leg">Sem critério, os elementos brigam. Com alinhamento e espaço igual, viram um conjunto.</span>
+                    <button type="button" class="repetir"><i class="fa-solid fa-rotate-right" aria-hidden="true"></i> Repetir animação</button>
+                </figcaption>
+            </figure>
+            <ul><li><strong>Proximidade:</strong> o que é parecido fica junto.</li><li><strong>Alinhamento:</strong> cada elemento se prende a uma linha invisível.</li><li><strong>Repetição:</strong> cores, fontes e formas se repetem para criar identidade.</li><li><strong>Contraste:</strong> o que é importante se diferencia do resto.</li></ul>
+            <details class="exercicio">
+                <summary>Exercício: qual pergunta vem antes de desenhar qualquer coisa?</summary>
+                <p>Para quem é e qual problema a peça precisa resolver.</p>
+            </details>
+        </article>
+
+        <article class="aula" id="aula2">
+            <h2>Aula 2: Cor e paleta</h2>
+            <p>Uma paleta simples funciona melhor que muitas cores soltas. A regra <strong>60-30-10</strong> ajuda: 60% de uma cor de <strong>fundo</strong>, 30% de uma cor de <strong>apoio</strong> e 10% de uma cor de <strong>destaque</strong>.</p>
+            <p>No site, guarde as cores em variáveis e troque a paleta inteira mudando só um lugar:</p>
+            <figure class="demo">
+                <div class="palco p-cor" role="img" aria-label="Uma barra se preenche com 60 por cento de cor clara, 30 por cento de roxo e 10 por cento de amarelo, e depois uma tela de exemplo usa essas três cores">
+                    <div class="cor-esq">
+                        <div class="cor-barra"><span class="c60">60%</span><span class="c30">30%</span><span class="c10">10%</span></div>
+                        <div class="cor-leg">
+                            <span class="rot" style="--pt:#d9c9fa">Fundo</span>
+                            <span class="rot" style="--pt:var(--azul)">Apoio</span>
+                            <span class="rot" style="--pt:#ffb800">Destaque</span>
+                        </div>
+                    </div>
+                    <div class="mini-tela"><div class="mt-topo"></div><div class="mt-corpo"><span class="mt-linha"></span><span class="mt-linha curta"></span><span class="mt-botao"></span></div></div>
+                </div>
+                <figcaption class="demo-barra">
+                    <span class="leg">A cor que aparece pouco é a que chama atenção. Aqui, só o botão é amarelo.</span>
+                    <button type="button" class="repetir"><i class="fa-solid fa-rotate-right" aria-hidden="true"></i> Repetir animação</button>
+                </figcaption>
+            </figure>
+            <pre><code>:root {
+  --fundo: #f3edff;    /* 60% */
+  --apoio: #6d28d9;    /* 30% */
+  --destaque: #ffb800; /* 10% */
+}</code></pre>
+            <details class="exercicio">
+                <summary>Exercício: por que limitar o destaque a cerca de 10%?</summary>
+                <p>Porque o que aparece pouco chama atenção. Se tudo é destaque, nada é.</p>
+            </details>
+        </article>
+
+        <article class="aula" id="aula3">
+            <h2>Aula 3: Tipografia</h2>
+            <p>A fonte dá a voz do design. Use no máximo <strong>duas famílias</strong>: uma para títulos e outra para o texto. A hierarquia nasce da variação de tamanho, peso e cor.</p>
+            <p>Para ler bem, mantenha linhas com 45 a 75 caracteres e um espaço entre linhas de cerca de 1,5 vez o tamanho da letra.</p>
+            <figure class="demo">
+                <div class="palco p-tipo" role="img" aria-label="Um cartão mostra um título grande, um subtítulo médio e um texto pequeno surgindo em ordem, com notas sobre o tamanho de cada um">
+                    <div class="tipo-cartao">
+                        <span class="tp-titulo">Festival de Design</span>
+                        <span class="tp-sub">Três dias de oficinas e conversas</span>
+                        <span class="tp-texto">Comece pelo título, siga pelo apoio e termine no detalhe. O leitor percorre o texto na ordem que você escolheu.</span>
+                    </div>
+                    <div class="tipo-notas">
+                        <span class="rot">Título: 38 px, fonte de destaque</span>
+                        <span class="rot">Subtítulo: 18 px, negrito, cor de apoio</span>
+                        <span class="rot">Texto: 16 px, linha de 1,6</span>
+                    </div>
+                </div>
+                <figcaption class="demo-barra">
+                    <span class="leg">Hierarquia é uma escada: cada nível tem um tamanho, um peso e uma cor próprios.</span>
+                    <button type="button" class="repetir"><i class="fa-solid fa-rotate-right" aria-hidden="true"></i> Repetir animação</button>
+                </figcaption>
+            </figure>
+            <pre><code>h1 { font-size: 2.4rem; line-height: 1.1; }
+p  { font-size: 1rem; line-height: 1.6; max-width: 65ch; }</code></pre>
+            <details class="exercicio">
+                <summary>Exercício: quantas famílias de fonte usar em uma peça?</summary>
+                <p>Até duas. Varie tamanho e peso para criar hierarquia em vez de trocar de fonte.</p>
+            </details>
+        </article>
+
+        <article class="aula" id="aula4">
+            <h2>Aula 4: Alinhamento e espaço</h2>
+            <p>Alinhe tudo a uma linha em comum e use espaços que seguem uma escala, como <strong>múltiplos de 8</strong> (8, 16, 24, 32). O espaço em branco não é desperdício: ele separa ideias e dá ritmo.</p>
+            <p>Coloque perto o que tem relação e longe o que não tem. Isso se chama proximidade.</p>
+            <figure class="demo">
+                <div class="palco p-alinha" role="img" aria-label="Três barras roxas desalinhadas deslizam até encostar em uma linha guia vertical, com 16 pixels de espaço entre elas">
+                    <div class="alinha-col">
+                        <div class="al-bar" style="--dx:34px;--dy:-14px"><span class="al-bolinha"></span><span class="al-linha"></span></div>
+                        <div class="al-gap"><span class="rot">16 px</span></div>
+                        <div class="al-bar" style="--dx:-22px;--dy:10px"><span class="al-bolinha"></span><span class="al-linha"></span></div>
+                        <div class="al-gap"><span class="rot">16 px</span></div>
+                        <div class="al-bar" style="--dx:48px;--dy:16px"><span class="al-bolinha"></span><span class="al-linha"></span></div>
+                    </div>
+                </div>
+                <figcaption class="demo-barra">
+                    <span class="leg">Uma linha guia e um espaço fixo entre os blocos fazem o olho perceber ordem.</span>
+                    <button type="button" class="repetir"><i class="fa-solid fa-rotate-right" aria-hidden="true"></i> Repetir animação</button>
+                </figcaption>
+            </figure>
+            <pre><code>.cartao { padding: 24px; }
+.cartao &gt; * + * { margin-top: 16px; }</code></pre>
+            <details class="exercicio">
+                <summary>Exercício: por que usar espaços em múltiplos de 8?</summary>
+                <p>Porque criam um ritmo consistente e facilitam alinhar e dividir as medidas.</p>
+            </details>
+        </article>
+
+        <article class="aula" id="aula5">
+            <h2>Aula 5: Contraste e hierarquia</h2>
+            <p>Contraste é a diferença entre dois elementos: claro e escuro, grande e pequeno, cheio e vazio. É ele que mostra o que importa. Para texto comum, a razão mínima entre texto e fundo é <strong>4,5 para 1</strong> (WCAG AA).</p>
+            <p>Faça o teste de apertar os olhos: se a informação principal some quando a imagem fica embaçada, falta hierarquia.</p>
+            <figure class="demo">
+                <div class="palco p-contraste" role="img" aria-label="Dois cartões lado a lado passam por um teste de apertar os olhos: o de pouco contraste quase some e o de muito contraste continua legível">
+                    <div class="cont-par">
+                        <div class="cont-item">
+                            <div class="cont-cartao cont-fraco"><span class="ct">Matrícula aberta</span><span class="cx">Vagas até sexta-feira.</span><span class="cb">Inscrever</span></div>
+                            <span class="rot">Contraste fraco</span>
+                        </div>
+                        <div class="cont-item">
+                            <div class="cont-cartao cont-forte"><span class="ct">Matrícula aberta</span><span class="cx">Vagas até sexta-feira.</span><span class="cb">Inscrever</span></div>
+                            <span class="rot">Contraste forte</span>
+                        </div>
+                    </div>
+                </div>
+                <figcaption class="demo-barra">
+                    <span class="leg">Teste de apertar os olhos: o que continua visível embaçado é o que tem hierarquia.</span>
+                    <button type="button" class="repetir"><i class="fa-solid fa-rotate-right" aria-hidden="true"></i> Repetir animação</button>
+                </figcaption>
+            </figure>
+            <pre><code>.botao-principal {
+  background: #2e1065;
+  color: #fff; /* contraste alto */
+}</code></pre>
+            <details class="exercicio">
+                <summary>Exercício: qual é a razão mínima de contraste para texto comum?</summary>
+                <p>4,5 para 1, segundo o nível AA do WCAG.</p>
+            </details>
+        </article>
+
+        <article class="aula" id="aula6">
+            <h2>Aula 6: Composição e grade</h2>
+            <p>Composição é onde cada coisa fica na página. Duas ferramentas simples: a <strong>regra dos terços</strong>, que divide a área em nove partes e coloca o ponto principal em um dos quatro cruzamentos, e a <strong>grade de colunas</strong>, que mantém o layout organizado.</p>
+            <figure class="demo">
+                <div class="palco p-terco" role="img" aria-label="Linhas dividem um quadro em nove partes iguais, o sol sai do centro para o cruzamento superior direito e o horizonte desce para a linha do último terço">
+                    <div class="terco-quadro">
+                        <span class="terco-chao"></span><span class="terco-sol"></span>
+                        <span class="lv lv1"></span><span class="lv lv2"></span><span class="lh lh1"></span><span class="lh lh2"></span>
+                    </div>
+                </div>
+                <figcaption class="demo-barra">
+                    <span class="leg">Fugir do centro deixa a imagem mais viva. Pontos fortes ficam nos cruzamentos.</span>
+                    <button type="button" class="repetir"><i class="fa-solid fa-rotate-right" aria-hidden="true"></i> Repetir animação</button>
+                </figcaption>
+            </figure>
+            <pre><code>.grade { display: grid; grid-template-columns: repeat(12, 1fr); gap: 16px; }
+.destaque { grid-column: span 8; }</code></pre>
+            <details class="exercicio">
+                <summary>Exercício: onde colocar o ponto principal na regra dos terços?</summary>
+                <p>Em um dos quatro cruzamentos das linhas, em vez de no centro.</p>
+            </details>
+        </article>
+
+        <article class="aula" id="aula7">
+            <h2>Aula 7: Formas e ícones</h2>
+            <p>Círculo, quadrado e triângulo são a base de quase todo ícone e logotipo. Cada forma passa uma sensação: o círculo é suave, o quadrado é estável e o triângulo é dinâmico.</p>
+            <p>Mantenha o conjunto coerente: mesma espessura de traço, mesmo tipo de canto e mesmo estilo em todos os ícones.</p>
+            <figure class="demo">
+                <div class="palco p-formas" role="img" aria-label="Um quadrado, um triângulo, um retângulo e dois círculos caem um a um e formam o desenho de uma casa com janela, porta e sol">
+                    <div class="casa"><span class="c-corpo"></span><span class="c-telhado"></span><span class="c-porta"></span><span class="c-janela"></span><span class="c-sol"></span></div>
+                    <div class="formas-leg">
+                        <span class="rot"><i class="mf mf-q"></i>Quadrado: o corpo</span>
+                        <span class="rot"><i class="mf mf-t"></i>Triângulo: o telhado</span>
+                        <span class="rot"><i class="mf mf-r"></i>Retângulo: a porta</span>
+                        <span class="rot"><i class="mf mf-c"></i>Círculo: janela e sol</span>
+                    </div>
+                </div>
+                <figcaption class="demo-barra">
+                    <span class="leg">Quase todo ícone é a soma de formas simples. Comece por elas.</span>
+                    <button type="button" class="repetir"><i class="fa-solid fa-rotate-right" aria-hidden="true"></i> Repetir animação</button>
+                </figcaption>
+            </figure>
+            <pre><code>.circulo   { border-radius: 50%; }
+.triangulo { clip-path: polygon(50% 0, 0 100%, 100% 100%); }</code></pre>
+            <details class="exercicio">
+                <summary>Exercício: quais formas básicas formam quase todo ícone?</summary>
+                <p>Círculo, quadrado e triângulo, combinados e ajustados.</p>
+            </details>
+        </article>
+
+        <article class="aula" id="aula8">
+            <h2>Aula 8: Movimento</h2>
+            <p>Animação boa tem propósito: mostrar o que mudou ou guiar o olhar. Use de 150 a 400 milissegundos e prefira animar <code>transform</code> e <code>opacity</code>. A curva de aceleração muda a sensação: <code>ease-out</code> parece natural para algo que entra na tela.</p>
+            <p>Respeite quem prefere menos movimento, como o site faz na opção de acessibilidade.</p>
+            <figure class="demo">
+                <div class="palco p-mov" role="img" aria-label="Quatro bolas percorrem a mesma distância com curvas de aceleração diferentes: linear, ease-in-out, ease-out e mola">
+                    <div class="mov-pistas">
+                        <div class="pista" style="--e:linear"><span class="rot">linear</span><span class="tr"></span><span class="bola"></span></div>
+                        <div class="pista" style="--e:ease-in-out"><span class="rot">ease-in-out</span><span class="tr"></span><span class="bola"></span></div>
+                        <div class="pista" style="--e:ease-out"><span class="rot">ease-out</span><span class="tr"></span><span class="bola"></span></div>
+                        <div class="pista" style="--e:cubic-bezier(.3,1.7,.5,1)"><span class="rot">mola (cubic-bezier)</span><span class="tr"></span><span class="bola"></span></div>
+                    </div>
+                </div>
+                <figcaption class="demo-barra">
+                    <span class="leg">Mesma distância, mesmo tempo. Só a curva muda a sensação.</span>
+                    <button type="button" class="repetir"><i class="fa-solid fa-rotate-right" aria-hidden="true"></i> Repetir animação</button>
+                </figcaption>
+            </figure>
+            <pre><code>.botao { transition: transform .2s ease-out; }
+.botao:hover { transform: translateY(-2px); }
+
+@media (prefers-reduced-motion: reduce) {
+  .botao { transition: none; }
+}</code></pre>
+            <details class="exercicio">
+                <summary>Exercício: qual curva dá sensação natural a algo que entra na tela?</summary>
+                <p>A ease-out: começa rápida e desacelera até parar.</p>
+            </details>
+        </article>
+
+    </main>
+
+    <footer class="rodape">
+        <p>Continue praticando: refaça cada demonstração no papel ou no seu editor de design antes de ir para a próxima aula.</p>
+    </footer>
+
+    <script>
+        const campo = document.getElementById('campo-busca');
+        const itens = document.querySelectorAll('.lista-aulas li');
+        const aviso = document.getElementById('sem-resultado');
+        campo.addEventListener('input', () => {
+            const termo = campo.value.trim().toLowerCase();
+            let achou = 0;
+            itens.forEach(li => {
+                const ok = li.textContent.toLowerCase().includes(termo);
+                li.hidden = !ok;
+                if (ok) achou++;
+            });
+            aviso.hidden = achou > 0;
+        });
+        const q = new URLSearchParams(location.search).get('q');
+        if (q) { campo.value = q; campo.dispatchEvent(new Event('input')); }
+    </script>
+    <script src="./js/site.js" defer></script>
+</body>
+
+</html>

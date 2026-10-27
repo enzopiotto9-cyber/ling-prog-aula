@@ -4,21 +4,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Aulas de C++: variáveis, condições, laços, funções, ponteiros, classes e STL">
+    <meta name="description" content="Aulas de CSS: seletores, cores, caixa, flexbox, grid, responsividade e animações">
     <meta name="author" content="Pioto">
     <meta name="theme-color" content="#00599c">
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2300599c'/%3E%3Ctext x='32' y='42' font-family='Arial' font-size='20' font-weight='bold' fill='white' text-anchor='middle'%3EC%2B%2B%3C/text%3E%3C/svg%3E">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2300599c'/%3E%3Ctext x='32' y='41' font-family='Arial' font-size='19' font-weight='bold' fill='white' text-anchor='middle'%3ECSS%3C/text%3E%3C/svg%3E">
     <script>document.documentElement.classList.add('js');</script>
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css">
-    <title>Aulas | Aprenda C++</title>
+    <title>Aulas | Aprenda CSS</title>
 </head>
 
 <body>
     <a class="pular-conteudo" href="#conteudo">Pular para o conteúdo</a>
 
     <header class="banner-logo-inicial">
-        <h1>Aulas de C++</h1>
+        <h1>Aulas de CSS</h1>
     </header>
 
     <nav class="menu-navegacao-inicio" aria-label="Navegação principal">
@@ -36,10 +36,10 @@
     <main id="conteudo">
         <div class="barra-ferramentas">
             <form class="busca" role="search" onsubmit="return false">
-            <label for="campo-busca" class="so-leitor-de-tela">Pesquisar nas aulas</label>
-            <input id="campo-busca" type="search" placeholder="Pesquisar aula..." />
-            <button type="submit">Buscar</button>
-        </form>
+                <label for="campo-busca" class="so-leitor-de-tela">Pesquisar nas aulas</label>
+                <input id="campo-busca" type="search" placeholder="Pesquisar aula..." />
+                <button type="submit">Buscar</button>
+            </form>
             <div class="acessibilidade">
                 <button type="button" id="btn-acessibilidade" aria-label="Acessibilidade" title="Acessibilidade"><i class="fa-solid fa-eye" aria-hidden="true"></i></button>
                 <button type="button" id="btn-config" aria-label="Configurações do site" title="Configurações do site"><i class="fa-solid fa-gear" aria-hidden="true"></i></button>
@@ -49,183 +49,174 @@
         <section class="indice" aria-labelledby="titulo-indice">
             <h2 id="titulo-indice">Escolha uma aula</h2>
             <ol class="lista-aulas">
-                <li><a href="#aula1"><strong>O que é C++</strong><span>Rápida, poderosa e compilada</span></a></li>
-                <li><a href="#aula2"><strong>Estrutura básica</strong><span>#include, main e std</span></a></li>
-                <li><a href="#aula3"><strong>Variáveis e tipos</strong><span>int, double, char, bool, string</span></a></li>
-                <li><a href="#aula4"><strong>Operadores e condições</strong><span>if, else e switch</span></a></li>
-                <li><a href="#aula5"><strong>Laços de repetição</strong><span>for, while e for por faixa</span></a></li>
-                <li><a href="#aula6"><strong>Funções, referências e ponteiros</strong><span>Reaproveitando código e memória</span></a></li>
-                <li><a href="#aula7"><strong>Classes e objetos</strong><span>Orientação a objetos</span></a></li>
-                <li><a href="#aula8"><strong>Vetores e STL</strong><span>vector, sort e algoritmos</span></a></li>
-            </ol>
+                <li><a href="#aula1"><strong>O que é CSS</strong><span>Estilizando a web</span></a></li>
+                <li><a href="#aula2"><strong>Seletores</strong><span>Escolhendo quem estilizar</span></a></li>
+                <li><a href="#aula3"><strong>Cores e texto</strong><span>Tipografia e paleta</span></a></li>
+                <li><a href="#aula4"><strong>Modelo de caixa</strong><span>Margin, border e padding</span></a></li>
+                <li><a href="#aula5"><strong>Flexbox</strong><span>Alinhando em uma dimensão</span></a></li>
+                <li><a href="#aula6"><strong>Grid</strong><span>Layouts em linhas e colunas</span></a></li>
+                <li><a href="#aula7"><strong>Posicionamento e responsividade</strong><span>position e media queries</span></a></li>
+                <li><a href="#aula8"><strong>Transições, animações e variáveis</strong><span>Movimento e organização</span></a></li></ol>
             <p id="sem-resultado" hidden>Nenhuma aula encontrada para essa busca.</p>
         </section>
 
         <article class="aula" id="aula1">
-            <h2>Aula 1: O que é C++</h2>
-            <p>C++ é uma linguagem <strong>compilada</strong> de alto desempenho, criada por Bjarne Stroustrup como evolução do C. Ela é usada em jogos, sistemas operacionais, navegadores, sistemas embarcados e onde velocidade importa.</p><p>Você escreve o código em um arquivo <code>.cpp</code>, o compilador (como o <code>g++</code>) o transforma em programa, e então você o executa:</p>
-            <pre><code>#include &lt;iostream&gt;
-
-int main() {
-    std::cout &lt;&lt; &quot;Olá, mundo!&quot; &lt;&lt; std::endl;
-    return 0;
+            <h2>Aula 1: O que é CSS</h2>
+            <p>CSS (<em>Cascading Style Sheets</em>) é a linguagem que dá <strong>aparência</strong> à página: cores, fontes, espaços e layout. O HTML cria a estrutura; o CSS decide como ela é mostrada.</p>
+            <p>Uma regra tem três partes: o <strong>seletor</strong> (quem recebe o estilo), a <strong>propriedade</strong> (o que muda) e o <strong>valor</strong> (como muda):</p>
+            <pre><code class="lang-css">p {
+  color: blue;        /* propriedade: valor; */
+  font-size: 18px;
 }</code></pre>
-            <p>Para compilar: <code>g++ main.cpp -o programa</code></p>
+            <p>O jeito mais comum de usar é um arquivo <code>.css</code> ligado no <code>&lt;head&gt;</code> do HTML:</p>
+            <pre><code class="lang-html">&lt;link rel="stylesheet" href="style.css"&gt;</code></pre>
             <details class="exercicio">
-                <summary>Exercício: como compilar e rodar o arquivo <code>main.cpp</code>?</summary>
-                <p>Com <code>g++ main.cpp -o programa</code> e depois <code>./programa</code> (no Windows, <code>programa.exe</code>).</p>
+                <summary>Exercício: como ligar um arquivo <code>style.css</code> à página?</summary>
+                <p>Com a tag <code>&lt;link rel="stylesheet" href="style.css"&gt;</code> dentro do <code>&lt;head&gt;</code>.</p>
             </details>
         </article>
 
         <article class="aula" id="aula2">
-            <h2>Aula 2: Estrutura básica</h2>
-            <p>Todo programa C++ começa a executar pela função <code>main</code>. As partes do esqueleto:</p>
-            <pre><code>#include &lt;iostream&gt;
-using namespace std;
-
-int main() {
-    cout &lt;&lt; &quot;Olá!&quot; &lt;&lt; endl;
-    return 0;
-}</code></pre>
-            <ul><li><code>#include</code> importa bibliotecas (<code>iostream</code> cuida da entrada e saída).</li><li><code>using namespace std;</code> evita escrever <code>std::</code> toda hora.</li><li><code>main</code> é o ponto de entrada; <code>return 0</code> indica sucesso.</li><li>Toda instrução termina com <code>;</code>.</li></ul>
+            <h2>Aula 2: Seletores</h2>
+            <p>Seletores apontam os elementos. Os principais: <code>p</code> (tag), <code>.classe</code>, <code>#id</code>, <code>nav a</code> (descendente), <code>ul &gt; li</code> (filho direto) e pseudo-classes como <code>:hover</code>.</p>
+            <pre><code class="lang-css">p { color: #333; }              /* todas as tags p */
+.destaque { color: crimson; }   /* class="destaque" */
+#topo { background: navy; }     /* id="topo" */
+nav a { text-decoration: none; }
+ul &gt; li { list-style: square; }
+a:hover { color: orange; }
+h1, h2, h3 { font-family: serif; } /* grupo */</code></pre>
+            <p>Quando duas regras brigam, vence a mais <strong>específica</strong>: id &gt; classe &gt; tag. Se empatar, vale a que vem por último.</p>
             <details class="exercicio">
-                <summary>Exercício: o que faz o <code>#include</code>?</summary>
-                <p>Ele traz para o seu arquivo as declarações de uma biblioteca, como o <code>iostream</code>, que tem o <code>cout</code>.</p>
+                <summary>Exercício: qual seletor escolhe todos os elementos com <code>class="card"</code>?</summary>
+                <p><code>.card</code>, com um ponto antes do nome da classe.</p>
             </details>
         </article>
 
         <article class="aula" id="aula3">
-            <h2>Aula 3: Variáveis e tipos</h2>
-            <p>Toda variável tem um tipo: <code>int</code> (inteiro), <code>double</code> (número com vírgula), <code>char</code> (um caractere), <code>bool</code> (verdadeiro ou falso) e <code>std::string</code> (texto, de <code>&lt;string&gt;</code>). Com <code>auto</code> o compilador descobre o tipo, e <code>const</code> impede que o valor mude.</p>
-            <pre><code>int idade = 25;
-double preco = 19.90;
-std::string nome = &quot;Ana&quot;;
-bool ativo = true;
-const double PI = 3.14159;
-auto x = 10;
-std::cout &lt;&lt; nome &lt;&lt; &quot; tem &quot; &lt;&lt; idade &lt;&lt; &quot; anos\n&quot;;</code></pre>
-            
+            <h2>Aula 3: Cores e texto</h2>
+            <p>Cores podem ser nomes (<code>tomato</code>), hexadecimais (<code>#ff6347</code>), <code>rgb()</code> ou <code>hsl()</code>. Para texto: <code>font-family</code>, <code>font-size</code>, <code>font-weight</code>, <code>line-height</code> e <code>text-align</code>.</p>
+            <pre><code class="lang-css">body {
+  font-family: system-ui, sans-serif;
+  font-size: 18px;
+  line-height: 1.6;        /* espaço entre linhas */
+  color: #1f2937;
+  background: #f8fafc;
+}
+h1 {
+  color: hsl(210, 80%, 40%);
+  text-align: center;
+}</code></pre><div class="demo"><p class="demo-rotulo"><i class="fa-solid fa-wand-magic-sparkles" aria-hidden="true"></i> Veja funcionando</p><div class="demo-cores"><span style="background:tomato">tomato</span><span style="background:#00599c">#00599c</span><span style="background:rgb(124,58,237)">rgb(124,58,237)</span><span style="background:hsl(150,60%,35%)">hsl(150,60%,35%)</span><span style="background:hsl(45,100%,50%);color:#111">hsl(45,100%,50%)</span></div></div>
             <details class="exercicio">
-                <summary>Exercício: o que muda ao declarar uma variável com <code>const</code>?</summary>
-                <p>O valor não pode mais ser alterado depois de definido.</p>
+                <summary>Exercício: o que faz <code>line-height: 1.6</code>?</summary>
+                <p>Define a altura da linha como 1,6 vez o tamanho da fonte, deixando o texto mais arejado.</p>
             </details>
         </article>
 
         <article class="aula" id="aula4">
-            <h2>Aula 4: Operadores e condições</h2>
-            <p>Operadores aritméticos: <code>+ - * / %</code>. Comparação: <code>== != &lt; &gt; &lt;= &gt;=</code>. Lógicos: <code>&amp;&amp;</code> (e), <code>||</code> (ou) e <code>!</code> (não).</p>
-            <pre><code>int nota = 7;
+            <h2>Aula 4: Modelo de caixa</h2>
+            <p>Todo elemento é uma caixa com quatro camadas: <strong>conteúdo</strong>, <strong>padding</strong> (espaço interno), <strong>border</strong> (borda) e <strong>margin</strong> (espaço externo). Use <code>box-sizing: border-box</code> para que a largura já inclua padding e borda.</p>
+            <pre><code class="lang-css">* { box-sizing: border-box; }
 
-if (nota &gt;= 7) {
-    std::cout &lt;&lt; &quot;Aprovado\n&quot;;
-} else if (nota &gt;= 5) {
-    std::cout &lt;&lt; &quot;Recuperação\n&quot;;
-} else {
-    std::cout &lt;&lt; &quot;Reprovado\n&quot;;
-}</code></pre>
-            
+.caixa {
+  width: 300px;
+  padding: 20px;               /* dentro */
+  border: 3px solid #00599c;
+  margin: 16px auto;           /* fora; auto centraliza */
+  border-radius: 12px;
+}</code></pre><div class="demo"><p class="demo-rotulo"><i class="fa-solid fa-wand-magic-sparkles" aria-hidden="true"></i> Veja funcionando</p><div class="bm"><span>margin</span><div class="b"><span>border</span><div class="p"><span>padding</span><div class="c">conteúdo</div></div></div></div></div>
             <details class="exercicio">
-                <summary>Exercício: qual a diferença entre <code>=</code> e <code>==</code>?</summary>
-                <p><code>=</code> atribui um valor; <code>==</code> compara dois valores.</p>
+                <summary>Exercício: qual a diferença entre <code>margin</code> e <code>padding</code>?</summary>
+                <p><code>padding</code> é o espaço dentro da borda; <code>margin</code> é o espaço fora dela, entre elementos.</p>
             </details>
         </article>
 
         <article class="aula" id="aula5">
-            <h2>Aula 5: Laços de repetição</h2>
-            <p>Use <code>for</code> quando sabe quantas vezes repetir, <code>while</code> quando depende de uma condição e o <code>for</code> por faixa (<code>for (x : colecao)</code>) para percorrer todos os itens.</p>
-            <pre><code>for (int i = 1; i &lt;= 3; i++) {
-    std::cout &lt;&lt; i &lt;&lt; &quot;\n&quot;;
-}
-
-int n = 3;
-while (n &gt; 0) {
-    n--;
-}
-
-std::string s = &quot;C++&quot;;
-for (char c : s) {
-    std::cout &lt;&lt; c &lt;&lt; &quot;\n&quot;;
-}</code></pre>
-            
+            <h2>Aula 5: Flexbox</h2>
+            <p>Com <code>display: flex</code> no pai, os filhos ficam em linha ou coluna. <code>justify-content</code> alinha no eixo principal, <code>align-items</code> no eixo cruzado e <code>gap</code> cria espaço entre os itens.</p>
+            <pre><code class="lang-css">.menu {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}</code></pre><div class="demo"><p class="demo-rotulo"><i class="fa-solid fa-wand-magic-sparkles" aria-hidden="true"></i> Veja funcionando</p><div class="fx-ctrl">
+                <label>flex-direction <select id="fx-dir"><option>row</option><option>column</option></select></label>
+                <label>justify-content <select id="fx-just"><option>flex-start</option><option>center</option><option>flex-end</option><option>space-between</option><option>space-around</option></select></label>
+                <label>align-items <select id="fx-alin"><option>flex-start</option><option>center</option><option>flex-end</option></select></label>
+            </div>
+            <div class="fx-demo" id="fx-demo"><i>1</i><i>2</i><i>3</i></div>
+            <pre><code class="lang-css" id="fx-codigo"></code></pre></div>
             <details class="exercicio">
-                <summary>Exercício: qual laço percorre todos os itens de uma coleção?</summary>
-                <p>O <code>for</code> por faixa: <code>for (auto x : colecao)</code>.</p>
+                <summary>Exercício: como centralizar um item na horizontal e na vertical com flex?</summary>
+                <p>No pai: <code>display: flex; justify-content: center; align-items: center;</code>.</p>
             </details>
         </article>
 
         <article class="aula" id="aula6">
-            <h2>Aula 6: Funções, referências e ponteiros</h2>
-            <p>Uma função tem tipo de retorno, nome e parâmetros; <code>void</code> não devolve nada. Com <code>&amp;</code> no parâmetro, a função altera o original (referência). Um ponteiro (<code>int*</code>) guarda o <strong>endereço</strong> de uma variável: <code>&amp;</code> pega o endereço e <code>*</code> acessa o valor apontado.</p>
-            <pre><code>int somar(int a, int b) {
-    return a + b;
-}
-
-void dobrar(int&amp; x) {
-    x *= 2;
-}
-
-int valor = somar(2, 3);   // 5
-dobrar(valor);             // 10
-
-int* p = &amp;valor;
-*p = 20;                   // valor agora é 20</code></pre>
-            
+            <h2>Aula 6: Grid</h2>
+            <p>O Grid organiza em duas dimensões. Defina colunas com <code>grid-template-columns</code>; a unidade <code>fr</code> divide o espaço livre. Com <code>repeat(auto-fit, minmax())</code> o layout se adapta sozinho à largura.</p>
+            <pre><code class="lang-css">.galeria {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 12px;
+}</code></pre><div class="demo"><p class="demo-rotulo"><i class="fa-solid fa-wand-magic-sparkles" aria-hidden="true"></i> Veja funcionando</p><p>Arraste o canto inferior direito da caixa para mudar a largura:</p><div class="demo-grid"><div>1</div><div>2</div><div>3</div><div>4</div><div>5</div><div>6</div></div></div>
             <details class="exercicio">
-                <summary>Exercício: o que o <code>&amp;</code> em <code>int&amp; x</code> faz?</summary>
-                <p>Passa o parâmetro por referência: a função altera a variável original, não uma cópia.</p>
+                <summary>Exercício: o que significa <code>grid-template-columns: 1fr 2fr</code>?</summary>
+                <p>Duas colunas: a segunda ocupa o dobro do espaço da primeira.</p>
             </details>
         </article>
 
         <article class="aula" id="aula7">
-            <h2>Aula 7: Classes e objetos</h2>
-            <p>A classe é o molde; o objeto é criado a partir dele. O <strong>construtor</strong> tem o nome da classe e roda na criação. Em <code>public</code> ficam os membros acessíveis de fora e em <code>private</code> os protegidos.</p>
-            <pre><code>class Pessoa {
-public:
-    std::string nome;
+            <h2>Aula 7: Posicionamento e responsividade</h2>
+            <p>Com <code>position</code> você tira elementos do fluxo: <code>relative</code> (referência), <code>absolute</code> (relativo ao pai posicionado), <code>fixed</code> (fixo na tela) e <code>sticky</code> (gruda ao rolar). Para adaptar a telas diferentes use <code>@media</code>.</p>
+            <pre><code class="lang-css">.cartao { position: relative; }
+.selo {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+}
 
-    Pessoa(std::string n) : nome(n) {}
+.menu { position: sticky; top: 0; }
 
-    void falar() {
-        std::cout &lt;&lt; &quot;Oi, sou &quot; &lt;&lt; nome &lt;&lt; &quot;\n&quot;;
-    }
-};
-
-int main() {
-    Pessoa p(&quot;Ana&quot;);
-    p.falar();
-}</code></pre>
-            
+.colunas { display: grid; grid-template-columns: 1fr; }
+@media (min-width: 768px) {
+  .colunas { grid-template-columns: 1fr 1fr; }
+}</code></pre><p>Dica: comece pensando no celular (<em>mobile first</em>) e acrescente regras para telas maiores.</p>
             <details class="exercicio">
-                <summary>Exercício: para que serve o construtor?</summary>
-                <p>Para preparar o objeto no momento em que ele é criado.</p>
+                <summary>Exercício: o que o <code>@media (min-width: 768px)</code> faz?</summary>
+                <p>Aplica as regras de dentro apenas quando a tela tem 768px de largura ou mais.</p>
             </details>
         </article>
 
         <article class="aula" id="aula8">
-            <h2>Aula 8: Vetores e STL</h2>
-            <p>A STL (biblioteca padrão) traz estruturas e algoritmos prontos. O <code>std::vector</code> é um array que cresce sozinho, e <code>std::sort</code> (de <code>&lt;algorithm&gt;</code>) ordena.</p>
-            <pre><code>#include &lt;vector&gt;
-#include &lt;algorithm&gt;
+            <h2>Aula 8: Transições, animações e variáveis</h2>
+            <p><code>transition</code> suaviza a mudança entre estados, como no <code>:hover</code>. Para animações em loop use <code>@keyframes</code> com <code>animation</code>. E com variáveis (<code>--nome</code>) você troca a paleta inteira mudando um só lugar.</p>
+            <pre><code class="lang-css">:root {
+  --cor: #00599c;
+}
+.botao {
+  background: var(--cor);
+  transition: transform .25s, background .25s;
+}
+.botao:hover {
+  transform: translateY(-4px) scale(1.06);
+  background: #ff3d81;
+}
 
-std::vector&lt;int&gt; nums = {5, 2, 8, 1};
-nums.push_back(10);
-
-std::sort(nums.begin(), nums.end());
-
-for (int x : nums) {
-    std::cout &lt;&lt; x &lt;&lt; &quot; &quot;;
-}</code></pre>
-            
+@keyframes ida {
+  to { left: calc(100% - 36px); }
+}
+.bola { animation: ida 2.4s ease-in-out infinite alternate; }</code></pre><div class="demo"><p class="demo-rotulo"><i class="fa-solid fa-wand-magic-sparkles" aria-hidden="true"></i> Veja funcionando</p><button type="button" class="demo-hover">Passe o mouse aqui</button><div class="demo-pista" aria-hidden="true"><div class="demo-bola"></div></div></div>
             <details class="exercicio">
-                <summary>Exercício: qual a vantagem do <code>vector</code> sobre um array comum?</summary>
-                <p>Ele muda de tamanho (<code>push_back</code>) e sabe o próprio tamanho (<code>size()</code>).</p>
+                <summary>Exercício: para que serve <code>var(--cor)</code>?</summary>
+                <p>Usa o valor da variável <code>--cor</code>, definida em <code>:root</code>; mudando-a, tudo que a usa muda junto.</p>
             </details>
         </article>
-
     </main>
 
     <footer class="rodape">
-        <p>Continue praticando: crie um arquivo .cpp por aula, compile com g++ e teste cada exemplo.</p>
+        <p>Continue praticando: crie um arquivo .css por aula, abra no navegador e mexa em cada exemplo.</p>
     </footer>
 
     <script>

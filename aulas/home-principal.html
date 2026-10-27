@@ -2,296 +2,343 @@
 <html lang="pt-BR">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DevClass | Aulas de Linguagem de Programação</title>
-    <style>
-        /* Variáveis e Reset */
-        :root {
-            --bg-color: #0f172a;
-            --card-bg: #1e293b;
-            --accent: #38bdf8;
-            --accent-glow: rgba(56, 189, 248, 0.4);
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="DevClass: aulas gratuitas de HTML, CSS, JavaScript, Python, SQL, PHP, Java, C#, C++ e Design.">
+<meta name="theme-color" content="#070b17">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%2338bdf8'/%3E%3Ctext x='32' y='42' font-family='Arial' font-size='24' font-weight='bold' fill='%23070b17' text-anchor='middle'%3E%3C/%3E%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css">
+<title>DevClass | Aulas de Linguagem de Programação</title>
+<script>
+/* abertura só 1x por sessão; define o atraso das animações do topo */
+(function(){var r=document.documentElement,v=0;r.classList.add('js');try{v=sessionStorage.getItem('dc');sessionStorage.setItem('dc','1')}catch(e){}
+r.classList.add(v?'visto':'novo');r.style.setProperty('--t0',v?'0s':'1.9s')})();
+</script>
+<style>
+@property --a{syntax:'<angle>';initial-value:0deg;inherits:false}
+@property --glow{syntax:'<color>';initial-value:#38bdf8;inherits:true}
+:root{--bg:#070b17;--tx:#eef2ff;--mu:#8b97b5;--ln:rgba(255,255,255,.09);--pn:rgba(255,255,255,.04);--g1:#38bdf8;--g2:#a78bfa;--g3:#f472b6;--glow:#38bdf8;transition:--glow .7s}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{background:var(--bg);color:var(--tx);font-family:Inter,'Segoe UI',system-ui,sans-serif;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}ul,ol{list-style:none}
+:focus-visible{outline:3px solid var(--g1);outline-offset:3px;border-radius:8px}
+.wrap{width:min(1160px,100% - 40px);margin-inline:auto}
+.pular{position:absolute;left:12px;top:-60px;background:var(--g1);color:#06121f;padding:10px 16px;border-radius:10px;font-weight:700;z-index:3000}.pular:focus{top:12px}
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+/* abertura */
+.intro{position:fixed;inset:0;z-index:2500;display:grid;place-items:center;pointer-events:none}
+.visto .intro{display:none}
+.ip{position:absolute;left:0;right:0;height:50%;background:#050810}
+.ip.a{top:0;animation:sobe 1s 1.45s cubic-bezier(.77,0,.18,1) forwards}.ip.b{bottom:0;animation:desce 1s 1.45s cubic-bezier(.77,0,.18,1) forwards}
+@keyframes sobe{to{translate:0 -101%}}@keyframes desce{to{translate:0 101%}}
+.il{position:relative;display:flex;font:800 clamp(2rem,8vw,4.5rem) ui-monospace,Consolas,monospace;animation:some .4s 1.25s forwards}
+.il b{display:inline-block;opacity:0;animation:letra .6s calc(var(--i)*.06s + .1s) cubic-bezier(.2,.9,.3,1.4) forwards;background:linear-gradient(180deg,#fff,var(--g1));-webkit-background-clip:text;background-clip:text;color:transparent}
+.il::after{content:'';position:absolute;left:0;right:0;bottom:-18px;height:3px;border-radius:3px;background:linear-gradient(90deg,var(--g1),var(--g2),var(--g3));transform-origin:left;scale:0 1;animation:barra 1.1s .2s ease-out forwards}
+@keyframes letra{from{opacity:0;translate:0 60px;rotate:12deg}to{opacity:1;translate:0 0;rotate:0deg}}@keyframes barra{to{scale:1 1}}@keyframes some{to{opacity:0;scale:1.15}}
 
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            overflow-x: hidden;
-        }
+/* fundo e cursor */
+#fx{position:fixed;inset:0;z-index:-2;pointer-events:none}
+.halo{position:fixed;left:0;top:0;width:900px;height:900px;margin:-450px 0 0 -450px;border-radius:50%;background:radial-gradient(closest-side,color-mix(in srgb,var(--glow) 20%,transparent),transparent);pointer-events:none;z-index:-1;will-change:transform}
+.prog{position:fixed;top:0;left:0;right:0;height:3px;z-index:1600;transform-origin:left;scale:0 1;background:linear-gradient(90deg,var(--g1),var(--g2),var(--g3))}
+.ring,.dot{position:fixed;left:0;top:0;pointer-events:none;z-index:2800;opacity:0}
+.ring{width:38px;height:38px;margin:-19px 0 0 -19px;border:1.5px solid var(--glow);border-radius:50%;transition:width .25s,height .25s,margin .25s,background .25s}
+.dot{width:6px;height:6px;margin:-3px 0 0 -3px;border-radius:50%;background:#fff}
+.cur .ring,.cur .dot{opacity:1}
+.ring.on{width:64px;height:64px;margin:-32px 0 0 -32px;background:color-mix(in srgb,var(--glow) 16%,transparent)}
+.sp{position:fixed;pointer-events:none;z-index:2700;font:700 16px ui-monospace,Consolas,monospace}
+@media(hover:none){.ring,.dot{display:none}}
 
-        /* Animações Globais */
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
+/* header */
+header{position:fixed;inset:0 0 auto;z-index:1500;padding:18px 0;border-bottom:1px solid transparent;transition:.3s;animation:desceh .8s var(--t0) both}
+@keyframes desceh{from{translate:0 -100%}}
+header.rolou{background:rgba(7,11,23,.75);backdrop-filter:blur(16px);border-color:var(--ln);padding:10px 0}
+header .wrap{display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.3rem;letter-spacing:-.02em}
+.logo b{display:grid;place-items:center;width:36px;height:36px;border-radius:11px;background:linear-gradient(135deg,var(--g1),var(--g2));color:#06121f;font:800 14px ui-monospace,Consolas,monospace;transition:rotate .5s}
+.logo:hover b{rotate:360deg}.logo span{color:var(--g1)}
+nav ul{display:flex;align-items:center;gap:4px}
+nav a{display:block;padding:8px 14px;border-radius:99px;color:var(--mu);font-size:.93rem;font-weight:500;transition:.2s}
+nav a:hover{color:var(--tx);background:var(--pn)}nav a.cta{background:var(--tx);color:#070b17;font-weight:700}nav a.cta:hover{background:var(--g1)}
+@media(max-width:720px){nav li:not(:last-child){display:none}}
 
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+/* hero */
+.hi{opacity:0;translate:0 34px;animation:ent .9s calc(var(--t0) + var(--i)*.13s) cubic-bezier(.2,.8,.2,1) forwards}
+@keyframes ent{to{opacity:1;translate:0 0}}
+.hero{padding:170px 0 80px}
+.hero .wrap{display:grid;gap:60px;align-items:center}
+@media(min-width:960px){.hero .wrap{grid-template-columns:1.1fr .9fr}}
+.selo{display:inline-flex;align-items:center;gap:10px;padding:7px 15px 7px 8px;border:1px solid var(--ln);background:var(--pn);border-radius:99px;font-size:.85rem;color:var(--mu);margin-bottom:24px}
+.selo i{display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,var(--g1),var(--g2));color:#06121f;font-size:11px;animation:raio 2s infinite}
+@keyframes raio{50%{scale:1.25;box-shadow:0 0 18px var(--g1)}}
+h1{font-size:clamp(2.5rem,6.2vw,4.5rem);line-height:1.04;letter-spacing:-.04em;font-weight:800}
+.grad{background:linear-gradient(100deg,var(--g1),var(--g2) 45%,var(--g3),var(--g1));background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:fluxo 6s linear infinite}
+@keyframes fluxo{to{background-position:250% 0}}
+.rot{display:inline-block;font-family:ui-monospace,Consolas,monospace;letter-spacing:-.06em}
+.lead{color:var(--mu);font-size:1.15rem;max-width:560px;margin:22px 0 34px}
+.acoes{display:flex;flex-wrap:wrap;gap:14px}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:15px 28px;border-radius:99px;font-weight:700;transition:box-shadow .3s,background .3s,border-color .3s}
+.btn-p{background:linear-gradient(135deg,var(--g1),var(--g2));color:#06121f;box-shadow:0 12px 34px -8px color-mix(in srgb,var(--g1) 70%,transparent);position:relative;overflow:hidden}
+.btn-p::after{content:'';position:absolute;inset:0;background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,.55) 50%,transparent 65%);translate:-120% 0;animation:brilho 3.4s 2.5s infinite}
+@keyframes brilho{to{translate:120% 0}}
+.btn-s{border:1px solid var(--ln);background:var(--pn)}.btn-s:hover{border-color:var(--g1)}
+.stats{display:flex;flex-wrap:wrap;gap:40px;margin-top:48px;padding-top:28px;border-top:1px solid var(--ln)}
+.stats strong{display:block;font-size:2rem;letter-spacing:-.03em;font-variant-numeric:tabular-nums}.stats span{color:var(--mu);font-size:.88rem}
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
+/* janela de código */
+.vis3d{position:relative;perspective:1100px}
+.janela{background:rgba(12,18,38,.88);border:1px solid var(--ln);border-radius:22px;overflow:hidden;box-shadow:0 50px 90px -24px #000,0 0 80px -20px color-mix(in srgb,var(--glow) 55%,transparent);backdrop-filter:blur(8px);transition:transform .25s ease-out;animation:flutua 7s ease-in-out infinite}
+@keyframes flutua{50%{translate:0 -14px}}
+.barra{display:flex;align-items:center;gap:8px;padding:14px 18px;border-bottom:1px solid var(--ln)}
+.barra i{width:12px;height:12px;border-radius:50%;background:#ff5f57}.barra i:nth-child(2){background:#febc2e}.barra i:nth-child(3){background:#28c840}
+.barra span{margin-left:10px;font:.8rem ui-monospace,Consolas,monospace;color:var(--mu)}
+pre{padding:22px;font:.95rem/1.9 ui-monospace,'Cascadia Code',Consolas,monospace;overflow:hidden}
+.ln{display:block;overflow:hidden;white-space:pre;width:0;animation:dig .9s calc(var(--t0) + .8s + var(--i)*.85s) steps(var(--n)) forwards}
+@keyframes dig{to{width:calc(var(--n)*1ch)}}
+.k{color:#f472b6}.s{color:#86efac}.f{color:var(--g1)}.c{color:#64748b;font-style:italic}
+.caret{display:inline-block;width:9px;height:1.1em;background:var(--g1);vertical-align:-3px;animation:pisca 1s steps(1) infinite}
+@keyframes pisca{50%{opacity:0}}
+.chip{position:absolute;display:grid;place-items:center;width:60px;height:60px;border-radius:18px;background:rgba(12,18,38,.95);border:1px solid var(--ln);font-size:27px;box-shadow:0 18px 40px rgba(0,0,0,.55);animation:orbita 6s ease-in-out infinite}
+@keyframes orbita{50%{translate:8px -18px}}
+.c1{top:-24px;right:30px;color:#ff6a3d}.c2{bottom:40px;left:-28px;color:#4d8dff;animation-delay:-2s}.c3{bottom:-26px;right:60px;color:#f7df1e;animation-delay:-4s}
 
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+/* faixa rolante */
+.mqw{overflow:hidden;padding:26px 0;border-block:1px solid var(--ln);background:var(--pn);mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}
+.mq{display:flex;width:max-content;animation:mq 42s linear infinite}.mq.r{animation-direction:reverse;margin-top:14px}.mqw:hover .mq{animation-play-state:paused}
+@keyframes mq{to{translate:-50% 0}}
+.pill{display:inline-flex;align-items:center;gap:10px;margin-right:14px;padding:11px 22px;border-radius:99px;border:1px solid color-mix(in srgb,var(--c) 35%,transparent);background:color-mix(in srgb,var(--c) 9%,transparent);font-weight:700;white-space:nowrap}
+.pill i,.pill .tx{color:var(--c)}.tx{font:800 15px ui-monospace,Consolas,monospace}
 
-        @keyframes float {
+/* seções */
+section{padding:90px 0}
+.tp{text-align:center;max-width:660px;margin:0 auto 46px}
+.eb{color:var(--g1);font-weight:700;font-size:.82rem;letter-spacing:.16em;text-transform:uppercase}
+h2{font-size:clamp(2rem,4.4vw,3rem);letter-spacing:-.035em;line-height:1.12;margin:10px 0 14px}
+.tp p{color:var(--mu)}
+.rev{opacity:0;translate:0 44px;transition:opacity .8s,translate .8s cubic-bezier(.2,.8,.2,1);transition-delay:calc(var(--d,0)*80ms)}
+.rev.vis{opacity:1;translate:0 0}
 
-            0%,
-            100% {
-                transform: translateY(0);
-            }
+/* filtros */
+.fl{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:12px;margin-bottom:36px}
+.chips{display:flex;flex-wrap:wrap;justify-content:center;gap:8px}
+.chips button{font:600 .9rem Inter,'Segoe UI',system-ui,sans-serif;color:var(--mu);background:var(--pn);border:1px solid var(--ln);padding:9px 18px;border-radius:99px;cursor:pointer;transition:.25s}
+.chips button:hover{color:var(--tx);border-color:rgba(255,255,255,.3)}.chips button[aria-pressed=true]{background:var(--tx);color:#070b17;border-color:var(--tx);scale:1.06}
+.bs{position:relative}.bs i{position:absolute;left:16px;top:50%;translate:0 -50%;color:var(--mu);pointer-events:none}
+.bs input{font:inherit;width:240px;max-width:100%;color:var(--tx);background:var(--pn);border:1px solid var(--ln);border-radius:99px;padding:9px 44px 9px 42px;transition:.3s}
+.bs input:focus{outline:none;border-color:var(--g1);width:290px}
+.bs kbd{position:absolute;right:14px;top:50%;translate:0 -50%;font:.75rem ui-monospace,monospace;color:var(--mu);border:1px solid var(--ln);border-radius:6px;padding:0 6px}
 
-            50% {
-                transform: translateY(-10px);
-            }
-        }
+/* cards */
+.grade{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:22px}
+.card{position:relative;border-radius:22px;background:var(--pn);border:1px solid var(--ln);transform-style:preserve-3d;transition:transform .25s ease-out,border-color .3s,box-shadow .4s}
+.card[hidden]{display:none}
+.card::before{content:'';position:absolute;inset:0;border-radius:inherit;background:radial-gradient(360px circle at var(--mx,50%) var(--my,0%),color-mix(in srgb,var(--c) 26%,transparent),transparent 62%);opacity:0;transition:opacity .3s;pointer-events:none}
+.card::after{content:'';position:absolute;inset:-1px;border-radius:inherit;padding:2px;background:conic-gradient(from var(--a),transparent 0 62%,var(--c));-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:0;transition:opacity .3s;animation:gira 3s linear infinite;pointer-events:none}
+@keyframes gira{to{--a:360deg}}
+.card:hover{box-shadow:0 30px 60px -24px color-mix(in srgb,var(--c) 70%,transparent)}.card:hover::before,.card:hover::after{opacity:1}
+.card a{position:relative;display:flex;flex-direction:column;height:100%;padding:28px}
+.ic{display:grid;place-items:center;width:62px;height:62px;border-radius:18px;font-size:30px;color:var(--c);background:color-mix(in srgb,var(--c) 13%,transparent);border:1px solid color-mix(in srgb,var(--c) 32%,transparent);margin-bottom:22px;transition:transform .4s cubic-bezier(.3,1.6,.4,1);transform:translateZ(40px)}
+.card:hover .ic{scale:1.14;rotate:-8deg}
+.nv{position:absolute;top:28px;right:28px;font:700 .7rem Inter,'Segoe UI',system-ui,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--mu);border:1px solid var(--ln);padding:3px 10px;border-radius:99px}
+.card h3{font-size:1.4rem;letter-spacing:-.02em;margin-bottom:8px;transform:translateZ(24px)}
+.card p{color:var(--mu);font-size:.95rem;flex:1}
+.go{margin-top:22px;display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:.92rem;color:var(--c)}.go i{transition:translate .3s}.card:hover .go i{translate:7px 0}
+.vazio{text-align:center;color:var(--mu);margin-top:26px}
 
-        @keyframes pulseGlow {
+/* trilha */
+.trilha{display:grid;gap:14px;position:relative}
+@media(min-width:860px){.trilha{grid-template-columns:repeat(5,1fr)}.trilha::before,.trilha::after{content:'';position:absolute;top:50px;left:10%;right:10%;height:3px;border-radius:3px}.trilha::before{background:var(--ln)}.trilha::after{background:linear-gradient(90deg,var(--g1),var(--g2),var(--g3));transform-origin:left;scale:var(--p,0) 1;box-shadow:0 0 14px var(--g2)}}
+.trilha a{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;gap:4px;padding:26px 14px;border-radius:20px;background:var(--pn);border:1px solid var(--ln);transition:border-color .4s,translate .3s,background .4s}
+.trilha a:hover{translate:0 -6px}
+.trilha .n{display:grid;place-items:center;width:48px;height:48px;border-radius:50%;background:var(--bg);border:2px solid var(--ln);color:var(--mu);font-weight:800;margin-bottom:8px;position:relative;z-index:1;transition:.5s}
+.trilha li.on a{border-color:color-mix(in srgb,var(--g1) 45%,transparent);background:color-mix(in srgb,var(--g1) 7%,transparent)}
+.trilha li.on .n{border-color:var(--g1);color:#06121f;background:var(--g1);box-shadow:0 0 0 6px color-mix(in srgb,var(--g1) 20%,transparent),0 0 24px var(--g1);scale:1.12}
+.trilha strong{font-size:1.1rem}.trilha a>span:last-child{color:var(--mu);font-size:.88rem}
 
-            0%,
-            100% {
-                box-shadow: 0 0 15px var(--accent-glow);
-            }
+/* diferenciais */
+.difs{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:22px}
+.dif{padding:32px;border-radius:22px;background:linear-gradient(160deg,rgba(255,255,255,.07),rgba(255,255,255,.015));border:1px solid var(--ln);transition:transform .25s ease-out}
+.dif i{display:grid;place-items:center;width:52px;height:52px;border-radius:15px;font-size:22px;color:var(--g1);background:color-mix(in srgb,var(--g1) 12%,transparent);margin-bottom:18px;animation:flutua 5s ease-in-out infinite}
+.dif h3{margin-bottom:8px}.dif p{color:var(--mu);font-size:.95rem}
 
-            50% {
-                box-shadow: 0 0 30px var(--accent);
-            }
-        }
+/* final */
+.final{position:relative;overflow:hidden;text-align:center;padding:90px 30px;border-radius:32px;border:1px solid var(--ln);background:radial-gradient(700px circle at 50% 0,color-mix(in srgb,var(--glow) 22%,transparent),transparent 70%),var(--pn)}
+.final h2{font-size:clamp(2.4rem,7vw,5rem);line-height:1.02}
+.final p{color:var(--mu);margin:0 auto 32px;max-width:480px}
+.final::before{content:'{ }';position:absolute;left:50%;top:50%;translate:-50% -50%;font:800 clamp(10rem,32vw,24rem) ui-monospace,monospace;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.07);animation:gira2 30s linear infinite;pointer-events:none}
+@keyframes gira2{to{rotate:360deg}}
+.final>*{position:relative}
+footer{border-top:1px solid var(--ln);padding:34px 0;color:var(--mu);font-size:.92rem}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:14px}footer a:hover{color:var(--g1)}
 
-        /* Cabeçalho / Navbar */
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 8%;
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(15, 23, 42, 0.85);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            animation: fadeInDown 0.8s ease-out;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--accent);
-        }
-
-        nav a {
-            color: var(--text-muted);
-            text-decoration: none;
-            margin-left: 25px;
-            transition: color 0.3s ease;
-        }
-
-        nav a:hover {
-            color: var(--accent);
-        }
-
-        /* Seção Hero */
-        .hero {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 160px 8% 100px 8%;
-            min-height: 100vh;
-        }
-
-        .hero-content {
-            max-width: 600px;
-            animation: fadeInUp 1s ease-out;
-        }
-
-        .hero-content h1 {
-            font-size: 3.2rem;
-            margin-bottom: 20px;
-            line-height: 1.2;
-        }
-
-        .hero-content h1 span {
-            color: var(--accent);
-        }
-
-        .hero-content p {
-            color: var(--text-muted);
-            font-size: 1.1rem;
-            margin-bottom: 30px;
-        }
-
-        .btn {
-            display: inline-block;
-            background: var(--accent);
-            color: var(--bg-color);
-            padding: 14px 32px;
-            border-radius: 30px;
-            font-weight: bold;
-            text-decoration: none;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            animation: pulseGlow 2s infinite;
-        }
-
-        .btn:hover {
-            transform: scale(1.05);
-        }
-
-        .hero-visual {
-            animation: float 4s ease-in-out infinite;
-            max-width: 450px;
-        }
-
-        .code-card {
-            background: var(--card-bg);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 25px;
-            border-radius: 15px;
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 0.95rem;
-            color: #38bdf8;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-        }
-
-        .code-card .keyword {
-            color: #f472b6;
-        }
-
-        .code-card .string {
-            color: #a7f3d0;
-        }
-
-        /* Seção de Cursos / Cards */
-        .courses {
-            padding: 80px 8%;
-            background: rgba(30, 41, 59, 0.4);
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 50px;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
-
-        .card {
-            background: var(--card-bg);
-            padding: 35px 25px;
-            border-radius: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: transform 0.4s ease, border-color 0.4s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-10px);
-            border-color: var(--accent);
-        }
-
-        .card h3 {
-            font-size: 1.4rem;
-            margin-bottom: 15px;
-            color: var(--text-main);
-        }
-
-        .card p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-        }
-
-        /* Responsividade Básica */
-        @media (max-width: 900px) {
-            .hero {
-                flex-direction: column;
-                text-align: center;
-                padding-top: 130px;
-            }
-
-            .hero-content {
-                margin-bottom: 50px;
-            }
-
-            .hero-visual {
-                width: 100%;
-            }
-        }
-    </style>
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.hi,.rev{opacity:1;translate:none}.ln{width:calc(var(--n)*1ch)}.intro{display:none}}
+</style>
 </head>
 
 <body>
+<a class="pular" href="#linguagens">Pular para as linguagens</a>
+<div class="intro" aria-hidden="true"><div class="ip a"></div><div class="ip b"></div><div class="il"></div></div>
+<canvas id="fx" aria-hidden="true"></canvas><div class="halo" aria-hidden="true"></div>
+<div class="prog" aria-hidden="true"></div><div class="ring" aria-hidden="true"></div><div class="dot" aria-hidden="true"></div>
 
-    <header>
-        <div class="logo">&lt;DevClass/&gt;</div>
-    </header>
+<header id="topo">
+<div class="wrap">
+<a class="logo" href="#topo" aria-label="DevClass, início"><b>&lt;/&gt;</b>Dev<span>Class</span></a>
+<nav aria-label="Navegação principal"><ul>
+<li><a href="#linguagens">Linguagens</a></li><li><a href="#trilha">Trilha</a></li><li><a href="#diferenciais">Diferenciais</a></li>
+<li><a class="cta mag" href="#linguagens">Começar agora</a></li>
+</ul></nav>
+</div>
+</header>
 
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Domine a <span>Programação</span> do Zero ao Profissional</h1>
-            <p>Aprenda lógica, HTML, CSS, JavaScript e muito mais com aulas práticas, projetos reais e foco no mercado
-                de trabalho.</p>
-            <a href="./aulas de html/aula 01/home.html" class="btn">HTML</a>
-            <a href="./aulas de css/home.html" class="btn">CSS</a>
-            <a href="./aulas de csharp/home.html" class="btn">C#</a>
-            <a href="./aulas de c++/home.html" class="btn">C++</a>
-            <a href="./aulas de php/home.html" class="btn">PHP</a>
-            <a href="./aulas de python/home.html" class="btn">PYTHON</a>
-            <a href="./aulas de sql/home.html" class="btn">SQL</a>
-            <a href="./aulas de desing/home.html" class="btn">DESING</a>
-            <a href="./aulas de java/home.html" class="btn">JAVA</a>
-            <a href="./aulas de java script/home.html" class="btn">JAVA_SCRIPT</a>
-        </div>
-        <div class="hero-visual">
-            <div class="code-card">
-                <span class="keyword">const</span> <span style="color: #fff">aluno</span> = {<br>
-                &nbsp;&nbsp;nome: <span class="string">"Desenvolvedor"</span>,<br>
-                &nbsp;&nbsp;nivel: <span class="string">"Profissional"</span>,<br>
-                &nbsp;&nbsp;status: <span class="string">"Pronto p/ o mercado"</span><br>
-                };
-            </div>
-        </div>
-    </section>
+<main>
+<section class="hero" id="hero"><div class="wrap">
+<div>
+<p class="selo hi" style="--i:0"><i class="fa-solid fa-bolt" aria-hidden="true"></i> Aulas gratuitas e 100% práticas</p>
+<h1 class="hi" style="--i:1">Domine <span class="rot grad">programação</span> do zero ao profissional</h1>
+<p class="lead hi" style="--i:2">Lógica, HTML, CSS, JavaScript, Python e muito mais, com exemplos que você testa na hora e exercícios no fim de cada aula.</p>
+<div class="acoes hi" style="--i:3">
+<a class="btn btn-p mag" href="#linguagens">Escolher uma linguagem <i class="fa-solid fa-arrow-down" aria-hidden="true"></i></a>
+<a class="btn btn-s mag" href="./aulas%20de%20html/aula%2001/home.html"><i class="fa-brands fa-html5" aria-hidden="true"></i> Começar pelo HTML</a>
+</div>
+<div class="stats hi" style="--i:4">
+<div><strong data-n="10">10</strong><span>linguagens e áreas</span></div>
+<div><strong data-t="1">0 a Pro</strong><span>trilha completa</span></div>
+<div><strong data-n="100" data-s="%">100%</strong><span>gratuito</span></div>
+</div>
+</div>
+<div class="vis3d hi" style="--i:3" aria-hidden="true">
+<div class="janela" id="jan">
+<div class="barra"><i></i><i></i><i></i><span>aluno.js</span></div>
+<pre><span class="ln c" style="--i:0">// seu futuro começa aqui</span><span class="ln" style="--i:1"><span class="k">const</span> aluno = {</span><span class="ln" style="--i:2">  nome: <span class="s">"Desenvolvedor"</span>,</span><span class="ln" style="--i:3">  stack: [<span class="s">"HTML"</span>, <span class="s">"CSS"</span>, <span class="s">"JS"</span>],</span><span class="ln" style="--i:4">  status: <span class="s">"Pronto p/ o mercado"</span></span><span class="ln" style="--i:5">};</span><span class="ln" style="--i:6"><span class="f">aprender</span>(aluno);</span><i class="caret"></i></pre>
+</div>
+<span class="chip c1"><i class="fa-brands fa-html5"></i></span><span class="chip c2"><i class="fa-brands fa-css3-alt"></i></span><span class="chip c3"><i class="fa-brands fa-js"></i></span>
+</div>
+</div></section>
 
-    <section class="courses">
-        <h2 class="section-title">Linguagens em Destaque</h2>
-        <div class="grid">
-            <div class="card">
-                <h3>HTML & CSS</h3>
-                <p>Estruture páginas web modernas e aprenda a criar animações fluidas e estilizações avançadas.</p>
-            </div>
-            <div class="card">
-                <h3>JavaScript</h3>
-                <p>Adicione interatividade, manipule o DOM e crie aplicações web dinâmicas e completas.</p>
-            </div>
-            <div class="card">
-                <h3>Python</h3>
-                <p>Aprenda a linguagem mais versátil do mercado para automação, dados e inteligência artificial.</p>
-            </div>
-        </div>
-    </section>
+<div class="mqw" aria-hidden="true"><div class="mq" id="m1"></div><div class="mq r" id="m2"></div></div>
 
+<section id="linguagens"><div class="wrap">
+<div class="tp rev"><p class="eb">Catálogo</p><h2>Escolha sua linguagem</h2><p>Cada curso tem aulas curtas, exemplos de código e exercícios. Passe o mouse nos cards e comece pelo que combina com o seu objetivo.</p></div>
+<div class="fl rev">
+<div class="chips" role="group" aria-label="Filtrar por área">
+<button type="button" data-f="todos" aria-pressed="true">Todas</button><button type="button" data-f="front" aria-pressed="false">Front-end</button><button type="button" data-f="back" aria-pressed="false">Back-end</button><button type="button" data-f="dados" aria-pressed="false">Dados</button><button type="button" data-f="sistemas" aria-pressed="false">Sistemas</button><button type="button" data-f="design" aria-pressed="false">Design</button>
+</div>
+<div class="bs"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i><label for="q" style="position:absolute;left:-9999px">Pesquisar linguagem</label><input id="q" type="search" placeholder="Pesquisar linguagem..." autocomplete="off"><kbd aria-hidden="true">/</kbd></div>
+</div>
+<ul class="grade" id="grade"></ul>
+<p class="vazio" id="vazio" role="status" hidden>Nenhuma linguagem encontrada. Tente outro termo.</p>
+</div></section>
+
+<section id="trilha"><div class="wrap">
+<div class="tp rev"><p class="eb">Roteiro</p><h2>Não sabe por onde começar?</h2><p>Role a página e veja a trilha acender: do primeiro site até trabalhar com lógica e dados.</p></div>
+<ol class="trilha" id="tr"></ol>
+</div></section>
+
+<section id="diferenciais"><div class="wrap">
+<div class="tp rev"><p class="eb">Por que a DevClass</p><h2>Aprender sem enrolação</h2></div>
+<div class="difs">
+<div class="dif rev tilt" style="--d:0"><i class="fa-solid fa-laptop-code" aria-hidden="true"></i><h3>Prática de verdade</h3><p>Exemplos curtos e demonstrações que você testa na hora, sem instalar nada para começar.</p></div>
+<div class="dif rev tilt" style="--d:1"><i class="fa-solid fa-circle-check" aria-hidden="true"></i><h3>Exercícios com resposta</h3><p>Cada aula termina com um exercício para fixar o assunto e conferir se você entendeu.</p></div>
+<div class="dif rev tilt" style="--d:2"><i class="fa-solid fa-universal-access" aria-hidden="true"></i><h3>Acessível para todos</h3><p>Tema claro e escuro, ajuste de texto e alto contraste nas páginas dos cursos.</p></div>
+</div>
+</div></section>
+
+<section><div class="wrap"><div class="final rev">
+<h2>Hora de escrever sua <span class="grad">primeira linha</span></h2>
+<p>Escolha uma linguagem e comece agora. A primeira aula leva menos de 10 minutos.</p>
+<a class="btn btn-p mag" href="#linguagens">Ver as linguagens <i class="fa-solid fa-arrow-up" aria-hidden="true"></i></a>
+</div></div></section>
+</main>
+
+<footer><div class="wrap"><span>&copy; DevClass &middot; feito por Pioto</span><a href="#topo">Voltar ao topo <i class="fa-solid fa-arrow-up" aria-hidden="true"></i></a></div></footer>
+
+<script>
+(function(){
+'use strict';
+/* >>> EDITE AQUI: nome, pasta, áreas, ícone ('T' = mostra o nome), cor, nível, descrição <<< */
+const L=[
+['HTML','aulas%20de%20html/aula%2001','front','fa-brands fa-html5','#ff6a3d','Iniciante','Estruture páginas com tags, formulários, tabelas e semântica.'],
+['CSS','aulas%20de%20css','front','fa-brands fa-css3-alt','#4d8dff','Iniciante','Cores, flexbox, grid, responsividade e animações.'],
+['JavaScript','aulas%20de%20java%20script','front','fa-brands fa-js','#f7df1e','Intermediário','Interatividade, DOM, eventos e aplicações dinâmicas.'],
+['Python','aulas%20de%20python','back dados','fa-brands fa-python','#4fa3e0','Iniciante','Automação, dados e IA com a linguagem mais versátil.'],
+['SQL','aulas%20de%20sql','dados','fa-solid fa-database','#22d3ee','Intermediário','Consultas, joins e modelagem para trabalhar com dados.'],
+['PHP','aulas%20de%20php','back','fa-brands fa-php','#9aa5e8','Intermediário','Back-end para sites dinâmicos, formulários e bancos de dados.'],
+['Java','aulas%20de%20java','back sistemas','fa-brands fa-java','#ffa530','Intermediário','Orientação a objetos e sistemas robustos para empresas.'],
+['C#','aulas%20de%20csharp','back sistemas','T','#b57bff','Intermediário','Apps desktop, jogos e APIs no ecossistema .NET.'],
+['C++','aulas%20de%20c++','sistemas','T','#3ea0ff','Avançado','Desempenho, ponteiros e STL para jogos e sistemas.'],
+['Design','aulas%20de%20desing','design','fa-solid fa-pen-nib','#ff4f97','Iniciante','Princípios visuais, cores e tipografia para interfaces.']];
+const TR=[[0,'A estrutura'],[1,'O visual'],[2,'A interação'],[3,'A lógica'],[4,'Os dados']];
+
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)],R=document.documentElement;
+const fino=matchMedia('(hover:hover) and (pointer:fine)').matches,calmo=matchMedia('(prefers-reduced-motion:reduce)').matches;
+const ico=l=>l[3]==='T'?'<span class="tx">'+l[0]+'</span>':'<i class="'+l[3]+'" aria-hidden="true"></i>';
+const BASE='#38bdf8';let cor=BASE;
+
+/* abertura */
+$('.il').innerHTML=[...'<DevClass/>'].map((c,i)=>'<b style="--i:'+i+'">'+(c==='<'?'&lt;':c==='>'?'&gt;':c)+'</b>').join('');
+setTimeout(()=>{const n=$('.intro');if(n)n.remove()},2800);
+
+/* monta cards, faixa e trilha */
+$('#grade').innerHTML=L.map((l,i)=>'<li class="card tilt rev" data-cat="'+l[2]+'" style="--c:'+l[4]+';--d:'+(i%4)+'"><a href="./'+l[1]+'/home.html"><span class="ic">'+ico(l)+'</span><span class="nv">'+l[5]+'</span><h3>'+l[0]+'</h3><p>'+l[6]+'</p><span class="go">Começar <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span></a></li>').join('');
+const pills=a=>{const h=a.map(l=>'<span class="pill" style="--c:'+l[4]+'">'+ico(l)+(l[3]==='T'?'':' '+l[0])+'</span>').join('');return h+h};
+$('#m1').innerHTML=pills(L);$('#m2').innerHTML=pills([...L].reverse());
+$('#tr').innerHTML=TR.map((t,i)=>'<li class="rev" style="--d:'+i+'"><a href="./'+L[t[0]][1]+'/home.html"><span class="n">'+(i+1)+'</span><strong>'+L[t[0]][0]+'</strong><span>'+t[1]+'</span></a></li>').join('');
+$$('.ln').forEach(l=>l.style.setProperty('--n',l.textContent.length));
+
+/* palavra que se embaralha */
+const rot=$('.rot'),PAL=['programação','HTML','CSS','JavaScript','Python','SQL','Java','C++','Design'],G='!<>-_\\/[]{}=+*^?#';let pi=0,tm;
+function troca(t){clearInterval(tm);let f=0;tm=setInterval(()=>{rot.textContent=[...t].map((c,i)=>i<f/2?c:G[Math.random()*G.length|0]).join('');if(++f>t.length*2){clearInterval(tm);rot.textContent=t}},38)}
+if(!calmo)setTimeout(()=>setInterval(()=>troca(PAL[++pi%PAL.length]),2600),4200);
+
+/* fundo: glifos de código que fogem do mouse */
+const cv=$('#fx'),x=cv.getContext('2d'),GL='{}</>;=()[]#$&*01'.split(''),m={x:-999,y:-999};let w,h,P=[];
+function medir(){w=cv.width=innerWidth;h=cv.height=innerHeight;P=Array.from({length:Math.min(80,w/16|0)},()=>({x:Math.random()*w,y:Math.random()*h,v:.12+Math.random()*.4,g:GL[Math.random()*GL.length|0],s:11+Math.random()*12}))}
+medir();addEventListener('resize',medir);
+(function d(){requestAnimationFrame(d);if(document.hidden||calmo)return;x.clearRect(0,0,w,h);x.fillStyle=cor;
+for(const p of P){const dx=p.x-m.x,dy=p.y-m.y,r=Math.hypot(dx,dy)||1;let a=.1;if(r<170){a=.1+(1-r/170)*.7;p.x+=dx/r*2.2;p.y+=dy/r*2.2}
+p.y-=p.v;if(p.y<-20){p.y=h+20;p.x=Math.random()*w}x.globalAlpha=a;x.font=p.s+'px ui-monospace,Consolas,monospace';x.fillText(p.g,p.x,p.y)}x.globalAlpha=1})();
+
+/* mouse: halo, cursor, faíscas, tilt e ímã */
+const halo=$('.halo'),ring=$('.ring'),dot=$('.dot');let mx=innerWidth/2,my=innerHeight/2,hx=mx,hy=my,rx=mx,ry=my;
+addEventListener('pointermove',e=>{mx=m.x=e.clientX;my=m.y=e.clientY;if(fino)R.classList.add('cur')},{passive:true});
+(function s(){requestAnimationFrame(s);hx+=(mx-hx)*.07;hy+=(my-hy)*.07;halo.style.transform='translate3d('+hx+'px,'+hy+'px,0)';
+if(fino){rx+=(mx-rx)*.22;ry+=(my-ry)*.22;ring.style.transform='translate3d('+rx+'px,'+ry+'px,0)';dot.style.transform='translate3d('+mx+'px,'+my+'px,0)'}})();
+document.addEventListener('pointerover',e=>ring.classList.toggle('on',!!e.target.closest('a,button,input,summary')));
+addEventListener('pointerdown',e=>{if(calmo)return;for(let i=0;i<12;i++){const s=document.createElement('span');s.className='sp';s.textContent=GL[Math.random()*GL.length|0];s.style.cssText='left:'+e.clientX+'px;top:'+e.clientY+'px;color:'+cor;R.append(s);
+const a=Math.random()*6.28,d=40+Math.random()*80;s.animate([{transform:'translate(-50%,-50%)',opacity:1},{transform:'translate(calc(-50% + '+Math.cos(a)*d+'px),calc(-50% + '+Math.sin(a)*d+'px)) rotate('+(Math.random()*300-150)+'deg)',opacity:0}],{duration:700+Math.random()*500,easing:'cubic-bezier(.2,.8,.3,1)'}).onfinish=()=>s.remove()}});
+if(fino&&!calmo){
+$$('.tilt').forEach(c=>{c.addEventListener('pointermove',e=>{const r=c.getBoundingClientRect(),px=(e.clientX-r.left)/r.width-.5,py=(e.clientY-r.top)/r.height-.5;
+c.style.transform='perspective(900px) rotateX('+(-py*12)+'deg) rotateY('+(px*12)+'deg) translateZ(8px)';c.style.setProperty('--mx',e.clientX-r.left+'px');c.style.setProperty('--my',e.clientY-r.top+'px')});c.addEventListener('pointerleave',()=>c.style.transform='')});
+$$('.mag').forEach(b=>{b.addEventListener('pointermove',e=>{const r=b.getBoundingClientRect();b.style.transform='translate('+(e.clientX-r.left-r.width/2)*.25+'px,'+(e.clientY-r.top-r.height/2)*.4+'px)'});b.addEventListener('pointerleave',()=>b.style.transform='')});
+const jan=$('#jan');$('#hero').addEventListener('pointermove',e=>{const px=e.clientX/innerWidth-.5,py=e.clientY/innerHeight-.5;jan.style.transform='rotateY('+(px*-16)+'deg) rotateX('+(py*12)+'deg)'});
+$('#hero').addEventListener('pointerleave',()=>jan.style.transform='')}
+
+/* a cor do site muda conforme o card */
+function brilho(c){R.style.setProperty('--glow',c);cor=c}
+$$('.card').forEach(c=>{c.addEventListener('pointerenter',()=>brilho(c.style.getPropertyValue('--c')));c.addEventListener('pointerleave',()=>brilho(BASE))});
+
+/* rolagem: barra, header, trilha */
+const top_=$('#topo'),bar=$('.prog'),tr=$('#tr'),pas=$$('#tr li');
+function rola(){const mxs=R.scrollHeight-innerHeight;bar.style.scale=(mxs>0?scrollY/mxs:0)+' 1';top_.classList.toggle('rolou',scrollY>20);
+const r=tr.getBoundingClientRect(),p=Math.min(1,Math.max(0,(innerHeight*.85-r.top)/(innerHeight*.45)));tr.style.setProperty('--p',p);pas.forEach((li,i)=>li.classList.toggle('on',p>0&&i/4<=p+.001))}
+addEventListener('scroll',rola,{passive:true});rola();
+
+/* aparecer ao rolar + contadores */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target)}}),{rootMargin:'0px 0px -50px'});
+$$('.rev').forEach(e=>io.observe(e));
+const co=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;co.unobserve(e.target);const el=e.target,n=+el.dataset.n,sf=el.dataset.s||'';if(calmo)return;
+const t0=performance.now();(function f(t){const k=Math.min((t-t0)/1600,1);el.textContent=Math.round(n*(1-Math.pow(1-k,3)))+sf;if(k<1)requestAnimationFrame(f)})(t0)}));
+$$('[data-n]').forEach(e=>co.observe(e));
+
+/* filtro por área + busca (tecla / foca) */
+const cards=$$('.card'),q=$('#q'),vz=$('#vazio'),ch=$$('.chips button');let area='todos';
+function filtrar(){const t=q.value.trim().toLowerCase();let n=0;cards.forEach(c=>{const ok=(area==='todos'||c.dataset.cat.split(' ').includes(area))&&c.textContent.toLowerCase().includes(t);c.hidden=!ok;if(ok){n++;c.classList.add('vis')}});vz.hidden=n>0}
+ch.forEach(b=>b.addEventListener('click',()=>{area=b.dataset.f;ch.forEach(z=>z.setAttribute('aria-pressed',String(z===b)));filtrar()}));
+q.addEventListener('input',filtrar);
+addEventListener('keydown',e=>{if(e.key==='/'&&document.activeElement!==q){e.preventDefault();q.focus();q.scrollIntoView({block:'center'})}if(e.key==='Escape'&&document.activeElement===q){q.value='';filtrar();q.blur()}});
+})();
+</script>
 </body>
 
 </html>

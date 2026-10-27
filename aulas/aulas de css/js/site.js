@@ -1,4 +1,4 @@
-/* Aprenda C++: acessibilidade (botão do olho), configurações do site (botão da engrenagem)
+/* Aprenda CSS: acessibilidade (botão do olho), configurações do site (botão da engrenagem)
    e animações/efeitos de mouse. Um único arquivo, usado por todas as páginas.
    As escolhas ficam salvas no navegador. */
 
@@ -7,7 +7,7 @@
    ======================================================================== */
 (function () {
     'use strict';
-    const CHAVE = 'aprenda-cpp-prefs';
+    const CHAVE = 'aprenda-css-prefs';
     const PADRAO = { contraste: false, escala: 0, espaco: false, fonte: false, links: false, semAnim: false, tema: 'auto', cor: '#00599c', icones: true };
     const ESCALAS = [1, 1.15, 1.3, 1.5];
     const CORES = [['Azul', '#00599c'], ['Roxo', '#6d28d9'], ['Verde', '#0a7d3b'], ['Laranja', '#c2410c']];
@@ -395,27 +395,23 @@
         obs.observe(el);
     });
 
-    /* ---------- Editor C++ ao vivo (simula std::cout) ---------- */
+    /* ---------- Editor CSS ao vivo (iframe com o seu CSS) ---------- */
     const codigo = document.getElementById('editor-codigo');
     const previa = document.getElementById('editor-previa');
     if (codigo && previa) {
         const inicial = codigo.value;
-        let saida = null;
-        const simular = c => {
-            const cmds = [...c.matchAll(/(?:std::)?cout\s*((?:<<\s*(?:"(?:[^"\\]|\\.)*"|(?:std::)?endl|'\\n'|[\w.]+)\s*)+);/g)];
-            if (!cmds.length) return '(sem saída: use std::cout << "texto";)';
-            return cmds.map(m => [...m[1].matchAll(/"((?:[^"\\]|\\.)*)"|(endl|'\\n')/g)]
-                .map(t => t[2] ? '\n' : t[1].replace(/\\n/g, '\n').replace(/\\"/g, '"')).join('')).join('');
+        const HTML = '<div class="cartao"><h2>Meu cartão</h2><p>Estou aprendendo CSS!</p><button>Clique aqui</button></div>';
+        const atualizar = () => {
+            previa.srcdoc = '<!doctype html><meta charset="utf-8"><style>body{margin:16px;font-family:system-ui,sans-serif}</style><style>' +
+                codigo.value.replace(/<\/style/gi, '') + '</style>' + HTML;
         };
-        const atualizar = () => { previa.textContent = saida !== null ? saida : simular(codigo.value); };
-        codigo.addEventListener('input', () => { saida = null; atualizar(); });
+        codigo.addEventListener('input', atualizar);
         const reset = document.getElementById('editor-reset');
-        if (reset) reset.addEventListener('click', () => { codigo.value = inicial; saida = null; atualizar(); });
+        if (reset) reset.addEventListener('click', () => { codigo.value = inicial; atualizar(); });
         atualizar();
         document.querySelectorAll('[data-exemplo]').forEach(b => {
             b.addEventListener('click', () => {
                 codigo.value = b.dataset.exemplo;
-                saida = b.dataset.saida !== undefined ? b.dataset.saida : null;
                 atualizar();
                 document.getElementById('editor').scrollIntoView({ behavior: reduz ? 'auto' : 'smooth', block: 'center' });
                 codigo.focus({ preventScroll: true });
@@ -468,7 +464,7 @@
     aoRolar();
 
     /* ---------- Aparecer ao rolar (todas as páginas) ---------- */
-    const SECOES = '.indice, .aula, .servicos, .como-funciona, .duvidas, .canais, .novo-comentario, .lista-comentarios, .proxima, .bloco-horarios, .novo-suporte, .faq';
+    const SECOES = '.lab, .demo, .indice, .aula, .servicos, .como-funciona, .duvidas, .canais, .novo-comentario, .lista-comentarios, .proxima, .bloco-horarios, .novo-suporte, .faq';
     const GRUPOS = '.grade-servicos, .lista-aulas, .como-funciona ol, .duvidas, #lista-faq, .grade-numeros, .trilha, .grade-tags';
 
     const alvos = [];
@@ -541,4 +537,85 @@
         raiz.classList.add('saindo');
         setTimeout(() => { location.href = a.href; }, 280);
     });
+})();
+
+
+/* ========================================================================
+   PARTE 5: Especial do CSS
+   Destaque de sintaxe, laboratório (home) e playground de flexbox (aulas).
+   ======================================================================== */
+(function () {
+    'use strict';
+    const esc = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    const sp = (c, t) => '<span class="tk-' + c + '">' + t + '</span>';
+    const valor = v => esc(v).replace(/(#[0-9a-fA-F]{3,8}\b)|(-?\d*\.?\d+(?:px|rem|em|%|vh|vw|fr|ms|s|deg)?)(?![\w-])|([\w-]+)(?=\()/g,
+        (m, h, n) => (h || n) ? sp('n', m) : sp('f', m));
+
+    /* Colorir CSS: comentários, @regras, seletores, propriedades e valores */
+    function colorir(src) {
+        let out = '', i = 0;
+        const ctx = ['regras'];
+        while (i < src.length) {
+            const resto = src.slice(i);
+            let m;
+            if ((m = resto.match(/^\/\*[\s\S]*?\*\//))) { out += sp('c', esc(m[0])); i += m[0].length; continue; }
+            if ((m = resto.match(/^\s+/))) { out += m[0]; i += m[0].length; continue; }
+            if (src[i] === '}') { if (ctx.length > 1) ctx.pop(); out += '}'; i++; continue; }
+            const c = ctx[ctx.length - 1];
+            if (c === 'regras') {
+                m = resto.match(/^[^{}]+?(?=\{)/);
+                if (!m) { out += esc(resto); break; }
+                const pre = m[0];
+                if (pre[0] === '@') { out += sp('at', esc(pre)); ctx.push(/^@(media|supports|layer|container)/.test(pre) ? 'regras' : 'decls'); }
+                else { out += sp('s', esc(pre)); ctx.push('decls'); }
+                out += '{'; i += pre.length + 1; continue;
+            }
+            if ((m = resto.match(/^([\w-]+)(\s*):/))) {
+                out += sp('p', m[1]) + m[2] + ':'; i += m[0].length;
+                const v = resto.slice(m[0].length).match(/^[^;}]*/)[0];
+                out += valor(v); i += v.length;
+                if (src[i] === ';') { out += ';'; i++; }
+                continue;
+            }
+            out += esc(src[i]); i++;
+        }
+        return out;
+    }
+    window.colorirCss = colorir;
+    document.querySelectorAll('pre code.lang-css').forEach(c => { if (c.textContent.trim()) c.innerHTML = colorir(c.textContent); });
+
+    /* ---------- Laboratório CSS (home) ---------- */
+    const caixa = document.getElementById('lab-caixa');
+    if (caixa) {
+        const $ = id => document.getElementById(id);
+        const saida = $('lab-codigo');
+        const ids = ['lab-raio', 'lab-pad', 'lab-sombra', 'lab-giro', 'lab-matiz'];
+        const atualizar = () => {
+            const [r, p, s, g, h] = ids.map(id => Number($(id).value));
+            ids.forEach(id => { $(id + '-v').textContent = $(id).value; });
+            Object.assign(caixa.style, {
+                borderRadius: r + 'px', padding: p + 'px',
+                boxShadow: '0 ' + (s / 2) + 'px ' + s + 'px rgba(0, 0, 0, 0.35)',
+                transform: 'rotate(' + g + 'deg)', background: 'hsl(' + h + ', 80%, 45%)'
+            });
+            saida.innerHTML = colorir('.caixa {\n  border-radius: ' + r + 'px;\n  padding: ' + p + 'px;\n  box-shadow: 0 ' + (s / 2) + 'px ' + s + 'px rgba(0, 0, 0, 0.35);\n  transform: rotate(' + g + 'deg);\n  background: hsl(' + h + ', 80%, 45%);\n}');
+        };
+        ids.forEach(id => $(id).addEventListener('input', atualizar));
+        atualizar();
+    }
+
+    /* ---------- Playground de flexbox (aula 5) ---------- */
+    const demo = document.getElementById('fx-demo');
+    if (demo) {
+        const sel = { d: document.getElementById('fx-dir'), j: document.getElementById('fx-just'), a: document.getElementById('fx-alin') };
+        const cod = document.getElementById('fx-codigo');
+        const atualizar = () => {
+            demo.style.flexDirection = sel.d.value;
+            demo.style.justifyContent = sel.j.value;
+            demo.style.alignItems = sel.a.value;
+            cod.innerHTML = colorir('.caixa {\n  display: flex;\n  flex-direction: ' + sel.d.value + ';\n  justify-content: ' + sel.j.value + ';\n  align-items: ' + sel.a.value + ';\n}');
+        };
+        Object.values(sel).forEach(s => s.addEventListener('change', atualizar));
+        atualizar();
+    }
 })();

@@ -4,14 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Suporte do Aprenda CSS: fale com a gente e veja as perguntas mais comuns">
+    <meta name="description" content="Suporte do Aprenda C++: fale com a gente e veja as perguntas mais comuns">
     <meta name="author" content="Pioto">
     <meta name="theme-color" content="#00599c">
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2300599c'/%3E%3Ctext x='32' y='41' font-family='Arial' font-size='19' font-weight='bold' fill='white' text-anchor='middle'%3ECSS%3C/text%3E%3C/svg%3E">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2300599c'/%3E%3Ctext x='32' y='42' font-family='Arial' font-size='20' font-weight='bold' fill='white' text-anchor='middle'%3EC%2B%2B%3C/text%3E%3C/svg%3E">
     <script>document.documentElement.classList.add('js');</script>
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css">
-    <title>Suporte | Aprenda CSS</title>
+    <title>Suporte | Aprenda C++</title>
 </head>
 
 <body>
@@ -52,7 +52,7 @@
                 <li class="servico">
                     <i class="fa-solid fa-envelope icone-servico" aria-hidden="true"></i>
                     <h3>E-mail</h3>
-                    <p>Ideal para dúvidas maiores ou para enviar seu CSS para revisão.</p>
+                    <p>Ideal para dúvidas maiores ou para enviar seu código para revisão.</p>
                     <a id="link-email" href="#">Enviar e-mail</a>
                 </li>
                 <li class="servico">
@@ -101,23 +101,23 @@
                 <div id="lista-faq">
                     <details>
                         <summary>Por onde eu começo?</summary>
-                        <p>Comece pela <a href="./aula.html">Aula 1</a> e siga a ordem. Cada aula tem exemplos de código, uma demo e um exercício no final.</p>
+                        <p>Comece pela <a href="./aula.html">Aula 1</a> e siga a ordem. Cada aula tem exemplos de código e um exercício no final.</p>
                     </details>
                     <details>
                         <summary>Preciso instalar algum programa?</summary>
-                        <p>Só um navegador e um editor de texto, como o VS Code. Crie um <code>index.html</code> e um <code>style.css</code> na mesma pasta e abra o HTML no navegador. A extensão Live Server atualiza a página sozinha a cada alteração.</p>
+                        <p>Um compilador (<code>g++</code> ou <code>clang</code>) e um editor, como o VS Code. No Linux: <code>sudo apt install g++</code>; no macOS: <code>xcode-select --install</code>; no Windows, use o MSYS2/MinGW. Depois rode <code>g++ main.cpp -o programa</code>.</p>
                     </details>
                     <details>
-                        <summary>Meu CSS não está sendo aplicado.</summary>
-                        <p>Confira o caminho no <code>&lt;link rel="stylesheet" href="..."&gt;</code>, se o nome do arquivo está igual, e se cada regra fecha com <code>}</code>. Atualize com Ctrl+F5 para limpar o cache e abra o DevTools (F12) para ver qual regra está valendo.</p>
+                        <summary>O terminal diz que "g++" não é reconhecido.</summary>
+                        <p>O compilador não está no PATH. Feche e reabra o terminal depois de instalar e teste com <code>g++ --version</code>.</p>
                     </details>
                     <details>
-                        <summary>Como centralizo um elemento?</summary>
-                        <p>No pai, use <code>display: flex; justify-content: center; align-items: center;</code>. Para centralizar só na horizontal um bloco com largura definida, use <code>margin: 0 auto;</code>.</p>
+                        <summary>Recebi o erro "cout was not declared".</summary>
+                        <p>Faltou <code>#include &lt;iostream&gt;</code> no topo ou o prefixo <code>std::</code> (ou <code>using namespace std;</code>).</p>
                     </details>
                     <details>
-                        <summary>Minha regra não funciona e outra ganha dela.</summary>
-                        <p>É a especificidade: id vence classe, que vence tag; em empate vale a última regra. No DevTools, regras riscadas foram sobrescritas. Evite <code>!important</code> como solução.</p>
+                        <summary>O programa fecha com "Segmentation fault".</summary>
+                        <p>Acesso inválido à memória: índice fora do <code>vector</code>, ponteiro nulo ou variável não inicializada. Confira os limites e inicialize tudo.</p>
                     </details>
                     <details>
                         <summary>Como peço um serviço, como monitoria?</summary>
@@ -126,6 +126,18 @@
                     <details>
                         <summary>Onde vejo os dias e horários das aulas?</summary>
                         <p>Na página de <a href="./horarios.html">Horários</a>, que mostra a grade da semana e a próxima aula.</p>
+                    </details>
+                <details>
+                        <summary>Como acompanho meu progresso?</summary>
+                        <p>Na página de <a href="./aula.html">Aulas</a>, clique em "Marcar como concluída" ao fim de cada aula. O progresso fica salvo no seu navegador.</p>
+                    </details>
+                    <details>
+                        <summary>O que são as simulações de memória?</summary>
+                        <p>São animações passo a passo (na Home e nas Aulas 12, 13 e 15) que mostram pilha, heap, ponteiros e referências mudando conforme cada linha executa.</p>
+                    </details>
+                    <details>
+                        <summary>Qual versão do C++ devo usar?</summary>
+                        <p>Use <code>-std=c++17</code> ou <code>-std=c++20</code> ao compilar: <code>g++ -std=c++20 main.cpp -o programa</code>. Alguns exemplos, como a desestruturação em <code>map</code>, pedem C++17.</p>
                     </details>
                 </div>
                 <p id="sem-resultado" hidden>Nenhuma dúvida encontrada. Envie sua pergunta pelo formulário.</p>

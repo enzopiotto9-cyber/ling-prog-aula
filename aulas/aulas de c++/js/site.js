@@ -542,3 +542,306 @@
         setTimeout(() => { location.href = a.href; }, 280);
     });
 })();
+
+
+/* ========================================================================
+   PARTE 5: ESPECIAL C++
+   Realce de sintaxe, chuva de símbolos, log da abertura, terminal que
+   compila, pipeline do g++, simulador de memória (pilha/heap) e
+   progresso das aulas. Cole no FINAL do site.js.
+   ======================================================================== */
+(function () {
+    'use strict';
+    const raiz = document.documentElement;
+    const $ = (s, r) => (r || document).querySelector(s);
+    const $$ = (s, r) => [...(r || document).querySelectorAll(s)];
+    const reduz = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const semAnim = () => reduz || raiz.classList.contains('a11y-sem-anim') || raiz.classList.contains('a11y-contraste');
+    const esc = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    const dorme = ms => new Promise(r => setTimeout(r, ms));
+
+    /* ---------- 1. Realce de sintaxe C++ ---------- */
+    const KW = 'if|else|for|while|do|switch|case|default|break|continue|return|class|struct|public|private|protected|virtual|override|final|const|constexpr|static|new|delete|try|catch|throw|template|typename|namespace|using|enum|operator|this|true|false|nullptr|explicit|friend|inline|noexcept|sizeof|auto|mutable';
+    const TP = 'int|double|float|char|bool|void|long|short|unsigned|signed|size_t|string|vector|map|set|array|unique_ptr|shared_ptr|ifstream|ofstream|exception|ostream|cout|cin|endl|cerr';
+    const RE = new RegExp(String.raw`(\/\/[^\n]*|\/\*[\s\S]*?\*\/)|("(?:[^"\\\n]|\\.)*"|'(?:[^'\\\n]|\\.)*')|(#\s*\w+(?:\s*(?:<[^>\n]+>|"[^"\n]+"))?)|\b(0x[0-9a-fA-F]+|\d+\.?\d*[fFuUlL]*)\b|\b(` + KW + String.raw`)\b|\b(` + TP + String.raw`)\b|\b([A-Za-z_]\w*)(?=\s*\()|(::|->)`, 'g');
+    const CLS = [null, 'c', 's', 'p', 'n', 'k', 't', 'f', 'o'];
+    function colorirCpp(t) {
+        let out = '', i = 0, m;
+        RE.lastIndex = 0;
+        while ((m = RE.exec(t))) {
+            let g = 1; while (!m[g]) g++;
+            out += esc(t.slice(i, m.index)) + '<span class="tk-' + CLS[g] + '">' + esc(m[0]) + '</span>';
+            i = RE.lastIndex;
+            if (m[0] === '') RE.lastIndex++;
+        }
+        return out + esc(t.slice(i));
+    }
+    window.colorirCpp = colorirCpp;
+    $$('pre code.lang-cpp').forEach(c => { c.innerHTML = colorirCpp(c.textContent); });
+
+    /* ---------- 2. Chuva de símbolos do C++ no fundo ---------- */
+    const cv = document.createElement('canvas');
+    cv.id = 'cpp-fx'; cv.setAttribute('aria-hidden', 'true');
+    document.body.prepend(cv);
+    const x = cv.getContext('2d');
+    const GL = ['::', '->', '<<', '>>', '&&', '*p', '&x', 'new', 'int', '{}', '0x7f', 'std', '++', '#', 'nullptr', 'void', ';', '&', '*'];
+    const mouse = { x: -999, y: -999 };
+    let W = 0, H = 0, P = [];
+    function medir() {
+        W = cv.width = innerWidth; H = cv.height = innerHeight;
+        P = Array.from({ length: Math.min(55, Math.round(W / 24)) }, () => ({
+            x: Math.random() * W, y: Math.random() * H, v: .12 + Math.random() * .35,
+            g: GL[Math.random() * GL.length | 0], s: 12 + Math.random() * 12
+        }));
+    }
+    medir(); addEventListener('resize', medir);
+    addEventListener('pointermove', e => { mouse.x = e.clientX; mouse.y = e.clientY; }, { passive: true });
+    function desenha(anima) {
+        x.clearRect(0, 0, W, H);
+        const escuro = raiz.dataset.tema === 'escuro';
+        x.fillStyle = escuro ? '#7cc4ff' : '#00599c';
+        for (const p of P) {
+            const dx = p.x - mouse.x, dy = p.y - mouse.y, r = Math.hypot(dx, dy) || 1;
+            let a = escuro ? .14 : .1;
+            if (r < 160) { a += (1 - r / 160) * .55; if (anima) { p.x += dx / r * 2; p.y += dy / r * 2; } }
+            if (anima) { p.y -= p.v; if (p.y < -20) { p.y = H + 20; p.x = Math.random() * W; } }
+            x.globalAlpha = a; x.font = p.s + 'px ui-monospace,Consolas,monospace'; x.fillText(p.g, p.x, p.y);
+        }
+        x.globalAlpha = 1;
+    }
+    (function loop() {
+        requestAnimationFrame(loop);
+        if (document.hidden) return;
+        if (semAnim()) { if (!loop.f) { desenha(false); loop.f = 1; } return; }
+        loop.f = 0; desenha(true);
+    })();
+
+    /* ---------- 3. Log de compilação na abertura ---------- */
+    const log = $('#intro-log');
+    if (log && raiz.classList.contains('intro-novo')) {
+        [[150, '$ g++ main.cpp -o programa'], [900, 'pré-processando...'], [1300, 'compilando...'], [1650, 'ligando...'], [1950, 'pronto ✓']]
+            .forEach(([t, s]) => setTimeout(() => { log.textContent = s; }, t));
+    }
+
+    /* ---------- 4. Pipeline do g++ e terminal ---------- */
+    const ETAPAS = [
+        ['main.cpp', 'Seu código-fonte', 'fa-file-code'],
+        ['Pré-processador', 'Resolve #include e #define', 'fa-wand-magic-sparkles'],
+        ['Compilador', 'Traduz C++ para assembly', 'fa-gears'],
+        ['Assembler', 'Gera o código objeto (.o)', 'fa-microchip'],
+        ['Linker', 'Junta as bibliotecas', 'fa-link'],
+        ['programa', 'Pronto para executar', 'fa-play']
+    ];
+    $$('[data-pipeline]').forEach(el => {
+        el.classList.add('pipeline');
+        el.innerHTML = '<ol>' + ETAPAS.map((e, k) => '<li data-e="' + k + '"><i class="fa-solid ' + e[2] + '" aria-hidden="true"></i><strong>' + e[0] + '</strong><span>' + e[1] + '</span></li>').join('') + '</ol>';
+    });
+    const setEtapa = n => $$('.pipeline li').forEach(li => {
+        const k = +li.dataset.e;
+        li.classList.toggle('feito', k < n || n > 5);
+        li.classList.toggle('ativo', k === n);
+    });
+    const term = $('[data-terminal]');
+    if (!term && $('.pipeline')) {
+        let n = 0, vis = true;
+        new IntersectionObserver(es => { vis = es[0].isIntersecting; }).observe($('.pipeline'));
+        if (semAnim()) setEtapa(6);
+        else setInterval(() => { if (vis) { setEtapa(n); n = (n + 1) % 8; } }, 1000);
+    }
+    if (term) {
+        const corpo = $('.term-corpo', term);
+        const SEQ = [
+            ['c', 'g++ -std=c++20 main.cpp -o programa', 0],
+            ['o', '[1/4] pré-processando   #include <iostream>', 1],
+            ['o', '[2/4] compilando        main.cpp -> main.s', 2],
+            ['o', '[3/4] montando          main.s -> main.o', 3],
+            ['o', '[4/4] ligando           main.o + libstdc++', 4],
+            ['k', '✓ build concluído, 0 erros', 5],
+            ['c', './programa', 5],
+            ['o', 'Olá, mundo!', 6],
+            ['o', 'Eu estou aprendendo C++!', 6]
+        ];
+        let visivel = true, rodada = 0;
+        new IntersectionObserver(es => { visivel = es[0].isIntersecting; }).observe(term);
+        const linha = (tipo, txt) => {
+            const d = document.createElement('div');
+            d.className = 'tl tl-' + tipo;
+            if (tipo === 'c') { d.innerHTML = '<span class="pr">$</span> <span class="tx"></span>'; }
+            else d.textContent = txt;
+            corpo.append(d);
+            return d;
+        };
+        async function roda(meu) {
+            corpo.replaceChildren(); setEtapa(0);
+            for (const [t, txt, et] of SEQ) {
+                if (meu !== rodada) return;
+                while (!visivel && meu === rodada) await dorme(400);
+                const d = linha(t, txt);
+                if (t === 'c') {
+                    const alvo = $('.tx', d);
+                    for (const ch of txt) { alvo.textContent += ch; await dorme(semAnim() ? 0 : 38); }
+                    await dorme(semAnim() ? 0 : 350);
+                } else await dorme(semAnim() ? 0 : 520);
+                setEtapa(et);
+            }
+            const cur = document.createElement('span'); cur.className = 'bloco'; corpo.lastChild.append(cur);
+            await dorme(5200);
+            if (meu === rodada) roda(++rodada);
+        }
+        roda(rodada);
+    }
+
+    /* ---------- 5. Simulador de memória (pilha e heap) ---------- */
+    const STEPS = {
+        ponteiro: {
+            titulo: 'Ponteiros',
+            code: ['int x = 10;', 'int* p = &x;', 'cout << *p;', '*p = 20;', 'cout << x;', 'p = nullptr;'],
+            passos: [
+                { l: -1, e: 'Clique em "Próximo" para executar o código linha por linha.', m: [], o: '' },
+                { l: 0, e: 'Cria a variável x na pilha (stack), com o valor 10.', m: [{ n: 'x', t: 'int', a: '0x1000', v: '10' }], o: '' },
+                { l: 1, e: 'p guarda o ENDEREÇO de x (&x), não o valor dele.', m: [{ n: 'x', t: 'int', a: '0x1000', v: '10' }, { n: 'p', t: 'int*', a: '0x1008', v: '0x1000', p: 'x' }], o: '' },
+                { l: 2, e: '*p vai até o endereço guardado e lê o valor que está lá: 10.', m: [{ n: 'x', t: 'int', a: '0x1000', v: '10' }, { n: 'p', t: 'int*', a: '0x1008', v: '0x1000', p: 'x' }], o: '10' },
+                { l: 3, e: '*p = 20 escreve no endereço apontado: x mudou sem ser tocado diretamente!', m: [{ n: 'x', t: 'int', a: '0x1000', v: '20' }, { n: 'p', t: 'int*', a: '0x1008', v: '0x1000', p: 'x' }], o: '10' },
+                { l: 4, e: 'x agora vale 20.', m: [{ n: 'x', t: 'int', a: '0x1000', v: '20' }, { n: 'p', t: 'int*', a: '0x1008', v: '0x1000', p: 'x' }], o: '10 20' },
+                { l: 5, e: 'nullptr significa "não aponta para nada". Nunca use *p com p nulo.', m: [{ n: 'x', t: 'int', a: '0x1000', v: '20' }, { n: 'p', t: 'int*', a: '0x1008', v: 'nullptr' }], o: '10 20' }
+            ]
+        },
+        ref: {
+            titulo: 'Referências',
+            code: ['int a = 5;', 'int& r = a;', 'int b = a;', 'r = 9;', 'cout << a << " " << b;'],
+            passos: [
+                { l: -1, e: 'Clique em "Próximo" para executar o código linha por linha.', m: [], o: '' },
+                { l: 0, e: 'Cria a variável a na pilha, com o valor 5.', m: [{ n: 'a', t: 'int', a: '0x1000', v: '5' }], o: '' },
+                { l: 1, e: 'r NÃO é uma nova variável: é outro nome para a mesma caixa de a.', m: [{ n: 'a', t: 'int', a: '0x1000', v: '5', al: 'r' }], o: '' },
+                { l: 2, e: 'b é uma CÓPIA: ganha uma caixa própria com o valor 5.', m: [{ n: 'a', t: 'int', a: '0x1000', v: '5', al: 'r' }, { n: 'b', t: 'int', a: '0x1004', v: '5' }], o: '' },
+                { l: 3, e: 'r = 9 muda a caixa de a (os dois nomes enxergam o mesmo valor). b não muda.', m: [{ n: 'a', t: 'int', a: '0x1000', v: '9', al: 'r' }, { n: 'b', t: 'int', a: '0x1004', v: '5' }], o: '' },
+                { l: 4, e: 'a vale 9 (alterado via r) e b continua 5.', m: [{ n: 'a', t: 'int', a: '0x1000', v: '9', al: 'r' }, { n: 'b', t: 'int', a: '0x1004', v: '5' }], o: '9 5' }
+            ]
+        },
+        heap: {
+            titulo: 'new / delete',
+            heap: true,
+            code: ['int* p = new int(42);', 'cout << *p;', 'delete p;', 'p = nullptr;'],
+            passos: [
+                { l: -1, e: 'Clique em "Próximo" para executar o código linha por linha.', m: [], o: '' },
+                { l: 0, e: 'new reserva um int no HEAP (monte). p, na pilha, guarda o endereço dele.', m: [{ id: 'h1', n: '', t: 'int', a: '0x5a20', v: '42', r: 'h' }, { n: 'p', t: 'int*', a: '0x7ffc10', v: '0x5a20', p: 'h1' }], o: '' },
+                { l: 1, e: 'Lê o valor 42 através do ponteiro.', m: [{ id: 'h1', n: '', t: 'int', a: '0x5a20', v: '42', r: 'h' }, { n: 'p', t: 'int*', a: '0x7ffc10', v: '0x5a20', p: 'h1' }], o: '42' },
+                { l: 2, e: 'delete devolve a memória ao sistema. Mas p ainda guarda o endereço: ponteiro "pendurado"!', m: [{ id: 'h1', n: '', t: 'int', a: '0x5a20', v: '?', r: 'h', x: 1 }, { n: 'p', t: 'int*', a: '0x7ffc10', v: '0x5a20', p: 'h1', d: 1 }], o: '42' },
+                { l: 3, e: 'Zerar o ponteiro evita usar por engano uma memória que já não é sua.', m: [{ id: 'h1', n: '', t: 'int', a: '0x5a20', v: '?', r: 'h', x: 1 }, { n: 'p', t: 'int*', a: '0x7ffc10', v: 'nullptr' }], o: '42' }
+            ]
+        }
+    };
+    const ident = c => c.id || c.n;
+    function montaStepper(el) {
+        const ids = el.dataset.stepper.split(',');
+        let cur = ids[0], i = 0, timer = null;
+        el.classList.add('stepper');
+        el.innerHTML = (ids.length > 1 ? '<div class="st-abas" role="tablist">' + ids.map(k => '<button type="button" role="tab" data-k="' + k + '">' + STEPS[k].titulo + '</button>').join('') + '</div>' : '') +
+            '<div class="st-corpo"><div class="st-cod"><pre><code></code></pre></div>' +
+            '<div class="st-mem"><div class="st-reg"><h4>Pilha (stack)</h4><div class="st-stack"></div></div>' +
+            '<div class="st-reg st-heapreg"><h4>Monte (heap)</h4><div class="st-heap"></div></div></div></div>' +
+            '<p class="st-exp" aria-live="polite"></p>' +
+            '<div class="st-saida"><span>saída:</span><code></code></div>' +
+            '<div class="st-ctl"><button type="button" data-a="ini" aria-label="Reiniciar"><i class="fa-solid fa-backward-step" aria-hidden="true"></i></button>' +
+            '<button type="button" data-a="ant"><i class="fa-solid fa-chevron-left" aria-hidden="true"></i> Anterior</button>' +
+            '<span class="st-n"></span>' +
+            '<button type="button" data-a="prox" class="prim">Próximo <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></button>' +
+            '<button type="button" data-a="auto"><i class="fa-solid fa-play" aria-hidden="true"></i> Auto</button></div>';
+        const codeEl = $('.st-cod code', el), stack = $('.st-stack', el), heap = $('.st-heap', el), heapReg = $('.st-heapreg', el);
+        const exp = $('.st-exp', el), saida = $('.st-saida code', el), nEl = $('.st-n', el), auto = $('[data-a=auto]', el);
+        function celula(c, p, ps) {
+            const id = ident(c), ant = p.m.find(z => ident(z) === id);
+            const apont = ps.m.filter(z => z.p === id).map(z => z.n);
+            const cl = ['cel'];
+            if (!ant) cl.push('novo'); else if (ant.v !== c.v) cl.push('muda');
+            if (apont.length) cl.push('alvo');
+            if (c.x) cl.push('livre');
+            if (c.d) cl.push('pend');
+            if (c.p) cl.push('ptr');
+            const tags = (apont.length ? '<em class="tag">&#9664; ' + apont.join(', ') + '</em>' : '') +
+                (c.al ? '<em class="tag al">também: ' + c.al + '</em>' : '') +
+                (c.d ? '<em class="tag ruim">pendurado!</em>' : '') +
+                (c.x ? '<em class="tag ruim">liberado</em>' : '');
+            return '<div class="' + cl.join(' ') + '"><b>' + (c.n || 'sem nome') + '</b><small>' + c.t + ' &middot; ' + c.a + '</small><span class="val">' + c.v + '</span>' + tags + '</div>';
+        }
+        function mostra() {
+            const S = STEPS[cur], p = S.passos[i], ant = S.passos[i - 1] || { m: [] };
+            codeEl.innerHTML = S.code.map((ln, k) => '<span class="l' + (k === p.l ? ' on' : '') + '">' + colorirCpp(ln) + '</span>').join('');
+            stack.innerHTML = p.m.filter(c => c.r !== 'h').map(c => celula(c, ant, p)).join('') || '<span class="vazia">(vazia)</span>';
+            heap.innerHTML = p.m.filter(c => c.r === 'h').map(c => celula(c, ant, p)).join('') || '<span class="vazia">(vazio)</span>';
+            heapReg.hidden = !S.heap;
+            exp.textContent = p.e; saida.textContent = p.o || '(nada ainda)';
+            nEl.textContent = i + ' / ' + (S.passos.length - 1);
+            $$('.st-abas button', el).forEach(b => b.setAttribute('aria-selected', String(b.dataset.k === cur)));
+        }
+        function para() { clearInterval(timer); timer = null; auto.innerHTML = '<i class="fa-solid fa-play" aria-hidden="true"></i> Auto'; }
+        function passa(d) { const n = STEPS[cur].passos.length - 1; i = Math.max(0, Math.min(n, i + d)); mostra(); }
+        el.addEventListener('click', e => {
+            const b = e.target.closest('button'); if (!b) return;
+            if (b.dataset.k) { cur = b.dataset.k; i = 0; para(); mostra(); return; }
+            const a = b.dataset.a;
+            if (a === 'prox') { para(); passa(1); }
+            else if (a === 'ant') { para(); passa(-1); }
+            else if (a === 'ini') { para(); i = 0; mostra(); }
+            else if (a === 'auto') {
+                if (timer) { para(); return; }
+                auto.innerHTML = '<i class="fa-solid fa-pause" aria-hidden="true"></i> Pausar';
+                if (i >= STEPS[cur].passos.length - 1) i = 0;
+                passa(0);
+                timer = setInterval(() => { if (i >= STEPS[cur].passos.length - 1) para(); else passa(1); }, 1900);
+            }
+        });
+        mostra();
+    }
+    $$('[data-stepper]').forEach(montaStepper);
+
+    /* ---------- 6. Página de aulas: progresso, filtro e mini-índice ---------- */
+    const arts = $$('.aula[data-n]');
+    if (arts.length) {
+        const KEY = 'cpp-progresso';
+        let feitas = new Set();
+        try { feitas = new Set(JSON.parse(localStorage.getItem(KEY) || '[]')); } catch (e) { }
+        const total = arts.length;
+        const salva = () => { try { localStorage.setItem(KEY, JSON.stringify([...feitas])); } catch (e) { } };
+        function atualiza() {
+            const n = feitas.size, pct = Math.round(n / total * 100);
+            const anel = $('#anel'); if (anel) { anel.style.setProperty('--p', pct); $('#anel-txt').textContent = pct + '%'; }
+            const t = $('#prog-txt'); if (t) t.textContent = n + ' de ' + total + ' aulas concluídas' + (n === total ? ' 🎉 Parabéns!' : '');
+            const b = $('#prog-barra'); if (b) b.style.width = pct + '%';
+            arts.forEach(a => {
+                const id = +a.dataset.n, ok = feitas.has(id);
+                const btn = $('.concluir', a); btn.classList.toggle('ok', ok); btn.setAttribute('aria-pressed', String(ok));
+                $('span', btn).textContent = ok ? 'Concluída' : 'Marcar como concluída';
+                $('i', btn).className = ok ? 'fa-solid fa-circle-check' : 'fa-regular fa-circle';
+                const lk = $('.lista-aulas a[href="#aula' + id + '"]'); if (lk) lk.classList.toggle('concluida', ok);
+                const dot = $('.mini-toc a[data-n="' + id + '"]'); if (dot) dot.classList.toggle('ok', ok);
+            });
+            $$('.modulo').forEach(m => {
+                const ls = $$('.lista-aulas a', m), f = ls.filter(a => a.classList.contains('concluida')).length;
+                const c = $('.mod-cont', m); if (c) c.textContent = f + '/' + ls.length;
+            });
+        }
+        arts.forEach(a => $('.concluir', a).addEventListener('click', () => {
+            const id = +a.dataset.n;
+            feitas.has(id) ? feitas.delete(id) : feitas.add(id);
+            salva(); atualiza();
+        }));
+        const zerar = $('#prog-zerar');
+        if (zerar) zerar.addEventListener('click', () => { if (feitas.size && confirm('Zerar o seu progresso?')) { feitas.clear(); salva(); atualiza(); } });
+        atualiza();
+
+        const chips = $$('.chips-mod button');
+        chips.forEach(b => b.addEventListener('click', () => {
+            chips.forEach(z => z.setAttribute('aria-pressed', String(z === b)));
+            $$('.modulo').forEach(m => { m.dataset.fora = (b.dataset.mod !== 'todos' && m.dataset.mod !== b.dataset.mod) ? '1' : ''; });
+            if (window.__aulasAtualiza) window.__aulasAtualiza();
+        }));
+
+        if ('IntersectionObserver' in window) {
+            const io = new IntersectionObserver(es => es.forEach(e => {
+                if (e.isIntersecting) $$('.mini-toc a').forEach(a => a.classList.toggle('on', a.dataset.n === e.target.dataset.n));
+            }), { rootMargin: '-40% 0px -55% 0px' });
+            arts.forEach(a => io.observe(a));
+        }
+    }
+})();

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Uma aula de C++ para você ficar bom em tudo">
+    <meta name="description" content="C++ do zero ao projeto final: 31 aulas, simulador de memória e exemplos que você testa na hora">
     <meta name="keywords" content="C++, aula de C++, aprenda C++, STL">
     <meta name="author" content="Pioto">
     <script>
@@ -30,9 +30,10 @@
         <div class="intro-painel intro-base"></div>
         <div class="intro-centro">
             <div class="intro-letras">
-                <span style="--i:0">&lt;</span><span style="--i:1">C</span><span style="--i:2">+</span><span style="--i:3">+</span><span style="--i:3"></span><span style="--i:3"></span><span style="--i:4"></span><span style="--i:5">/&gt;</span>
+                <span style="--i:0">&lt;</span><span style="--i:1">C</span><span style="--i:2">+</span><span style="--i:3">+</span><span style="--i:4">/&gt;</span>
             </div>
             <div class="intro-barra"></div>
+            <div class="intro-log" id="intro-log"></div>
         </div>
     </div>
 
@@ -67,10 +68,23 @@
             </div>
         </div>
 
-        <section class="apresentacao">
-            <h2>Comece do zero, termine sabendo tudo</h2>
-            <p>Aprenda variáveis, condições, laços, funções, classes e STL com exemplos práticos que você pode testar na hora.</p>
-            <a class="botao-principal" href="./aula.html">Começar a primeira aula</a>
+        <div class="hero-cpp">
+            <section class="apresentacao">
+                <h2>Do primeiro cout ao projeto final</h2>
+                <p>Aprenda variáveis, laços, funções, ponteiros, classes, STL e C++ moderno em 31 aulas, com simuladores de memória e exemplos que você testa na hora.</p>
+                <a class="botao-principal" href="./aula.html">Começar a primeira aula</a>
+            </section>
+            <div class="terminal" data-terminal aria-label="Animação de um terminal compilando e executando um programa C++" role="img">
+                <div class="term-barra"><i></i><i></i><i></i><span>bash &mdash; ~/projeto</span></div>
+                <div class="term-corpo" aria-hidden="true"></div>
+            </div>
+        </div>
+
+        <!-- Pipeline -->
+        <section class="secao-home revelar" aria-labelledby="titulo-pipe">
+            <h2 id="titulo-pipe">O que acontece quando você compila</h2>
+            <p class="subtitulo">O <code>g++</code> transforma o seu <code>.cpp</code> em programa em etapas. Acompanhe cada uma, sincronizada com o terminal acima.</p>
+            <div class="pipeline" data-pipeline></div>
         </section>
 
         <!-- Números -->
@@ -79,53 +93,86 @@
             <ul class="grade-numeros">
                 <li class="numero">
                     <i class="fa-solid fa-book-open" aria-hidden="true"></i>
-                    <strong data-contar="12">12</strong>
+                    <strong data-contar="31">31</strong>
                     <span>aulas curtas</span>
                 </li>
                 <li class="numero">
+                    <i class="fa-solid fa-layer-group" aria-hidden="true"></i>
+                    <strong data-contar="7">7</strong>
+                    <span>módulos</span>
+                </li>
+                <li class="numero">
                     <i class="fa-solid fa-code" aria-hidden="true"></i>
-                    <strong data-contar="40" data-sufixo="+">40+</strong>
+                    <strong data-contar="37">37</strong>
                     <span>exemplos de código</span>
                 </li>
                 <li class="numero">
-                    <i class="fa-solid fa-pen-to-square" aria-hidden="true"></i>
-                    <strong data-contar="25">25</strong>
-                    <span>exercícios práticos</span>
+                    <i class="fa-solid fa-wand-magic-sparkles" aria-hidden="true"></i>
+                    <strong data-contar="5">5</strong>
+                    <span>simulações interativas</span>
                 </li>
                 <li class="numero">
                     <i class="fa-solid fa-gift" aria-hidden="true"></i>
                     <strong data-contar="100" data-sufixo="%">100%</strong>
                     <span>gratuito</span>
                 </li>
-            </ul>
+                </ul>
         </section>
 
         <!-- Trilha -->
         <section class="secao-home revelar" aria-labelledby="titulo-trilha">
             <h2 id="titulo-trilha">Sua trilha de aprendizado</h2>
-            <p class="subtitulo">Quatro etapas, do primeiro <code>std::cout</code> até um programa completo.</p>
+            <p class="subtitulo">Sete módulos, do primeiro <code>std::cout</code> até um programa completo.</p>
             <ol class="trilha">
                 <li class="passo">
                     <span class="passo-numero" aria-hidden="true">1</span>
-                    <h3>Fundamentos</h3>
-                    <p>Instale o compilador, rode o primeiro programa e entenda <code>main</code>, variáveis e tipos.</p>
+                    <h3>Primeiros passos</h3>
+                    <p>Compilar, escrever e executar seu primeiro programa.</p>
+                    <a class="passo-link" href="./aula.html#mod1">5 aulas &middot; Iniciante &rarr;</a>
                 </li>
                 <li class="passo">
                     <span class="passo-numero" aria-hidden="true">2</span>
-                    <h3>Lógica</h3>
-                    <p>Condições, laços e funções para fazer o programa decidir e repetir.</p>
+                    <h3>Controle de fluxo</h3>
+                    <p>Decidir e repetir: if, switch e laços.</p>
+                    <a class="passo-link" href="./aula.html#mod2">4 aulas &middot; Iniciante &rarr;</a>
                 </li>
                 <li class="passo">
                     <span class="passo-numero" aria-hidden="true">3</span>
-                    <h3>Memória e objetos</h3>
-                    <p>Referências, ponteiros, classes e a STL com <code>vector</code>.</p>
+                    <h3>Funções e memória</h3>
+                    <p>Reaproveitar código e entender stack, heap e ponteiros.</p>
+                    <a class="passo-link" href="./aula.html#mod3">6 aulas &middot; Intermediário &rarr;</a>
                 </li>
                 <li class="passo">
                     <span class="passo-numero" aria-hidden="true">4</span>
-                    <h3>Projeto final</h3>
-                    <p>Monte um programa de terminal completo, como uma agenda de contatos.</p>
+                    <h3>Orientação a objetos</h3>
+                    <p>Classes, herança, polimorfismo e operadores.</p>
+                    <a class="passo-link" href="./aula.html#mod4">6 aulas &middot; Intermediário &rarr;</a>
                 </li>
-            </ol>
+                <li class="passo">
+                    <span class="passo-numero" aria-hidden="true">5</span>
+                    <h3>Biblioteca padrão (STL)</h3>
+                    <p>vector, string, map, set e algoritmos prontos.</p>
+                    <a class="passo-link" href="./aula.html#mod5">4 aulas &middot; Intermediário &rarr;</a>
+                </li>
+                <li class="passo">
+                    <span class="passo-numero" aria-hidden="true">6</span>
+                    <h3>C++ moderno</h3>
+                    <p>Lambdas, smart pointers, templates, exceções e arquivos.</p>
+                    <a class="passo-link" href="./aula.html#mod6">5 aulas &middot; Avançado &rarr;</a>
+                </li>
+                <li class="passo">
+                    <span class="passo-numero" aria-hidden="true">7</span>
+                    <h3>Projeto final</h3>
+                    <p>Junte tudo em um programa de terminal completo.</p>
+                    <a class="passo-link" href="./aula.html#mod7">1 aulas &middot; Avançado &rarr;</a>
+                </li></ol>
+        </section>
+
+        <!-- Memória -->
+        <section class="secao-home revelar" id="memoria" aria-labelledby="titulo-mem">
+            <h2 id="titulo-mem">Veja a memória por dentro</h2>
+            <p class="subtitulo">Execute o código passo a passo e acompanhe a pilha (stack) e o monte (heap). É assim que ponteiros, referências e <code>new</code>/<code>delete</code> funcionam de verdade.</p>
+            <div class="stepper" data-stepper="ponteiro,ref,heap"></div>
         </section>
 
         <!-- Editor ao vivo -->

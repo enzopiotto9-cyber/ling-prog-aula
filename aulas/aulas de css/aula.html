@@ -4,21 +4,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Aulas de C++: 31 aulas em 7 módulos, de variáveis a ponteiros, classes, STL e C++ moderno">
+    <meta name="description" content="Aulas de CSS: seletores, cores, caixa, flexbox, grid, responsividade e animações">
     <meta name="author" content="Pioto">
     <meta name="theme-color" content="#00599c">
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2300599c'/%3E%3Ctext x='32' y='42' font-family='Arial' font-size='20' font-weight='bold' fill='white' text-anchor='middle'%3EC%2B%2B%3C/text%3E%3C/svg%3E">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2300599c'/%3E%3Ctext x='32' y='41' font-family='Arial' font-size='19' font-weight='bold' fill='white' text-anchor='middle'%3ECSS%3C/text%3E%3C/svg%3E">
     <script>document.documentElement.classList.add('js');</script>
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css">
-    <title>Aulas | Aprenda C++</title>
+    <title>Aulas | Aprenda CSS</title>
 </head>
 
 <body>
     <a class="pular-conteudo" href="#conteudo">Pular para o conteúdo</a>
 
     <header class="banner-logo-inicial">
-        <h1>Aulas de C++</h1>
+        <h1>Aulas de CSS</h1>
     </header>
 
     <nav class="menu-navegacao-inicio" aria-label="Navegação principal">
@@ -36,981 +36,194 @@
     <main id="conteudo">
         <div class="barra-ferramentas">
             <form class="busca" role="search" onsubmit="return false">
-            <label for="campo-busca" class="so-leitor-de-tela">Pesquisar nas aulas</label>
-            <input id="campo-busca" type="search" placeholder="Pesquisar aula..." />
-            <button type="submit">Buscar</button>
-        </form>
+                <label for="campo-busca" class="so-leitor-de-tela">Pesquisar nas aulas</label>
+                <input id="campo-busca" type="search" placeholder="Pesquisar aula..." />
+                <button type="submit">Buscar</button>
+            </form>
             <div class="acessibilidade">
                 <button type="button" id="btn-acessibilidade" aria-label="Acessibilidade" title="Acessibilidade"><i class="fa-solid fa-eye" aria-hidden="true"></i></button>
                 <button type="button" id="btn-config" aria-label="Configurações do site" title="Configurações do site"><i class="fa-solid fa-gear" aria-hidden="true"></i></button>
             </div>
         </div>
 
-        <section class="progresso-curso" aria-labelledby="titulo-prog">
-            <div class="anel" id="anel" style="--p:0"><span id="anel-txt">0%</span></div>
-            <div class="prog-info">
-                <h2 id="titulo-prog">Seu progresso</h2>
-                <p id="prog-txt" role="status">0 de 31 aulas concluídas</p>
-                <div class="prog-barra"><i id="prog-barra"></i></div>
-            </div>
-            <button type="button" id="prog-zerar" class="botao-secundario">Zerar</button>
-        </section>
-
         <section class="indice" aria-labelledby="titulo-indice">
             <h2 id="titulo-indice">Escolha uma aula</h2>
-            <div class="chips-mod" role="group" aria-label="Filtrar por módulo"><button type="button" data-mod="todos" aria-pressed="true">Todos</button><button type="button" data-mod="1" aria-pressed="false">1. Primeiros passos</button><button type="button" data-mod="2" aria-pressed="false">2. Controle de fluxo</button><button type="button" data-mod="3" aria-pressed="false">3. Funções e memória</button><button type="button" data-mod="4" aria-pressed="false">4. Orientação a objetos</button><button type="button" data-mod="5" aria-pressed="false">5. Biblioteca padrão (STL)</button><button type="button" data-mod="6" aria-pressed="false">6. C++ moderno</button><button type="button" data-mod="7" aria-pressed="false">7. Projeto final</button></div>
-            <div class="modulo" id="mod1" data-mod="1">
-                <h3><span class="mod-n">1</span> Primeiros passos <span class="mod-cont">0/5</span></h3>
-                <p class="mod-desc">Compilar, escrever e executar seu primeiro programa.</p>
-                <ol class="lista-aulas" start="1">
-                    <li><a href="#aula1"><b class="n">01</b><strong>O que é C++</strong><span>Rápida, poderosa e compilada</span></a></li>
-                    <li><a href="#aula2"><b class="n">02</b><strong>Estrutura básica</strong><span>#include, main e std</span></a></li>
-                    <li><a href="#aula3"><b class="n">03</b><strong>Variáveis e tipos</strong><span>int, double, char, bool, string</span></a></li>
-                    <li><a href="#aula4"><b class="n">04</b><strong>Entrada e saída</strong><span>cout, cin e getline</span></a></li>
-                    <li><a href="#aula5"><b class="n">05</b><strong>Operadores</strong><span>Aritméticos, lógicos e compostos</span></a></li></ol>
-            </div>
-            <div class="modulo" id="mod2" data-mod="2">
-                <h3><span class="mod-n">2</span> Controle de fluxo <span class="mod-cont">0/4</span></h3>
-                <p class="mod-desc">Decidir e repetir: if, switch e laços.</p>
-                <ol class="lista-aulas" start="6">
-                    <li><a href="#aula6"><b class="n">06</b><strong>Condições: if e else</strong><span>Fazendo o programa decidir</span></a></li>
-                    <li><a href="#aula7"><b class="n">07</b><strong>switch e operador ternário</strong><span>Escolhas múltiplas e atalhos</span></a></li>
-                    <li><a href="#aula8"><b class="n">08</b><strong>Laços de repetição</strong><span>for, while, do-while e for por faixa</span></a></li>
-                    <li><a href="#aula9"><b class="n">09</b><strong>break, continue e laços aninhados</strong><span>Controlando o fluxo dos laços</span></a></li></ol>
-            </div>
-            <div class="modulo" id="mod3" data-mod="3">
-                <h3><span class="mod-n">3</span> Funções e memória <span class="mod-cont">0/6</span></h3>
-                <p class="mod-desc">Reaproveitar código e entender stack, heap e ponteiros.</p>
-                <ol class="lista-aulas" start="10">
-                    <li><a href="#aula10"><b class="n">10</b><strong>Funções</strong><span>Protótipo, sobrecarga e valores padrão</span></a></li>
-                    <li><a href="#aula11"><b class="n">11</b><strong>Escopo e a pilha (stack)</strong><span>Onde cada variável vive</span></a></li>
-                    <li><a href="#aula12"><b class="n">12</b><strong>Referências</strong><span>Outro nome para a mesma variável</span></a></li>
-                    <li><a href="#aula13"><b class="n">13</b><strong>Ponteiros</strong><span>Endereços de memória</span></a></li>
-                    <li><a href="#aula14"><b class="n">14</b><strong>Arrays</strong><span>Vários valores em sequência</span></a></li>
-                    <li><a href="#aula15"><b class="n">15</b><strong>Alocação dinâmica: new e delete</strong><span>O monte (heap)</span></a></li></ol>
-            </div>
-            <div class="modulo" id="mod4" data-mod="4">
-                <h3><span class="mod-n">4</span> Orientação a objetos <span class="mod-cont">0/6</span></h3>
-                <p class="mod-desc">Classes, herança, polimorfismo e operadores.</p>
-                <ol class="lista-aulas" start="16">
-                    <li><a href="#aula16"><b class="n">16</b><strong>Classes e objetos</strong><span>Orientação a objetos</span></a></li>
-                    <li><a href="#aula17"><b class="n">17</b><strong>Construtores e destrutores</strong><span>Nascer, viver e ser destruído</span></a></li>
-                    <li><a href="#aula18"><b class="n">18</b><strong>Encapsulamento e const</strong><span>Protegendo os dados</span></a></li>
-                    <li><a href="#aula19"><b class="n">19</b><strong>Herança</strong><span>Reaproveitando classes</span></a></li>
-                    <li><a href="#aula20"><b class="n">20</b><strong>Polimorfismo e virtual</strong><span>Um comportamento, várias formas</span></a></li>
-                    <li><a href="#aula21"><b class="n">21</b><strong>Sobrecarga de operadores</strong><span>Ensinando o + a trabalhar com seus tipos</span></a></li></ol>
-            </div>
-            <div class="modulo" id="mod5" data-mod="5">
-                <h3><span class="mod-n">5</span> Biblioteca padrão (STL) <span class="mod-cont">0/4</span></h3>
-                <p class="mod-desc">vector, string, map, set e algoritmos prontos.</p>
-                <ol class="lista-aulas" start="22">
-                    <li><a href="#aula22"><b class="n">22</b><strong>std::vector</strong><span>O array que cresce sozinho</span></a></li>
-                    <li><a href="#aula23"><b class="n">23</b><strong>std::string</strong><span>Textos com superpoderes</span></a></li>
-                    <li><a href="#aula24"><b class="n">24</b><strong>map e set</strong><span>Chave e valor, valores únicos</span></a></li>
-                    <li><a href="#aula25"><b class="n">25</b><strong>Algoritmos e iteradores</strong><span>sort, find, accumulate e mais</span></a></li></ol>
-            </div>
-            <div class="modulo" id="mod6" data-mod="6">
-                <h3><span class="mod-n">6</span> C++ moderno <span class="mod-cont">0/5</span></h3>
-                <p class="mod-desc">Lambdas, smart pointers, templates, exceções e arquivos.</p>
-                <ol class="lista-aulas" start="26">
-                    <li><a href="#aula26"><b class="n">26</b><strong>Lambdas</strong><span>Funções sem nome</span></a></li>
-                    <li><a href="#aula27"><b class="n">27</b><strong>Smart pointers</strong><span>Memória que se libera sozinha</span></a></li>
-                    <li><a href="#aula28"><b class="n">28</b><strong>Templates</strong><span>Código que serve para qualquer tipo</span></a></li>
-                    <li><a href="#aula29"><b class="n">29</b><strong>Exceções</strong><span>Tratando erros com try e catch</span></a></li>
-                    <li><a href="#aula30"><b class="n">30</b><strong>Arquivos</strong><span>Lendo e escrevendo com fstream</span></a></li></ol>
-            </div>
-            <div class="modulo" id="mod7" data-mod="7">
-                <h3><span class="mod-n">7</span> Projeto final <span class="mod-cont">0/1</span></h3>
-                <p class="mod-desc">Junte tudo em um programa de terminal completo.</p>
-                <ol class="lista-aulas" start="31">
-                    <li><a href="#aula31"><b class="n">31</b><strong>Projeto final: agenda de contatos</strong><span>Juntando tudo em um programa de terminal</span></a></li></ol>
-            </div>
+            <ol class="lista-aulas">
+                <li><a href="#aula1"><strong>O que é CSS</strong><span>Estilizando a web</span></a></li>
+                <li><a href="#aula2"><strong>Seletores</strong><span>Escolhendo quem estilizar</span></a></li>
+                <li><a href="#aula3"><strong>Cores e texto</strong><span>Tipografia e paleta</span></a></li>
+                <li><a href="#aula4"><strong>Modelo de caixa</strong><span>Margin, border e padding</span></a></li>
+                <li><a href="#aula5"><strong>Flexbox</strong><span>Alinhando em uma dimensão</span></a></li>
+                <li><a href="#aula6"><strong>Grid</strong><span>Layouts em linhas e colunas</span></a></li>
+                <li><a href="#aula7"><strong>Posicionamento e responsividade</strong><span>position e media queries</span></a></li>
+                <li><a href="#aula8"><strong>Transições, animações e variáveis</strong><span>Movimento e organização</span></a></li></ol>
             <p id="sem-resultado" hidden>Nenhuma aula encontrada para essa busca.</p>
         </section>
 
-        <article class="aula" id="aula1" data-n="1" data-mod="1">
-            <div class="aula-meta"><span>Módulo 1 &middot; Primeiros passos</span><span class="nivel">Iniciante</span><span class="aula-num">Aula 1 de 31</span></div>
-            <h2>Aula 1: O que é C++</h2>
-            <p>C++ é uma linguagem <strong>compilada</strong> de alto desempenho, criada por Bjarne Stroustrup como evolução do C. Ela está em jogos, sistemas operacionais, navegadores, bancos de dados e sistemas embarcados: onde velocidade e controle importam.</p><p>Você escreve o código em um arquivo <code>.cpp</code>, o compilador (como o <code>g++</code>) o transforma em programa, e então você o executa:</p>
-            <pre><code class="lang-cpp">#include &lt;iostream&gt;
-
-int main() {
-    std::cout &lt;&lt; "Olá, mundo!" &lt;&lt; std::endl;
-    return 0;
+        <article class="aula" id="aula1">
+            <h2>Aula 1: O que é CSS</h2>
+            <p>CSS (<em>Cascading Style Sheets</em>) é a linguagem que dá <strong>aparência</strong> à página: cores, fontes, espaços e layout. O HTML cria a estrutura; o CSS decide como ela é mostrada.</p>
+            <p>Uma regra tem três partes: o <strong>seletor</strong> (quem recebe o estilo), a <strong>propriedade</strong> (o que muda) e o <strong>valor</strong> (como muda):</p>
+            <pre><code class="lang-css">p {
+  color: blue;        /* propriedade: valor; */
+  font-size: 18px;
 }</code></pre>
-            <p>Para compilar: <code>g++ main.cpp -o programa</code>. Mas o que o <code>g++</code> faz por dentro? Veja as etapas (a animação roda sozinha):</p><div class="pipeline" data-pipeline></div><p class="dica"><b>Dica:</b> use <code>-std=c++20</code> para ligar os recursos modernos: <code>g++ -std=c++20 main.cpp -o programa</code>.</p>
+            <p>O jeito mais comum de usar é um arquivo <code>.css</code> ligado no <code>&lt;head&gt;</code> do HTML:</p>
+            <pre><code class="lang-html">&lt;link rel="stylesheet" href="style.css"&gt;</code></pre>
             <details class="exercicio">
-                <summary>Exercício: como compilar e rodar o arquivo <code>main.cpp</code>?</summary>
-                <p>Com <code>g++ main.cpp -o programa</code> e depois <code>./programa</code> (no Windows, <code>programa.exe</code>).</p>
+                <summary>Exercício: como ligar um arquivo <code>style.css</code> à página?</summary>
+                <p>Com a tag <code>&lt;link rel="stylesheet" href="style.css"&gt;</code> dentro do <code>&lt;head&gt;</code>.</p>
             </details>
-            <div class="aula-nav"><a class="ant" href="#titulo-indice"><i class="fa-solid fa-list" aria-hidden="true"></i> Índice</a><button type="button" class="concluir" data-aula="1" aria-pressed="false"><i class="fa-regular fa-circle" aria-hidden="true"></i> <span>Marcar como concluída</span></button><a class="prox" href="#aula2">Próxima <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></div>
         </article>
 
-        <article class="aula" id="aula2" data-n="2" data-mod="1">
-            <div class="aula-meta"><span>Módulo 1 &middot; Primeiros passos</span><span class="nivel">Iniciante</span><span class="aula-num">Aula 2 de 31</span></div>
-            <h2>Aula 2: Estrutura básica</h2>
-            <p>Todo programa C++ começa a executar pela função <code>main</code>. As partes do esqueleto:</p>
-            <pre><code class="lang-cpp">#include &lt;iostream&gt;
-using namespace std;
-
-// comentário de uma linha
-/* comentário
-   de várias linhas */
-int main() {
-    cout &lt;&lt; "Olá!" &lt;&lt; endl;
-    return 0;
-}</code></pre>
-            <ul><li><code>#include</code> importa bibliotecas (<code>iostream</code> cuida da entrada e saída).</li><li><code>using namespace std;</code> evita escrever <code>std::</code> toda hora.</li><li><code>main</code> é o ponto de entrada; <code>return 0</code> indica sucesso.</li><li>Toda instrução termina com <code>;</code>.</li></ul><p class="alerta"><b>Atenção:</b> esquecer o <code>;</code> é o erro mais comum. O compilador costuma apontar a linha <em>seguinte</em> à do problema.</p>
+        <article class="aula" id="aula2">
+            <h2>Aula 2: Seletores</h2>
+            <p>Seletores apontam os elementos. Os principais: <code>p</code> (tag), <code>.classe</code>, <code>#id</code>, <code>nav a</code> (descendente), <code>ul &gt; li</code> (filho direto) e pseudo-classes como <code>:hover</code>.</p>
+            <pre><code class="lang-css">p { color: #333; }              /* todas as tags p */
+.destaque { color: crimson; }   /* class="destaque" */
+#topo { background: navy; }     /* id="topo" */
+nav a { text-decoration: none; }
+ul &gt; li { list-style: square; }
+a:hover { color: orange; }
+h1, h2, h3 { font-family: serif; } /* grupo */</code></pre>
+            <p>Quando duas regras brigam, vence a mais <strong>específica</strong>: id &gt; classe &gt; tag. Se empatar, vale a que vem por último.</p>
             <details class="exercicio">
-                <summary>Exercício: o que faz o <code>#include</code>?</summary>
-                <p>Ele traz para o seu arquivo as declarações de uma biblioteca, como o <code>iostream</code>, que tem o <code>cout</code>.</p>
+                <summary>Exercício: qual seletor escolhe todos os elementos com <code>class="card"</code>?</summary>
+                <p><code>.card</code>, com um ponto antes do nome da classe.</p>
             </details>
-            <div class="aula-nav"><a class="ant" href="#aula1"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Anterior</a><button type="button" class="concluir" data-aula="2" aria-pressed="false"><i class="fa-regular fa-circle" aria-hidden="true"></i> <span>Marcar como concluída</span></button><a class="prox" href="#aula3">Próxima <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></div>
         </article>
 
-        <article class="aula" id="aula3" data-n="3" data-mod="1">
-            <div class="aula-meta"><span>Módulo 1 &middot; Primeiros passos</span><span class="nivel">Iniciante</span><span class="aula-num">Aula 3 de 31</span></div>
-            <h2>Aula 3: Variáveis e tipos</h2>
-            <p>Toda variável tem um tipo. Com <code>auto</code> o compilador descobre o tipo, e <code>const</code> impede que o valor mude.</p>
-            <pre><code class="lang-cpp">int idade = 25;
-double preco = 19.90;
-char letra = 'A';
-bool ativo = true;
-std::string nome = "Ana";
-const double PI = 3.14159;
-auto x = 10;          // o compilador deduz int
-
-std::cout &lt;&lt; nome &lt;&lt; " tem " &lt;&lt; idade &lt;&lt; " anos\n";
-std::cout &lt;&lt; sizeof(int) &lt;&lt; " bytes\n";   // geralmente 4</code></pre>
-            <table class="tabela-tipos"><thead><tr><th>Tipo</th><th>Guarda</th><th>Tamanho típico</th></tr></thead><tbody><tr><td><code>int</code></td><td>inteiro</td><td>4 bytes</td></tr><tr><td><code>double</code></td><td>decimal (precisão alta)</td><td>8 bytes</td></tr><tr><td><code>float</code></td><td>decimal (precisão menor)</td><td>4 bytes</td></tr><tr><td><code>char</code></td><td>um caractere</td><td>1 byte</td></tr><tr><td><code>bool</code></td><td>verdadeiro ou falso</td><td>1 byte</td></tr><tr><td><code>std::string</code></td><td>texto (de <code>&lt;string&gt;</code>)</td><td>variável</td></tr></tbody></table><p class="dica"><b>Dica:</b> os tamanhos mudam conforme o computador. Use <code>sizeof(tipo)</code> para conferir no seu.</p>
+        <article class="aula" id="aula3">
+            <h2>Aula 3: Cores e texto</h2>
+            <p>Cores podem ser nomes (<code>tomato</code>), hexadecimais (<code>#ff6347</code>), <code>rgb()</code> ou <code>hsl()</code>. Para texto: <code>font-family</code>, <code>font-size</code>, <code>font-weight</code>, <code>line-height</code> e <code>text-align</code>.</p>
+            <pre><code class="lang-css">body {
+  font-family: system-ui, sans-serif;
+  font-size: 18px;
+  line-height: 1.6;        /* espaço entre linhas */
+  color: #1f2937;
+  background: #f8fafc;
+}
+h1 {
+  color: hsl(210, 80%, 40%);
+  text-align: center;
+}</code></pre><div class="demo"><p class="demo-rotulo"><i class="fa-solid fa-wand-magic-sparkles" aria-hidden="true"></i> Veja funcionando</p><div class="demo-cores"><span style="background:tomato">tomato</span><span style="background:#00599c">#00599c</span><span style="background:rgb(124,58,237)">rgb(124,58,237)</span><span style="background:hsl(150,60%,35%)">hsl(150,60%,35%)</span><span style="background:hsl(45,100%,50%);color:#111">hsl(45,100%,50%)</span></div></div>
             <details class="exercicio">
-                <summary>Exercício: o que muda ao declarar uma variável com <code>const</code>?</summary>
-                <p>O valor não pode mais ser alterado depois de definido.</p>
+                <summary>Exercício: o que faz <code>line-height: 1.6</code>?</summary>
+                <p>Define a altura da linha como 1,6 vez o tamanho da fonte, deixando o texto mais arejado.</p>
             </details>
-            <div class="aula-nav"><a class="ant" href="#aula2"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Anterior</a><button type="button" class="concluir" data-aula="3" aria-pressed="false"><i class="fa-regular fa-circle" aria-hidden="true"></i> <span>Marcar como concluída</span></button><a class="prox" href="#aula4">Próxima <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></div>
         </article>
 
-        <article class="aula" id="aula4" data-n="4" data-mod="1">
-            <div class="aula-meta"><span>Módulo 1 &middot; Primeiros passos</span><span class="nivel">Iniciante</span><span class="aula-num">Aula 4 de 31</span></div>
-            <h2>Aula 4: Entrada e saída</h2>
-            <p><code>cout</code> escreve na tela com <code>&lt;&lt;</code>; <code>cin</code> lê do teclado com <code>&gt;&gt;</code>. Para ler uma linha inteira (com espaços) use <code>getline</code>.</p>
-            <pre><code class="lang-cpp">#include &lt;iostream&gt;
-#include &lt;string&gt;
-using namespace std;
+        <article class="aula" id="aula4">
+            <h2>Aula 4: Modelo de caixa</h2>
+            <p>Todo elemento é uma caixa com quatro camadas: <strong>conteúdo</strong>, <strong>padding</strong> (espaço interno), <strong>border</strong> (borda) e <strong>margin</strong> (espaço externo). Use <code>box-sizing: border-box</code> para que a largura já inclua padding e borda.</p>
+            <pre><code class="lang-css">* { box-sizing: border-box; }
 
-int main() {
-    string nome;
-    int idade;
-
-    cout &lt;&lt; "Seu nome: ";
-    getline(cin, nome);
-    cout &lt;&lt; "Sua idade: ";
-    cin &gt;&gt; idade;
-
-    cout &lt;&lt; "Olá, " &lt;&lt; nome &lt;&lt; "! Ano que vem você terá " &lt;&lt; idade + 1 &lt;&lt; ".\n";
-}</code></pre>
-            <p class="alerta"><b>Pegadinha:</b> depois de um <code>cin &gt;&gt;</code> sobra um <code>\n</code> no buffer e o próximo <code>getline</code> lê uma linha vazia. Resolva com <code>cin.ignore();</code>.</p>
+.caixa {
+  width: 300px;
+  padding: 20px;               /* dentro */
+  border: 3px solid #00599c;
+  margin: 16px auto;           /* fora; auto centraliza */
+  border-radius: 12px;
+}</code></pre><div class="demo"><p class="demo-rotulo"><i class="fa-solid fa-wand-magic-sparkles" aria-hidden="true"></i> Veja funcionando</p><div class="bm"><span>margin</span><div class="b"><span>border</span><div class="p"><span>padding</span><div class="c">conteúdo</div></div></div></div></div>
             <details class="exercicio">
-                <summary>Exercício: por que usar <code>getline</code> em vez de <code>cin &gt;&gt;</code> para ler um nome completo?</summary>
-                <p><code>cin &gt;&gt;</code> para no primeiro espaço; <code>getline</code> lê a linha inteira.</p>
+                <summary>Exercício: qual a diferença entre <code>margin</code> e <code>padding</code>?</summary>
+                <p><code>padding</code> é o espaço dentro da borda; <code>margin</code> é o espaço fora dela, entre elementos.</p>
             </details>
-            <div class="aula-nav"><a class="ant" href="#aula3"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Anterior</a><button type="button" class="concluir" data-aula="4" aria-pressed="false"><i class="fa-regular fa-circle" aria-hidden="true"></i> <span>Marcar como concluída</span></button><a class="prox" href="#aula5">Próxima <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></div>
         </article>
 
-        <article class="aula" id="aula5" data-n="5" data-mod="1">
-            <div class="aula-meta"><span>Módulo 1 &middot; Primeiros passos</span><span class="nivel">Iniciante</span><span class="aula-num">Aula 5 de 31</span></div>
-            <h2>Aula 5: Operadores</h2>
-            <p>Aritméticos: <code>+ - * / %</code>. Compostos: <code>+= -= *= /=</code>, além de <code>++</code> e <code>--</code>. Comparação: <code>== != &lt; &gt; &lt;= &gt;=</code>. Lógicos: <code>&amp;&amp;</code> (e), <code>||</code> (ou) e <code>!</code> (não).</p>
-            <pre><code class="lang-cpp">int a = 7, b = 2;
-std::cout &lt;&lt; a / b &lt;&lt; "\n";     // 3   (divisão inteira)
-std::cout &lt;&lt; a % b &lt;&lt; "\n";     // 1   (resto)
-std::cout &lt;&lt; a / 2.0 &lt;&lt; "\n";   // 3.5
-
-int c = 5;
-c += 3;                         // c = c + 3  -&gt;  8
-c++;                            // 9
-
-bool ok = (a &gt; b) &amp;&amp; !(b == 0); // true</code></pre>
-            <p class="alerta"><b>Atenção:</b> divisão entre dois inteiros descarta a parte decimal. Para ter decimais, pelo menos um dos lados precisa ser <code>double</code>.</p>
+        <article class="aula" id="aula5">
+            <h2>Aula 5: Flexbox</h2>
+            <p>Com <code>display: flex</code> no pai, os filhos ficam em linha ou coluna. <code>justify-content</code> alinha no eixo principal, <code>align-items</code> no eixo cruzado e <code>gap</code> cria espaço entre os itens.</p>
+            <pre><code class="lang-css">.menu {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}</code></pre><div class="demo"><p class="demo-rotulo"><i class="fa-solid fa-wand-magic-sparkles" aria-hidden="true"></i> Veja funcionando</p><div class="fx-ctrl">
+                <label>flex-direction <select id="fx-dir"><option>row</option><option>column</option></select></label>
+                <label>justify-content <select id="fx-just"><option>flex-start</option><option>center</option><option>flex-end</option><option>space-between</option><option>space-around</option></select></label>
+                <label>align-items <select id="fx-alin"><option>flex-start</option><option>center</option><option>flex-end</option></select></label>
+            </div>
+            <div class="fx-demo" id="fx-demo"><i>1</i><i>2</i><i>3</i></div>
+            <pre><code class="lang-css" id="fx-codigo"></code></pre></div>
             <details class="exercicio">
-                <summary>Exercício: quanto vale <code>7 / 2</code> com inteiros? E <code>7 / 2.0</code>?</summary>
-                <p><code>3</code> e <code>3.5</code>.</p>
+                <summary>Exercício: como centralizar um item na horizontal e na vertical com flex?</summary>
+                <p>No pai: <code>display: flex; justify-content: center; align-items: center;</code>.</p>
             </details>
-            <div class="aula-nav"><a class="ant" href="#aula4"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Anterior</a><button type="button" class="concluir" data-aula="5" aria-pressed="false"><i class="fa-regular fa-circle" aria-hidden="true"></i> <span>Marcar como concluída</span></button><a class="prox" href="#aula6">Próxima <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></div>
         </article>
 
-        <article class="aula" id="aula6" data-n="6" data-mod="2">
-            <div class="aula-meta"><span>Módulo 2 &middot; Controle de fluxo</span><span class="nivel">Iniciante</span><span class="aula-num">Aula 6 de 31</span></div>
-            <h2>Aula 6: Condições: if e else</h2>
-            <p>O <code>if</code> executa um bloco só quando a condição é verdadeira. Encadeie com <code>else if</code> e <code>else</code>.</p>
-            <pre><code class="lang-cpp">int nota = 7;
-
-if (nota &gt;= 7) {
-    std::cout &lt;&lt; "Aprovado\n";
-} else if (nota &gt;= 5) {
-    std::cout &lt;&lt; "Recuperação\n";
-} else {
-    std::cout &lt;&lt; "Reprovado\n";
-}</code></pre>
-            <p class="alerta"><b>Cuidado:</b> <code>if (x = 5)</code> <em>atribui</em> 5 a x e é sempre verdadeiro. Para comparar, use <code>==</code>.</p>
+        <article class="aula" id="aula6">
+            <h2>Aula 6: Grid</h2>
+            <p>O Grid organiza em duas dimensões. Defina colunas com <code>grid-template-columns</code>; a unidade <code>fr</code> divide o espaço livre. Com <code>repeat(auto-fit, minmax())</code> o layout se adapta sozinho à largura.</p>
+            <pre><code class="lang-css">.galeria {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 12px;
+}</code></pre><div class="demo"><p class="demo-rotulo"><i class="fa-solid fa-wand-magic-sparkles" aria-hidden="true"></i> Veja funcionando</p><p>Arraste o canto inferior direito da caixa para mudar a largura:</p><div class="demo-grid"><div>1</div><div>2</div><div>3</div><div>4</div><div>5</div><div>6</div></div></div>
             <details class="exercicio">
-                <summary>Exercício: qual a diferença entre <code>=</code> e <code>==</code>?</summary>
-                <p><code>=</code> atribui um valor; <code>==</code> compara dois valores.</p>
+                <summary>Exercício: o que significa <code>grid-template-columns: 1fr 2fr</code>?</summary>
+                <p>Duas colunas: a segunda ocupa o dobro do espaço da primeira.</p>
             </details>
-            <div class="aula-nav"><a class="ant" href="#aula5"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Anterior</a><button type="button" class="concluir" data-aula="6" aria-pressed="false"><i class="fa-regular fa-circle" aria-hidden="true"></i> <span>Marcar como concluída</span></button><a class="prox" href="#aula7">Próxima <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></div>
         </article>
 
-        <article class="aula" id="aula7" data-n="7" data-mod="2">
-            <div class="aula-meta"><span>Módulo 2 &middot; Controle de fluxo</span><span class="nivel">Iniciante</span><span class="aula-num">Aula 7 de 31</span></div>
-            <h2>Aula 7: switch e operador ternário</h2>
-            <p>Quando há muitos casos para um mesmo valor, o <code>switch</code> fica mais limpo que vários <code>else if</code>. O operador ternário <code>cond ? a : b</code> é um <code>if/else</code> em uma linha.</p>
-            <pre><code class="lang-cpp">int dia = 3;
-switch (dia) {
-    case 1: std::cout &lt;&lt; "Domingo\n"; break;
-    case 2: std::cout &lt;&lt; "Segunda\n"; break;
-    case 3: std::cout &lt;&lt; "Terça\n";   break;
-    default: std::cout &lt;&lt; "Outro dia\n";
+        <article class="aula" id="aula7">
+            <h2>Aula 7: Posicionamento e responsividade</h2>
+            <p>Com <code>position</code> você tira elementos do fluxo: <code>relative</code> (referência), <code>absolute</code> (relativo ao pai posicionado), <code>fixed</code> (fixo na tela) e <code>sticky</code> (gruda ao rolar). Para adaptar a telas diferentes use <code>@media</code>.</p>
+            <pre><code class="lang-css">.cartao { position: relative; }
+.selo {
+  position: absolute;
+  top: 8px;
+  right: 8px;
 }
 
-int idade = 20;
-std::string tipo = (idade &gt;= 18) ? "adulto" : "menor";</code></pre>
-            <p class="alerta"><b>Atenção:</b> sem <code>break</code>, a execução "cai" para o próximo <code>case</code> (<em>fall-through</em>).</p>
+.menu { position: sticky; top: 0; }
+
+.colunas { display: grid; grid-template-columns: 1fr; }
+@media (min-width: 768px) {
+  .colunas { grid-template-columns: 1fr 1fr; }
+}</code></pre><p>Dica: comece pensando no celular (<em>mobile first</em>) e acrescente regras para telas maiores.</p>
             <details class="exercicio">
-                <summary>Exercício: o que acontece se esquecer o <code>break</code> em um <code>case</code>?</summary>
-                <p>A execução continua no <code>case</code> seguinte até achar um <code>break</code> ou o fim do <code>switch</code>.</p>
+                <summary>Exercício: o que o <code>@media (min-width: 768px)</code> faz?</summary>
+                <p>Aplica as regras de dentro apenas quando a tela tem 768px de largura ou mais.</p>
             </details>
-            <div class="aula-nav"><a class="ant" href="#aula6"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Anterior</a><button type="button" class="concluir" data-aula="7" aria-pressed="false"><i class="fa-regular fa-circle" aria-hidden="true"></i> <span>Marcar como concluída</span></button><a class="prox" href="#aula8">Próxima <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></div>
         </article>
 
-        <article class="aula" id="aula8" data-n="8" data-mod="2">
-            <div class="aula-meta"><span>Módulo 2 &middot; Controle de fluxo</span><span class="nivel">Iniciante</span><span class="aula-num">Aula 8 de 31</span></div>
-            <h2>Aula 8: Laços de repetição</h2>
-            <p>Use <code>for</code> quando sabe quantas vezes repetir, <code>while</code> quando depende de uma condição, <code>do-while</code> quando precisa executar <em>ao menos uma vez</em> e o <code>for</code> por faixa para percorrer todos os itens.</p>
-            <pre><code class="lang-cpp">for (int i = 1; i &lt;= 3; i++) {
-    std::cout &lt;&lt; i &lt;&lt; "\n";
+        <article class="aula" id="aula8">
+            <h2>Aula 8: Transições, animações e variáveis</h2>
+            <p><code>transition</code> suaviza a mudança entre estados, como no <code>:hover</code>. Para animações em loop use <code>@keyframes</code> com <code>animation</code>. E com variáveis (<code>--nome</code>) você troca a paleta inteira mudando um só lugar.</p>
+            <pre><code class="lang-css">:root {
+  --cor: #00599c;
+}
+.botao {
+  background: var(--cor);
+  transition: transform .25s, background .25s;
+}
+.botao:hover {
+  transform: translateY(-4px) scale(1.06);
+  background: #ff3d81;
 }
 
-int n = 3;
-while (n &gt; 0) {
-    n--;
+@keyframes ida {
+  to { left: calc(100% - 36px); }
 }
-
-int tentativa;
-do {
-    std::cout &lt;&lt; "Digite um número positivo: ";
-    std::cin &gt;&gt; tentativa;
-} while (tentativa &lt;= 0);
-
-std::string s = "C++";
-for (char c : s) {
-    std::cout &lt;&lt; c &lt;&lt; "\n";
-}</code></pre>
-            
+.bola { animation: ida 2.4s ease-in-out infinite alternate; }</code></pre><div class="demo"><p class="demo-rotulo"><i class="fa-solid fa-wand-magic-sparkles" aria-hidden="true"></i> Veja funcionando</p><button type="button" class="demo-hover">Passe o mouse aqui</button><div class="demo-pista" aria-hidden="true"><div class="demo-bola"></div></div></div>
             <details class="exercicio">
-                <summary>Exercício: qual laço percorre todos os itens de uma coleção?</summary>
-                <p>O <code>for</code> por faixa: <code>for (auto x : colecao)</code>.</p>
+                <summary>Exercício: para que serve <code>var(--cor)</code>?</summary>
+                <p>Usa o valor da variável <code>--cor</code>, definida em <code>:root</code>; mudando-a, tudo que a usa muda junto.</p>
             </details>
-            <div class="aula-nav"><a class="ant" href="#aula7"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Anterior</a><button type="button" class="concluir" data-aula="8" aria-pressed="false"><i class="fa-regular fa-circle" aria-hidden="true"></i> <span>Marcar como concluída</span></button><a class="prox" href="#aula9">Próxima <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></div>
         </article>
-
-        <article class="aula" id="aula9" data-n="9" data-mod="2">
-            <div class="aula-meta"><span>Módulo 2 &middot; Controle de fluxo</span><span class="nivel">Iniciante</span><span class="aula-num">Aula 9 de 31</span></div>
-            <h2>Aula 9: break, continue e laços aninhados</h2>
-            <p><code>continue</code> pula o resto da volta atual; <code>break</code> encerra o laço inteiro. Um laço dentro de outro (aninhado) é ótimo para tabelas e desenhos.</p>
-            <pre><code class="lang-cpp">for (int i = 1; i &lt;= 10; i++) {
-    if (i % 2 == 0) continue;   // pula os pares
-    if (i &gt; 7) break;           // para ao chegar no 9
-    std::cout &lt;&lt; i &lt;&lt; " ";      // 1 3 5 7
-}
-
-for (int linha = 1; linha &lt;= 3; linha++) {
-    for (int col = 1; col &lt;= linha; col++) {
-        std::cout &lt;&lt; "*";
-    }
-    std::cout &lt;&lt; "\n";
-}</code></pre>
-            <p class="dica"><b>Resultado do segundo laço:</b> um triângulo de <code>*</code> com 1, 2 e 3 estrelas por linha.</p>
-            <details class="exercicio">
-                <summary>Exercício: o que <code>continue</code> faz dentro de um laço?</summary>
-                <p>Pula o resto da volta atual e vai para a próxima iteração; já o <code>break</code> encerra o laço inteiro.</p>
-            </details>
-            <div class="aula-nav"><a class="ant" href="#aula8"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Anterior</a><button type="button" class="concluir" data-aula="9" aria-pressed="false"><i class="fa-regular fa-circle" aria-hidden="true"></i> <span>Marcar como concluída</span></button><a class="prox" href="#aula10">Próxima <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></div>
-        </article>
-
-        <article class="aula" id="aula10" data-n="10" data-mod="3">
-            <div class="aula-meta"><span>Módulo 3 &middot; Funções e memória</span><span class="nivel">Intermediário</span><span class="aula-num">Aula 10 de 31</span></div>
-            <h2>Aula 10: Funções</h2>
-            <p>Uma função tem tipo de retorno, nome e parâmetros; <code>void</code> não devolve nada. Você pode declarar o <strong>protótipo</strong> antes, dar <strong>valores padrão</strong> aos parâmetros e criar versões com o mesmo nome e parâmetros diferentes (<strong>sobrecarga</strong>).</p>
-            <pre><code class="lang-cpp">#include &lt;iostream&gt;
-#include &lt;string&gt;
-
-int somar(int a, int b);                       // protótipo
-
-double area(double lado) { return lado * lado; }
-double area(double base, double altura) {      // sobrecarga
-    return base * altura / 2;
-}
-
-void saudar(std::string nome = "visitante") {  // valor padrão
-    std::cout &lt;&lt; "Olá, " &lt;&lt; nome &lt;&lt; "\n";
-}
-
-int main() {
-    std::cout &lt;&lt; somar(2, 3) &lt;&lt; "\n";                   // 5
-    std::cout &lt;&lt; area(4) &lt;&lt; " " &lt;&lt; area(3, 5) &lt;&lt; "\n";  // 16 7.5
-    saudar();
-    saudar("Ana");
-}
-
-int somar(int a, int b) { return a + b; }</code></pre>
-            
-            <details class="exercicio">
-                <summary>Exercício: para que serve o protótipo de uma função?</summary>
-                <p>Avisa o compilador que a função existe antes de ela ser definida, permitindo usá-la acima da definição.</p>
-            </details>
-            <div class="aula-nav"><a class="ant" href="#aula9"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Anterior</a><button type="button" class="concluir" data-aula="10" aria-pressed="false"><i class="fa-regular fa-circle" aria-hidden="true"></i> <span>Marcar como concluída</span></button><a class="prox" href="#aula11">Próxima <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></div>
-        </article>
-
-        <article class="aula" id="aula11" data-n="11" data-mod="3">
-            <div class="aula-meta"><span>Módulo 3 &middot; Funções e memória</span><span class="nivel">Intermediário</span><span class="aula-num">Aula 11 de 31</span></div>
-            <h2>Aula 11: Escopo e a pilha (stack)</h2>
-            <p>Uma variável só existe dentro do bloco <code>{ }</code> onde foi criada. Cada chamada de função cria um <strong>quadro</strong> na pilha (stack) com suas variáveis locais, e ao retornar ele é destruído. Variáveis <code>static</code> locais, porém, sobrevivem entre as chamadas.</p>
-            <pre><code class="lang-cpp">int global = 100;               // vive o programa inteiro
-
-void contar() {
-    static int vezes = 0;       // criada uma vez só
-    int local = 0;              // criada a cada chamada
-    vezes++; local++;
-    std::cout &lt;&lt; vezes &lt;&lt; " " &lt;&lt; local &lt;&lt; "\n";
-}
-
-int main() {
-    contar();   // 1 1
-    contar();   // 2 1
-    {
-        int x = 5;              // só existe neste bloco
-    }
-    // std::cout &lt;&lt; x;          // ERRO: x não existe aqui
-}</code></pre>
-            
-            <details class="exercicio">
-                <summary>Exercício: qual a diferença entre uma variável local e uma <code>static</code> local?</summary>
-                <p>A local é recriada a cada chamada; a <code>static</code> é criada uma vez e mantém o valor entre as chamadas.</p>
-            </details>
-            <div class="aula-nav"><a class="ant" href="#aula10"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Anterior</a><button type="button" class="concluir" data-aula="11" aria-pressed="false"><i class="fa-regular fa-circle" aria-hidden="true"></i> <span>Marcar como concluída</span></button><a class="prox" href="#aula12">Próxima <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></div>
-        </article>
-
-        <article class="aula" id="aula12" data-n="12" data-mod="3">
-            <div class="aula-meta"><span>Módulo 3 &middot; Funções e memória</span><span class="nivel">Intermediário</span><span class="aula-num">Aula 12 de 31</span></div>
-            <h2>Aula 12: Referências</h2>
-            <p>Com <code>&amp;</code> no parâmetro, a função altera o original (passagem por referência). Use <code>const &amp;</code> para ler objetos grandes sem copiá-los. Uma referência também pode ser um apelido para uma variável.</p>
-            <pre><code class="lang-cpp">void dobrar(int&amp; x) { x *= 2; }           // altera o original
-
-void mostrar(const std::string&amp; s) {      // sem cópia, sem alterar
-    std::cout &lt;&lt; s &lt;&lt; "\n";
-}
-
-void trocar(int&amp; a, int&amp; b) {
-    int t = a; a = b; b = t;
-}
-
-int main() {
-    int v = 5;
-    dobrar(v);            // v = 10
-    int a = 1, b = 2;
-    trocar(a, b);         // a = 2, b = 1
-    mostrar("C++");
-
-    int&amp; r = v;           // r é outro nome para v
-    r = 99;               // v agora vale 99
-}</code></pre>
-            <p>Veja na memória: <code>r</code> não é uma cópia, é a <em>mesma caixa</em> de <code>a</code>.</p><div class="stepper" data-stepper="ref"></div>
-            <details class="exercicio">
-                <summary>Exercício: o que o <code>&amp;</code> em <code>int&amp; x</code> faz?</summary>
-                <p>Passa o parâmetro por referência: a função altera a variável original, não uma cópia.</p>
-            </details>
-            <div class="aula-nav"><a class="ant" href="#aula11"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Anterior</a><button type="button" class="concluir" data-aula="12" aria-pressed="false"><i class="fa-regular fa-circle" aria-hidden="true"></i> <span>Marcar como concluída</span></button><a class="prox" href="#aula13">Próxima <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></div>
-        </article>
-
-        <article class="aula" id="aula13" data-n="13" data-mod="3">
-            <div class="aula-meta"><span>Módulo 3 &middot; Funções e memória</span><span class="nivel">Intermediário</span><span class="aula-num">Aula 13 de 31</span></div>
-            <h2>Aula 13: Ponteiros</h2>
-            <p>Um ponteiro (<code>int*</code>) guarda o <strong>endereço</strong> de uma variável. <code>&amp;</code> pega o endereço e <code>*</code> acessa o valor apontado. <code>nullptr</code> significa "não aponta para nada".</p>
-            <pre><code class="lang-cpp">int x = 10;
-int* p = &amp;x;          // p guarda o endereço de x
-std::cout &lt;&lt; *p;      // 10   (* acessa o valor apontado)
-*p = 20;              // x agora vale 20
-std::cout &lt;&lt; p;       // imprime o endereço, ex.: 0x7ffc...
-
-int v[3] = {1, 2, 3};
-int* q = v;           // aponta para o primeiro elemento
-std::cout &lt;&lt; *(q + 1);   // 2  (aritmética de ponteiros)
-p = nullptr;          // não aponta para nada</code></pre>
-            <p>Execute passo a passo e veja a memória mudar:</p><div class="stepper" data-stepper="ponteiro"></div><p class="alerta"><b>Nunca</b> desreferencie um <code>nullptr</code> (<code>*p</code> com p nulo): o programa quebra.</p>
-            <details class="exercicio">
-                <summary>Exercício: o que <code>&amp;</code> e <code>*</code> fazem com ponteiros?</summary>
-                <p><code>&amp;x</code> pega o endereço de x; <code>*p</code> acessa o valor guardado no endereço que p aponta.</p>
-            </details>
-            <div class="aula-nav"><a class="ant" href="#aula12"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Anterior</a><button type="button" class="concluir" data-aula="13" aria-pressed="false"><i class="fa-regular fa-circle" aria-hidden="true"></i> <span>Marcar como concluída</span></button><a class="prox" href="#aula14">Próxima <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></div>
-        </article>
-
-        <article class="aula" id="aula14" data-n="14" data-mod="3">
-            <div class="aula-meta"><span>Módulo 3 &middot; Funções e memória</span><span class="nivel">Intermediário</span><span class="aula-num">Aula 14 de 31</span></div>
-            <h2>Aula 14: Arrays</h2>
-            <p>Um array guarda elementos do mesmo tipo lado a lado na memória. O primeiro índice é <code>0</code>. O <code>std::array</code> é a versão moderna: sabe o próprio tamanho.</p>
-            <pre><code class="lang-cpp">#include &lt;array&gt;
-#include &lt;iostream&gt;
-
-int main() {
-    int notas[5] = {7, 8, 5, 10, 9};
-    int soma = 0;
-    for (int i = 0; i &lt; 5; i++) soma += notas[i];
-    std::cout &lt;&lt; "Média: " &lt;&lt; soma / 5.0 &lt;&lt; "\n";   // 7.8
-
-    std::array&lt;int, 3&gt; a = {1, 2, 3};
-    std::cout &lt;&lt; a.size() &lt;&lt; "\n";                  // 3
-
-    // notas[10] = 1;   // PERIGO: fora dos limites
-}</code></pre>
-            <p class="alerta"><b>Atenção:</b> o operador <code>[ ]</code> <em>não</em> confere os limites. Acessar fora do array é comportamento indefinido. Com <code>.at(i)</code> você recebe uma exceção em vez de um bug silencioso.</p>
-            <details class="exercicio">
-                <summary>Exercício: o que acontece ao acessar <code>notas[10]</code> em um array de 5 posições?</summary>
-                <p>Comportamento indefinido: pode travar, ler lixo ou corromper memória, pois o C++ não checa limites com <code>[ ]</code>.</p>
-            </details>
-            <div class="aula-nav"><a class="ant" href="#aula13"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Anterior</a><button type="button" class="concluir" data-aula="14" aria-pressed="false"><i class="fa-regular fa-circle" aria-hidden="true"></i> <span>Marcar como concluída</span></button><a class="prox" href="#aula15">Próxima <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></div>
-        </article>
-
-        <article class="aula" id="aula15" data-n="15" data-mod="3">
-            <div class="aula-meta"><span>Módulo 3 &middot; Funções e memória</span><span class="nivel">Intermediário</span><span class="aula-num">Aula 15 de 31</span></div>
-            <h2>Aula 15: Alocação dinâmica: new e delete</h2>
-            <p>Variáveis comuns vivem na pilha e somem sozinhas. Com <code>new</code> você pede memória ao <strong>heap</strong> e ela só é liberada quando você chama <code>delete</code> (ou <code>delete[]</code> para arrays).</p>
-            <pre><code class="lang-cpp">int* p = new int(42);        // aloca 1 int no heap
-std::cout &lt;&lt; *p &lt;&lt; "\n";     // 42
-delete p;                    // libera
-p = nullptr;                 // evita ponteiro pendurado
-
-int n = 3;
-int* v = new int[n];         // array dinâmico
-for (int i = 0; i &lt; n; i++) v[i] = i * 10;
-delete[] v;                  // delete[] para arrays</code></pre>
-            <div class="stepper" data-stepper="heap"></div><p class="alerta"><b>Vazamento (memory leak):</b> esquecer o <code>delete</code> deixa a memória ocupada até o programa acabar. Na <a href="#aula27">Aula 27</a> você verá os smart pointers, que liberam sozinhos.</p>
-            <details class="exercicio">
-                <summary>Exercício: o que é um <em>memory leak</em>?</summary>
-                <p>Memória alocada com <code>new</code> que nunca é liberada com <code>delete</code>, ficando ocupada sem uso até o fim do programa.</p>
-            </details>
-            <div class="aula-nav"><a class="ant" href="#aula14"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Anterior</a><button type="button" class="concluir" data-aula="15" aria-pressed="false"><i class="fa-regular fa-circle" aria-hidden="true"></i> <span>Marcar como concluída</span></button><a class="prox" href="#aula16">Próxima <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></div>
-        </article>
-
-        <article class="aula" id="aula16" data-n="16" data-mod="4">
-            <div class="aula-meta"><span>Módulo 4 &middot; Orientação a objetos</span><span class="nivel">Intermediário</span><span class="aula-num">Aula 16 de 31</span></div>
-            <h2>Aula 16: Classes e objetos</h2>
-            <p>A classe é o molde; o objeto é criado a partir dele. O <strong>construtor</strong> tem o nome da classe e roda na criação. Em <code>public</code> ficam os membros acessíveis de fora e em <code>private</code> os protegidos.</p>
-            <pre><code class="lang-cpp">class Pessoa {
-public:
-    std::string nome;
-
-    Pessoa(std::string n) : nome(n) {}
-
-    void falar() {
-        std::cout &lt;&lt; "Oi, sou " &lt;&lt; nome &lt;&lt; "\n";
-    }
-};
-
-int main() {
-    Pessoa p("Ana");
-    p.falar();
-}</code></pre>
-            <p class="dica"><b>Dica:</b> <code>struct</code> é igual a <code>class</code>, só que os membros são <code>public</code> por padrão.</p>
-            <details class="exercicio">
-                <summary>Exercício: qual a diferença entre classe e objeto?</summary>
-                <p>A classe é o molde (a descrição); o objeto é uma instância concreta criada a partir dela.</p>
-            </details>
-            <div class="aula-nav"><a class="ant" href="#aula15"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Anterior</a><button type="button" class="concluir" data-aula="16" aria-pressed="false"><i class="fa-regular fa-circle" aria-hidden="true"></i> <span>Marcar como concluída</span></button><a class="prox" href="#aula17">Próxima <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></div>
-        </article>
-
-        <article class="aula" id="aula17" data-n="17" data-mod="4">
-            <div class="aula-meta"><span>Módulo 4 &middot; Orientação a objetos</span><span class="nivel">Intermediário</span><span class="aula-num">Aula 17 de 31</span></div>
-            <h2>Aula 17: Construtores e destrutores</h2>
-            <p>O construtor prepara o objeto; o <strong>destrutor</strong> (<code>~Nome</code>) roda quando ele deixa de existir. Esse par é a base do idioma <strong>RAII</strong>: abrir um recurso no construtor e liberá-lo no destrutor.</p>
-            <pre><code class="lang-cpp">class Arquivo {
-    std::string nome;
-public:
-    Arquivo() : nome("sem nome") { std::cout &lt;&lt; "criado: " &lt;&lt; nome &lt;&lt; "\n"; }
-    Arquivo(std::string n) : nome(n) { std::cout &lt;&lt; "criado: " &lt;&lt; nome &lt;&lt; "\n"; }
-    ~Arquivo() { std::cout &lt;&lt; "destruído: " &lt;&lt; nome &lt;&lt; "\n"; }
-};
-
-int main() {
-    Arquivo a;               // criado: sem nome
-    Arquivo b("dados.txt");  // criado: dados.txt
-}   // ao sair do escopo: destruído b, depois destruído a</code></pre>
-            <p class="dica"><b>Repare:</b> a lista <code>: nome(n)</code> é a <em>lista de inicialização</em>; ela inicializa o membro antes do corpo do construtor.</p>
-            <details class="exercicio">
-                <summary>Exercício: quando o destrutor é chamado?</summary>
-                <p>Automaticamente, quando o objeto sai do escopo (ou ao usar <code>delete</code>, se ele foi criado com <code>new</code>).</p>
-            </details>
-            <div class="aula-nav"><a class="ant" href="#aula16"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Anterior</a><button type="button" class="concluir" data-aula="17" aria-pressed="false"><i class="fa-regular fa-circle" aria-hidden="true"></i> <span>Marcar como concluída</span></button><a class="prox" href="#aula18">Próxima <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></div>
-        </article>
-
-        <article class="aula" id="aula18" data-n="18" data-mod="4">
-            <div class="aula-meta"><span>Módulo 4 &middot; Orientação a objetos</span><span class="nivel">Intermediário</span><span class="aula-num">Aula 18 de 31</span></div>
-            <h2>Aula 18: Encapsulamento e const</h2>
-            <p>Deixe os atributos <code>private</code> e ofereça métodos públicos que validam as mudanças. Métodos marcados com <code>const</code> prometem não alterar o objeto.</p>
-            <pre><code class="lang-cpp">class Conta {
-private:
-    double saldo = 0;
-public:
-    void depositar(double v) {
-        if (v &gt; 0) saldo += v;
-    }
-    bool sacar(double v) {
-        if (v &lt;= 0 || v &gt; saldo) return false;
-        saldo -= v;
-        return true;
-    }
-    double getSaldo() const { return saldo; }   // const: não altera o objeto
-};</code></pre>
-            
-            <details class="exercicio">
-                <summary>Exercício: por que deixar <code>saldo</code> como <code>private</code>?</summary>
-                <p>Para que ninguém altere o saldo diretamente: toda mudança passa por métodos que validam as regras (como não sacar mais do que existe).</p>
-            </details>
-            <div class="aula-nav"><a class="ant" href="#aula17"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Anterior</a><button type="button" class="concluir" data-aula="18" aria-pressed="false"><i class="fa-regular fa-circle" aria-hidden="true"></i> <span>Marcar como concluída</span></button><a class="prox" href="#aula19">Próxima <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></div>
-        </article>
-
-        <article class="aula" id="aula19" data-n="19" data-mod="4">
-            <div class="aula-meta"><span>Módulo 4 &middot; Orientação a objetos</span><span class="nivel">Intermediário</span><span class="aula-num">Aula 19 de 31</span></div>
-            <h2>Aula 19: Herança</h2>
-            <p>Uma classe filha herda atributos e métodos da classe base com <code>: public Base</code>. Membros <code>protected</code> ficam visíveis para as filhas, mas não para o resto do programa.</p>
-            <pre><code class="lang-cpp">class Animal {
-protected:
-    std::string nome;
-public:
-    Animal(std::string n) : nome(n) {}
-    void comer() { std::cout &lt;&lt; nome &lt;&lt; " está comendo\n"; }
-};
-
-class Cachorro : public Animal {
-public:
-    Cachorro(std::string n) : Animal(n) {}   // chama o construtor da base
-    void latir() { std::cout &lt;&lt; nome &lt;&lt; ": Au au!\n"; }
-};
-
-int main() {
-    Cachorro rex("Rex");
-    rex.comer();   // herdado de Animal
-    rex.latir();
-}</code></pre>
-            
-            <details class="exercicio">
-                <summary>Exercício: o que significa <code>class Cachorro : public Animal</code>?</summary>
-                <p>Que <code>Cachorro</code> herda de <code>Animal</code>: ganha seus membros públicos e protegidos e pode acrescentar os seus.</p>
-            </details>
-            <div class="aula-nav"><a class="ant" href="#aula18"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Anterior</a><button type="button" class="concluir" data-aula="19" aria-pressed="false"><i class="fa-regular fa-circle" aria-hidden="true"></i> <span>Marcar como concluída</span></button><a class="prox" href="#aula20">Próxima <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></div>
-        </article>
-
-        <article class="aula" id="aula20" data-n="20" data-mod="4">
-            <div class="aula-meta"><span>Módulo 4 &middot; Orientação a objetos</span><span class="nivel">Intermediário</span><span class="aula-num">Aula 20 de 31</span></div>
-            <h2>Aula 20: Polimorfismo e virtual</h2>
-            <p>Com métodos <code>virtual</code>, uma chamada feita por ponteiro (ou referência) da classe base executa a versão da classe <em>real</em> do objeto. Um método <code>= 0</code> é puro e torna a classe abstrata.</p>
-            <pre><code class="lang-cpp">#include &lt;iostream&gt;
-#include &lt;vector&gt;
-
-class Forma {
-public:
-    virtual double area() const = 0;     // puro: classe abstrata
-    virtual ~Forma() = default;
-};
-
-class Quadrado : public Forma {
-    double lado;
-public:
-    Quadrado(double l) : lado(l) {}
-    double area() const override { return lado * lado; }
-};
-
-class Circulo : public Forma {
-    double r;
-public:
-    Circulo(double raio) : r(raio) {}
-    double area() const override { return 3.14159 * r * r; }
-};
-
-int main() {
-    std::vector&lt;Forma*&gt; formas = { new Quadrado(2), new Circulo(1) };
-    for (Forma* f : formas) {
-        std::cout &lt;&lt; f-&gt;area() &lt;&lt; "\n";   // cada objeto usa a sua versão
-        delete f;
-    }
-}</code></pre>
-            <p class="dica"><b>Dica:</b> <code>f-&gt;area()</code> equivale a <code>(*f).area()</code>. E o destrutor da base precisa ser <code>virtual</code> para o <code>delete</code> funcionar direito.</p>
-            <details class="exercicio">
-                <summary>Exercício: para que serve a palavra <code>virtual</code>?</summary>
-                <p>Permite que a chamada por ponteiro ou referência da base execute a versão da classe real do objeto (ligação dinâmica).</p>
-            </details>
-            <div class="aula-nav"><a class="ant" href="#aula19"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Anterior</a><button type="button" class="concluir" data-aula="20" aria-pressed="false"><i class="fa-regular fa-circle" aria-hidden="true"></i> <span>Marcar como concluída</span></button><a class="prox" href="#aula21">Próxima <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></div>
-        </article>
-
-        <article class="aula" id="aula21" data-n="21" data-mod="4">
-            <div class="aula-meta"><span>Módulo 4 &middot; Orientação a objetos</span><span class="nivel">Intermediário</span><span class="aula-num">Aula 21 de 31</span></div>
-            <h2>Aula 21: Sobrecarga de operadores</h2>
-            <p>Você pode redefinir operadores para os seus tipos, fazendo <code>a + b</code> funcionar com objetos. O <code>operator&lt;&lt;</code> permite usar o <code>cout</code> direto com eles.</p>
-            <pre><code class="lang-cpp">#include &lt;iostream&gt;
-
-struct Vetor {
-    double x, y;
-    Vetor operator+(const Vetor&amp; o) const { return {x + o.x, y + o.y}; }
-    bool operator==(const Vetor&amp; o) const { return x == o.x &amp;&amp; y == o.y; }
-};
-
-std::ostream&amp; operator&lt;&lt;(std::ostream&amp; os, const Vetor&amp; v) {
-    return os &lt;&lt; "(" &lt;&lt; v.x &lt;&lt; ", " &lt;&lt; v.y &lt;&lt; ")";
-}
-
-int main() {
-    Vetor a{1, 2}, b{3, 4};
-    std::cout &lt;&lt; a + b &lt;&lt; "\n";    // (4, 6)
-}</code></pre>
-            
-            <details class="exercicio">
-                <summary>Exercício: por que <code>operator&lt;&lt;</code> devolve um <code>std::ostream&amp;</code>?</summary>
-                <p>Para permitir o encadeamento: <code>cout &lt;&lt; a &lt;&lt; b</code> usa o retorno de cada <code>&lt;&lt;</code> como entrada do próximo.</p>
-            </details>
-            <div class="aula-nav"><a class="ant" href="#aula20"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Anterior</a><button type="button" class="concluir" data-aula="21" aria-pressed="false"><i class="fa-regular fa-circle" aria-hidden="true"></i> <span>Marcar como concluída</span></button><a class="prox" href="#aula22">Próxima <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></div>
-        </article>
-
-        <article class="aula" id="aula22" data-n="22" data-mod="5">
-            <div class="aula-meta"><span>Módulo 5 &middot; Biblioteca padrão (STL)</span><span class="nivel">Intermediário</span><span class="aula-num">Aula 22 de 31</span></div>
-            <h2>Aula 22: std::vector</h2>
-            <p>O <code>std::vector</code> é o contêiner mais usado do C++: guarda elementos em sequência, cresce conforme necessário e sabe o próprio tamanho.</p>
-            <pre><code class="lang-cpp">#include &lt;iostream&gt;
-#include &lt;vector&gt;
-
-int main() {
-    std::vector&lt;int&gt; nums = {5, 2, 8};
-    nums.push_back(10);            // {5, 2, 8, 10}
-    nums.insert(nums.begin(), 1);  // {1, 5, 2, 8, 10}
-    nums.pop_back();               // {1, 5, 2, 8}
-    nums.erase(nums.begin());      // {5, 2, 8}
-
-    std::cout &lt;&lt; nums.size() &lt;&lt; " " &lt;&lt; nums.at(0) &lt;&lt; "\n";   // 3 5
-    for (int x : nums) std::cout &lt;&lt; x &lt;&lt; " ";                // 5 2 8
-
-    std::vector&lt;std::vector&lt;int&gt;&gt; grade(3, std::vector&lt;int&gt;(3, 0));  // matriz 3x3
-}</code></pre>
-            
-            <details class="exercicio">
-                <summary>Exercício: qual a vantagem do <code>vector</code> sobre um array comum?</summary>
-                <p>Ele muda de tamanho (<code>push_back</code>) e sabe o próprio tamanho (<code>size()</code>).</p>
-            </details>
-            <div class="aula-nav"><a class="ant" href="#aula21"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Anterior</a><button type="button" class="concluir" data-aula="22" aria-pressed="false"><i class="fa-regular fa-circle" aria-hidden="true"></i> <span>Marcar como concluída</span></button><a class="prox" href="#aula23">Próxima <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></div>
-        </article>
-
-        <article class="aula" id="aula23" data-n="23" data-mod="5">
-            <div class="aula-meta"><span>Módulo 5 &middot; Biblioteca padrão (STL)</span><span class="nivel">Intermediário</span><span class="aula-num">Aula 23 de 31</span></div>
-            <h2>Aula 23: std::string</h2>
-            <p>A <code>std::string</code> cuida da memória do texto sozinha e traz métodos prontos para medir, cortar, procurar e converter.</p>
-            <pre><code class="lang-cpp">std::string s = "Aprenda C++";
-std::cout &lt;&lt; s.length() &lt;&lt; "\n";          // 11
-std::cout &lt;&lt; s.substr(0, 7) &lt;&lt; "\n";      // Aprenda
-std::cout &lt;&lt; s.find("C++") &lt;&lt; "\n";       // 8
-s += "!";                                 // concatenar
-s[0] = 'a';                               // acessar um caractere
-
-int n = std::stoi("42");                  // texto -&gt; int
-std::string t = std::to_string(3.5);      // número -&gt; texto</code></pre>
-            
-            <details class="exercicio">
-                <summary>Exercício: como converter o texto <code>"42"</code> em um número inteiro?</summary>
-                <p>Com <code>std::stoi("42")</code>.</p>
-            </details>
-            <div class="aula-nav"><a class="ant" href="#aula22"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Anterior</a><button type="button" class="concluir" data-aula="23" aria-pressed="false"><i class="fa-regular fa-circle" aria-hidden="true"></i> <span>Marcar como concluída</span></button><a class="prox" href="#aula24">Próxima <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></div>
-        </article>
-
-        <article class="aula" id="aula24" data-n="24" data-mod="5">
-            <div class="aula-meta"><span>Módulo 5 &middot; Biblioteca padrão (STL)</span><span class="nivel">Intermediário</span><span class="aula-num">Aula 24 de 31</span></div>
-            <h2>Aula 24: map e set</h2>
-            <p>O <code>std::map</code> guarda pares chave &rarr; valor ordenados pela chave. O <code>std::set</code> guarda valores únicos, também ordenados.</p>
-            <pre><code class="lang-cpp">#include &lt;iostream&gt;
-#include &lt;map&gt;
-#include &lt;set&gt;
-#include &lt;string&gt;
-
-int main() {
-    std::map&lt;std::string, int&gt; idades = {{"Ana", 25}, {"Beto", 30}};
-    idades["Carla"] = 22;                       // insere ou atualiza
-    if (idades.count("Ana")) std::cout &lt;&lt; idades["Ana"] &lt;&lt; "\n";
-
-    for (const auto&amp; [nome, idade] : idades)    // C++17: desestruturação
-        std::cout &lt;&lt; nome &lt;&lt; ": " &lt;&lt; idade &lt;&lt; "\n";
-
-    std::set&lt;int&gt; unicos = {3, 1, 3, 2, 1};     // guarda {1, 2, 3}
-    std::cout &lt;&lt; unicos.size() &lt;&lt; "\n";         // 3
-}</code></pre>
-            <p class="dica"><b>Dica:</b> <code>std::unordered_map</code> e <code>std::unordered_set</code> não ordenam, mas costumam ser mais rápidos para buscar.</p>
-            <details class="exercicio">
-                <summary>Exercício: qual a diferença entre <code>map</code> e <code>set</code>?</summary>
-                <p><code>map</code> guarda pares chave &rarr; valor; <code>set</code> guarda apenas valores únicos. Ambos mantêm a ordem.</p>
-            </details>
-            <div class="aula-nav"><a class="ant" href="#aula23"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Anterior</a><button type="button" class="concluir" data-aula="24" aria-pressed="false"><i class="fa-regular fa-circle" aria-hidden="true"></i> <span>Marcar como concluída</span></button><a class="prox" href="#aula25">Próxima <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></div>
-        </article>
-
-        <article class="aula" id="aula25" data-n="25" data-mod="5">
-            <div class="aula-meta"><span>Módulo 5 &middot; Biblioteca padrão (STL)</span><span class="nivel">Intermediário</span><span class="aula-num">Aula 25 de 31</span></div>
-            <h2>Aula 25: Algoritmos e iteradores</h2>
-            <p>Iteradores são "setas" que percorrem um contêiner. Os algoritmos de <code>&lt;algorithm&gt;</code> trabalham com eles: <code>begin()</code> aponta para o primeiro elemento e <code>end()</code> para uma posição <em>depois</em> do último.</p>
-            <pre><code class="lang-cpp">#include &lt;algorithm&gt;
-#include &lt;functional&gt;
-#include &lt;iostream&gt;
-#include &lt;numeric&gt;
-#include &lt;vector&gt;
-
-int main() {
-    std::vector&lt;int&gt; v = {5, 2, 8, 1};
-
-    std::sort(v.begin(), v.end());                 // 1 2 5 8
-    std::reverse(v.begin(), v.end());              // 8 5 2 1
-    auto it = std::find(v.begin(), v.end(), 5);    // iterador para o 5
-    if (it != v.end())
-        std::cout &lt;&lt; "posição " &lt;&lt; it - v.begin() &lt;&lt; "\n";   // 1
-
-    int soma = std::accumulate(v.begin(), v.end(), 0);       // 16
-    int maior = *std::max_element(v.begin(), v.end());       // 8
-    std::sort(v.begin(), v.end(), std::greater&lt;int&gt;());      // decrescente
-}</code></pre>
-            
-            <details class="exercicio">
-                <summary>Exercício: o que <code>begin()</code> e <code>end()</code> representam?</summary>
-                <p><code>begin()</code> aponta para o primeiro elemento; <code>end()</code> aponta para uma posição depois do último (marca o fim).</p>
-            </details>
-            <div class="aula-nav"><a class="ant" href="#aula24"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Anterior</a><button type="button" class="concluir" data-aula="25" aria-pressed="false"><i class="fa-regular fa-circle" aria-hidden="true"></i> <span>Marcar como concluída</span></button><a class="prox" href="#aula26">Próxima <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></div>
-        </article>
-
-        <article class="aula" id="aula26" data-n="26" data-mod="6">
-            <div class="aula-meta"><span>Módulo 6 &middot; C++ moderno</span><span class="nivel">Avançado</span><span class="aula-num">Aula 26 de 31</span></div>
-            <h2>Aula 26: Lambdas</h2>
-            <p>Uma lambda é uma função criada no próprio lugar de uso: <code>[captura](parâmetros) { corpo }</code>. Dentro dos colchetes você escolhe quais variáveis externas ela enxerga.</p>
-            <pre><code class="lang-cpp">#include &lt;algorithm&gt;
-#include &lt;iostream&gt;
-#include &lt;vector&gt;
-
-int main() {
-    auto dobro = [](int x) { return x * 2; };
-    std::cout &lt;&lt; dobro(4) &lt;&lt; "\n";               // 8
-
-    std::vector&lt;int&gt; v = {5, 2, 8, 1, 9};
-    int limite = 4;
-    int qtd = std::count_if(v.begin(), v.end(),
-                            [limite](int x) { return x &gt; limite; });   // 3
-
-    std::sort(v.begin(), v.end(), [](int a, int b) { return a &gt; b; }); // decrescente
-}</code></pre>
-            <p class="dica"><b>Capturas:</b> <code>[x]</code> copia x, <code>[&amp;x]</code> usa o original, <code>[=]</code> copia tudo e <code>[&amp;]</code> referencia tudo.</p>
-            <details class="exercicio">
-                <summary>Exercício: o que vai entre <code>[ ]</code> em uma lambda?</summary>
-                <p>A lista de captura: as variáveis externas que a lambda pode usar, por valor (<code>[x]</code>) ou por referência (<code>[&amp;x]</code>).</p>
-            </details>
-            <div class="aula-nav"><a class="ant" href="#aula25"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Anterior</a><button type="button" class="concluir" data-aula="26" aria-pressed="false"><i class="fa-regular fa-circle" aria-hidden="true"></i> <span>Marcar como concluída</span></button><a class="prox" href="#aula27">Próxima <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></div>
-        </article>
-
-        <article class="aula" id="aula27" data-n="27" data-mod="6">
-            <div class="aula-meta"><span>Módulo 6 &middot; C++ moderno</span><span class="nivel">Avançado</span><span class="aula-num">Aula 27 de 31</span></div>
-            <h2>Aula 27: Smart pointers</h2>
-            <p>Os ponteiros inteligentes de <code>&lt;memory&gt;</code> chamam o <code>delete</code> por você. <code>unique_ptr</code> tem um único dono; <code>shared_ptr</code> conta quantos donos existem e libera quando o último sai.</p>
-            <pre><code class="lang-cpp">#include &lt;iostream&gt;
-#include &lt;memory&gt;
-#include &lt;string&gt;
-
-int main() {
-    auto p = std::make_unique&lt;int&gt;(42);       // dono único
-    std::cout &lt;&lt; *p &lt;&lt; "\n";                  // sem delete: libera sozinho
-
-    auto q = std::make_shared&lt;std::string&gt;("C++");
-    auto r = q;                               // dois donos
-    std::cout &lt;&lt; q.use_count() &lt;&lt; "\n";       // 2
-
-    // std::unique_ptr&lt;int&gt; b = p;            // ERRO: não pode copiar
-    std::unique_ptr&lt;int&gt; b = std::move(p);    // transfere a posse
-}</code></pre>
-            <p class="dica"><b>Regra de ouro moderna:</b> evite <code>new</code> e <code>delete</code> soltos. Prefira <code>make_unique</code>, <code>make_shared</code> e os contêineres da STL.</p>
-            <details class="exercicio">
-                <summary>Exercício: quando usar <code>unique_ptr</code> e quando usar <code>shared_ptr</code>?</summary>
-                <p><code>unique_ptr</code> quando só um dono é responsável pelo objeto; <code>shared_ptr</code> quando vários donos precisam compartilhá-lo.</p>
-            </details>
-            <div class="aula-nav"><a class="ant" href="#aula26"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Anterior</a><button type="button" class="concluir" data-aula="27" aria-pressed="false"><i class="fa-regular fa-circle" aria-hidden="true"></i> <span>Marcar como concluída</span></button><a class="prox" href="#aula28">Próxima <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></div>
-        </article>
-
-        <article class="aula" id="aula28" data-n="28" data-mod="6">
-            <div class="aula-meta"><span>Módulo 6 &middot; C++ moderno</span><span class="nivel">Avançado</span><span class="aula-num">Aula 28 de 31</span></div>
-            <h2>Aula 28: Templates</h2>
-            <p>Um template é um molde de função ou classe parametrizado por tipo. O compilador gera a versão certa para cada tipo usado. A própria STL (<code>vector&lt;T&gt;</code>, <code>map&lt;K,V&gt;</code>) é feita de templates.</p>
-            <pre><code class="lang-cpp">#include &lt;iostream&gt;
-#include &lt;string&gt;
-
-template &lt;typename T&gt;
-T maior(T a, T b) {
-    return (a &gt; b) ? a : b;
-}
-
-template &lt;typename T&gt;
-class Caixa {
-    T valor;
-public:
-    Caixa(T v) : valor(v) {}
-    T get() const { return valor; }
-};
-
-int main() {
-    std::cout &lt;&lt; maior(3, 7) &lt;&lt; "\n";          // 7
-    std::cout &lt;&lt; maior(2.5, 1.5) &lt;&lt; "\n";      // 2.5
-    Caixa&lt;std::string&gt; c("oi");
-    std::cout &lt;&lt; c.get() &lt;&lt; "\n";
-}</code></pre>
-            
-            <details class="exercicio">
-                <summary>Exercício: o que é um template?</summary>
-                <p>Um modelo de função ou classe que funciona com qualquer tipo; o compilador gera a versão adequada para cada tipo usado.</p>
-            </details>
-            <div class="aula-nav"><a class="ant" href="#aula27"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Anterior</a><button type="button" class="concluir" data-aula="28" aria-pressed="false"><i class="fa-regular fa-circle" aria-hidden="true"></i> <span>Marcar como concluída</span></button><a class="prox" href="#aula29">Próxima <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></div>
-        </article>
-
-        <article class="aula" id="aula29" data-n="29" data-mod="6">
-            <div class="aula-meta"><span>Módulo 6 &middot; C++ moderno</span><span class="nivel">Avançado</span><span class="aula-num">Aula 29 de 31</span></div>
-            <h2>Aula 29: Exceções</h2>
-            <p>Quando algo dá errado, você pode <code>throw</code> (lançar) uma exceção e tratá-la em outro lugar com <code>try</code>/<code>catch</code>, sem misturar o tratamento de erro com o fluxo normal.</p>
-            <pre><code class="lang-cpp">#include &lt;iostream&gt;
-#include &lt;stdexcept&gt;
-#include &lt;string&gt;
-
-double dividir(double a, double b) {
-    if (b == 0) throw std::invalid_argument("divisão por zero");
-    return a / b;
-}
-
-int main() {
-    try {
-        std::cout &lt;&lt; dividir(10, 2) &lt;&lt; "\n";   // 5
-        std::cout &lt;&lt; dividir(1, 0) &lt;&lt; "\n";    // lança a exceção
-    } catch (const std::exception&amp; e) {
-        std::cout &lt;&lt; "Erro: " &lt;&lt; e.what() &lt;&lt; "\n";
-    }
-
-    try {
-        int n = std::stoi("abc");              // não é número
-    } catch (const std::invalid_argument&amp;) {
-        std::cout &lt;&lt; "não é número\n";
-    }
-}</code></pre>
-            <p class="dica"><b>Dica:</b> capture por <code>const &amp;</code> e use exceções para situações excepcionais, não para o fluxo normal do programa.</p>
-            <details class="exercicio">
-                <summary>Exercício: o que acontece quando uma exceção é lançada com <code>throw</code>?</summary>
-                <p>A execução sai da função atual e sobe até encontrar um <code>catch</code> compatível; se não houver, o programa termina.</p>
-            </details>
-            <div class="aula-nav"><a class="ant" href="#aula28"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Anterior</a><button type="button" class="concluir" data-aula="29" aria-pressed="false"><i class="fa-regular fa-circle" aria-hidden="true"></i> <span>Marcar como concluída</span></button><a class="prox" href="#aula30">Próxima <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></div>
-        </article>
-
-        <article class="aula" id="aula30" data-n="30" data-mod="6">
-            <div class="aula-meta"><span>Módulo 6 &middot; C++ moderno</span><span class="nivel">Avançado</span><span class="aula-num">Aula 30 de 31</span></div>
-            <h2>Aula 30: Arquivos</h2>
-            <p>Com <code>&lt;fstream&gt;</code>, <code>std::ofstream</code> escreve em arquivos e <code>std::ifstream</code> lê, usando os mesmos operadores do <code>cout</code> e <code>cin</code>.</p>
-            <pre><code class="lang-cpp">#include &lt;fstream&gt;
-#include &lt;iostream&gt;
-#include &lt;string&gt;
-
-int main() {
-    std::ofstream saida("notas.txt");        // cria ou sobrescreve
-    saida &lt;&lt; "Ana 9\nBeto 7\n";
-    saida.close();
-
-    std::ifstream entrada("notas.txt");
-    if (!entrada.is_open()) {
-        std::cout &lt;&lt; "não consegui abrir\n";
-        return 1;
-    }
-    std::string linha;
-    while (std::getline(entrada, linha)) {
-        std::cout &lt;&lt; linha &lt;&lt; "\n";
-    }
-}</code></pre>
-            
-            <details class="exercicio">
-                <summary>Exercício: como ler um arquivo linha por linha?</summary>
-                <p>Abra um <code>std::ifstream</code> e use <code>while (std::getline(arquivo, linha))</code>.</p>
-            </details>
-            <div class="aula-nav"><a class="ant" href="#aula29"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Anterior</a><button type="button" class="concluir" data-aula="30" aria-pressed="false"><i class="fa-regular fa-circle" aria-hidden="true"></i> <span>Marcar como concluída</span></button><a class="prox" href="#aula31">Próxima <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></div>
-        </article>
-
-        <article class="aula" id="aula31" data-n="31" data-mod="7">
-            <div class="aula-meta"><span>Módulo 7 &middot; Projeto final</span><span class="nivel">Avançado</span><span class="aula-num">Aula 31 de 31</span></div>
-            <h2>Aula 31: Projeto final: agenda de contatos</h2>
-            <p>Hora de usar o que aprendeu: <code>struct</code>, <code>vector</code>, funções, referências constantes, laço <code>do-while</code>, <code>getline</code> e <code>string</code>. Compile com <code>g++ -std=c++17 agenda.cpp -o agenda</code>.</p>
-            <pre><code class="lang-cpp">#include &lt;iostream&gt;
-#include &lt;string&gt;
-#include &lt;vector&gt;
-using namespace std;
-
-struct Contato {
-    string nome;
-    string telefone;
-};
-
-void listar(const vector&lt;Contato&gt;&amp; agenda) {
-    if (agenda.empty()) { cout &lt;&lt; "Agenda vazia\n"; return; }
-    for (const auto&amp; c : agenda)
-        cout &lt;&lt; c.nome &lt;&lt; " - " &lt;&lt; c.telefone &lt;&lt; "\n";
-}
-
-void buscar(const vector&lt;Contato&gt;&amp; agenda, const string&amp; termo) {
-    bool achou = false;
-    for (const auto&amp; c : agenda) {
-        if (c.nome.find(termo) != string::npos) {
-            cout &lt;&lt; c.nome &lt;&lt; " - " &lt;&lt; c.telefone &lt;&lt; "\n";
-            achou = true;
-        }
-    }
-    if (!achou) cout &lt;&lt; "Nenhum contato encontrado\n";
-}
-
-int main() {
-    vector&lt;Contato&gt; agenda;
-    int opcao = 0;
-    do {
-        cout &lt;&lt; "\n1) Adicionar  2) Listar  3) Buscar  0) Sair\n&gt; ";
-        cin &gt;&gt; opcao;
-        cin.ignore();
-        if (opcao == 1) {
-            Contato c;
-            cout &lt;&lt; "Nome: ";     getline(cin, c.nome);
-            cout &lt;&lt; "Telefone: "; getline(cin, c.telefone);
-            agenda.push_back(c);
-        } else if (opcao == 2) {
-            listar(agenda);
-        } else if (opcao == 3) {
-            string termo;
-            cout &lt;&lt; "Buscar: "; getline(cin, termo);
-            buscar(agenda, termo);
-        }
-    } while (opcao != 0);
-}</code></pre>
-            <p><strong>Desafios para evoluir o projeto:</strong></p><ul><li>Ordenar a agenda por nome com <code>std::sort</code> e uma lambda (Aulas 25 e 26).</li><li>Salvar e carregar os contatos em um arquivo (Aula 30).</li><li>Criar uma opção para remover um contato com <code>erase</code> (Aula 22).</li><li>Tratar entradas inválidas com <code>try</code>/<code>catch</code> (Aula 29).</li></ul>
-            <details class="exercicio">
-                <summary>Exercício: por que as funções recebem a agenda como <code>const vector&lt;Contato&gt;&amp;</code>?</summary>
-                <p>Para não copiar o vetor inteiro a cada chamada (referência) e garantir que a função não o altere (<code>const</code>).</p>
-            </details>
-            <div class="aula-nav"><a class="ant" href="#aula30"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Anterior</a><button type="button" class="concluir" data-aula="31" aria-pressed="false"><i class="fa-regular fa-circle" aria-hidden="true"></i> <span>Marcar como concluída</span></button><a class="prox" href="./home.html">Voltar à home <i class="fa-solid fa-house" aria-hidden="true"></i></a></div>
-        </article></main>
-
-    <nav class="mini-toc" aria-label="Ir para uma aula"><a href="#aula1" data-n="1" data-t="1. O que é C++" aria-label="Aula 1: O que é C++"></a><a href="#aula2" data-n="2" data-t="2. Estrutura básica" aria-label="Aula 2: Estrutura básica"></a><a href="#aula3" data-n="3" data-t="3. Variáveis e tipos" aria-label="Aula 3: Variáveis e tipos"></a><a href="#aula4" data-n="4" data-t="4. Entrada e saída" aria-label="Aula 4: Entrada e saída"></a><a href="#aula5" data-n="5" data-t="5. Operadores" aria-label="Aula 5: Operadores"></a><a href="#aula6" data-n="6" data-t="6. Condições: if e else" aria-label="Aula 6: Condições: if e else"></a><a href="#aula7" data-n="7" data-t="7. switch e operador ternário" aria-label="Aula 7: switch e operador ternário"></a><a href="#aula8" data-n="8" data-t="8. Laços de repetição" aria-label="Aula 8: Laços de repetição"></a><a href="#aula9" data-n="9" data-t="9. break, continue e laços aninhados" aria-label="Aula 9: break, continue e laços aninhados"></a><a href="#aula10" data-n="10" data-t="10. Funções" aria-label="Aula 10: Funções"></a><a href="#aula11" data-n="11" data-t="11. Escopo e a pilha (stack)" aria-label="Aula 11: Escopo e a pilha (stack)"></a><a href="#aula12" data-n="12" data-t="12. Referências" aria-label="Aula 12: Referências"></a><a href="#aula13" data-n="13" data-t="13. Ponteiros" aria-label="Aula 13: Ponteiros"></a><a href="#aula14" data-n="14" data-t="14. Arrays" aria-label="Aula 14: Arrays"></a><a href="#aula15" data-n="15" data-t="15. Alocação dinâmica: new e delete" aria-label="Aula 15: Alocação dinâmica: new e delete"></a><a href="#aula16" data-n="16" data-t="16. Classes e objetos" aria-label="Aula 16: Classes e objetos"></a><a href="#aula17" data-n="17" data-t="17. Construtores e destrutores" aria-label="Aula 17: Construtores e destrutores"></a><a href="#aula18" data-n="18" data-t="18. Encapsulamento e const" aria-label="Aula 18: Encapsulamento e const"></a><a href="#aula19" data-n="19" data-t="19. Herança" aria-label="Aula 19: Herança"></a><a href="#aula20" data-n="20" data-t="20. Polimorfismo e virtual" aria-label="Aula 20: Polimorfismo e virtual"></a><a href="#aula21" data-n="21" data-t="21. Sobrecarga de operadores" aria-label="Aula 21: Sobrecarga de operadores"></a><a href="#aula22" data-n="22" data-t="22. std::vector" aria-label="Aula 22: std::vector"></a><a href="#aula23" data-n="23" data-t="23. std::string" aria-label="Aula 23: std::string"></a><a href="#aula24" data-n="24" data-t="24. map e set" aria-label="Aula 24: map e set"></a><a href="#aula25" data-n="25" data-t="25. Algoritmos e iteradores" aria-label="Aula 25: Algoritmos e iteradores"></a><a href="#aula26" data-n="26" data-t="26. Lambdas" aria-label="Aula 26: Lambdas"></a><a href="#aula27" data-n="27" data-t="27. Smart pointers" aria-label="Aula 27: Smart pointers"></a><a href="#aula28" data-n="28" data-t="28. Templates" aria-label="Aula 28: Templates"></a><a href="#aula29" data-n="29" data-t="29. Exceções" aria-label="Aula 29: Exceções"></a><a href="#aula30" data-n="30" data-t="30. Arquivos" aria-label="Aula 30: Arquivos"></a><a href="#aula31" data-n="31" data-t="31. Projeto final: agenda de contatos" aria-label="Aula 31: Projeto final: agenda de contatos"></a></nav>
+    </main>
 
     <footer class="rodape">
-        <p>Continue praticando: crie um arquivo .cpp por aula, compile com g++ e teste cada exemplo. Marque as aulas concluídas para ver seu progresso crescer.</p>
+        <p>Continue praticando: crie um arquivo .css por aula, abra no navegador e mexa em cada exemplo.</p>
     </footer>
 
     <script>
         const campo = document.getElementById('campo-busca');
         const itens = document.querySelectorAll('.lista-aulas li');
         const aviso = document.getElementById('sem-resultado');
-        function atualiza() {
+        campo.addEventListener('input', () => {
             const termo = campo.value.trim().toLowerCase();
             let achou = 0;
             itens.forEach(li => {
@@ -1018,16 +231,10 @@ int main() {
                 li.hidden = !ok;
                 if (ok) achou++;
             });
-            document.querySelectorAll('.modulo').forEach(m => {
-                const tem = [...m.querySelectorAll('.lista-aulas li')].some(li => !li.hidden);
-                m.hidden = !tem || m.dataset.fora === '1';
-            });
             aviso.hidden = achou > 0;
-        }
-        window.__aulasAtualiza = atualiza;
-        campo.addEventListener('input', atualiza);
+        });
         const q = new URLSearchParams(location.search).get('q');
-        if (q) { campo.value = q; atualiza(); }
+        if (q) { campo.value = q; campo.dispatchEvent(new Event('input')); }
     </script>
     <script src="./js/site.js" defer></script>
 </body>
